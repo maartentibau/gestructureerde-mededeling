@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "projects": {
+    "gestructureerde-mededeling": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/gestructureerde-mededeling",
+      "sourceRoot": "apps/gestructureerde-mededeling/src",
+      "prefix": "gestructureerde-mededeling-app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/gestructureerde-mededeling",
+            "index": "apps/gestructureerde-mededeling/src/index.html",
+            "main": "apps/gestructureerde-mededeling/src/main.ts",
+            "polyfills": "apps/gestructureerde-mededeling/src/polyfills.ts",
+            "tsConfig": "apps/gestructureerde-mededeling/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/gestructureerde-mededeling/src/favicon.ico",
+              "apps/gestructureerde-mededeling/src/assets",
+              "apps/gestructureerde-mededeling/src/_redirects"
+            ],
+            "styles": [
+              "./node_modules/normalize.css/normalize.css",
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "apps/gestructureerde-mededeling/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/gestructureerde-mededeling/src/environments/environment.ts",
+                  "with": "apps/gestructureerde-mededeling/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "gestructureerde-mededeling:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "gestructureerde-mededeling:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "gestructureerde-mededeling:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/gestructureerde-mededeling/tsconfig.app.json",
+              "apps/gestructureerde-mededeling/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/gestructureerde-mededeling/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/gestructureerde-mededeling/jest.config.js",
+            "tsConfig": "apps/gestructureerde-mededeling/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/gestructureerde-mededeling/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "gestructureerde-mededeling-e2e": {
+      "root": "apps/gestructureerde-mededeling-e2e",
+      "sourceRoot": "apps/gestructureerde-mededeling-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/gestructureerde-mededeling-e2e/cypress.json",
+            "tsConfig": "apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json",
+            "devServerTarget": "gestructureerde-mededeling:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "gestructureerde-mededeling:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/gestructureerde-mededeling-e2e/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "npm"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "gestructureerde-mededeling"
+}

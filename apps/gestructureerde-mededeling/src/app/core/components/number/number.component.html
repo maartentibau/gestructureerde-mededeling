@@ -1,0 +1,3 @@
+<div class="ogm" [ngClass]="{ valid: isValid === true, invalid: isValid === false }">
+  <span *ngFor="let char of ogm | stringToArray">{{ char }}</span>
+</div>

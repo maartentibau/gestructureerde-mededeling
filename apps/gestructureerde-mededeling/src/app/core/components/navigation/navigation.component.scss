@@ -1,0 +1,44 @@
+@import '../../../../assets/styles/screen-media-queries';
+
+mat-toolbar {
+  background-color: #18b351;
+}
+
+h1 {
+  color: #fff;
+}
+
+nav {
+  color: #fff;
+
+  a {
+    text-transform: uppercase;
+    margin: 0 0.5em;
+
+    &.mat-button > ::ng-deep span.mat-button-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > fa-icon {
+        margin-right: 8px;
+      }
+    }
+
+    &:hover:not(.mat-raised-button):not(.active) {
+      background-color: #15863c;
+    }
+
+    &.mat-raised-button {
+      color: #216a38;
+
+      &:hover {
+        background-color: white;
+      }
+    }
+
+    fa-icon {
+      font-size: 1rem;
+    }
+  }
+}

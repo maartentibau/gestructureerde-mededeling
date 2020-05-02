@@ -1,0 +1,6 @@
+<ogm-number [ogm]="ogm$ | async"></ogm-number>
+
+<ogm-input
+  (ogmInputChange)="ogmInputChangeHandler($event)"
+  placeholderMessage="vul een getal in van maximaal 10 cijfers"
+></ogm-input>

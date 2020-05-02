@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationComponent should create 1`] = `
+<ogm-navigation
+  appTitle$={[Function Observable]}
+  faIconLibrary={[Function FaIconLibrary]}
+  isSmallScreen$={[Function Observable]}
+  navigation$={[Function Observable]}
+  screenService={[Function ScreenService]}
+>
+  <mat-toolbar
+    class="mat-toolbar mat-toolbar-multiple-rows"
+  >
+    <mat-toolbar-row
+      class="mat-toolbar-row"
+    >
+      <h1>
+        <a
+          aria-disabled="false"
+          class="mat-focus-indicator mat-button mat-button-base"
+          href="/"
+          mat-button=""
+          routerlink="/"
+          tabindex="0"
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            Gestructureerde Mededeling
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+      </h1>
+      <span
+        class="flex-spacer"
+      />
+      <nav>
+        
+        
+        <a
+          aria-disabled="false"
+          class="mat-focus-indicator mat-button mat-button-base"
+          data-navigation-id="0"
+          href="/create"
+          mat-button=""
+          routerlinkactive="mat-raised-button"
+          tabindex="0"
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            <fa-icon
+              class="ng-fa-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-star fa-w-18"
+                data-icon="star"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 576 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"
+                  fill="currentColor"
+                />
+              </svg>
+            </fa-icon>
+            Zelf mededeling maken
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+        <a
+          aria-disabled="false"
+          class="mat-focus-indicator mat-button mat-button-base"
+          data-navigation-id="1"
+          href="/generate"
+          mat-button=""
+          routerlinkactive="mat-raised-button"
+          tabindex="0"
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            <fa-icon
+              class="ng-fa-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-cog fa-w-16"
+                data-icon="cog"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M487.4 315.7l-42.6-24.6c4.3-23.2 4.3-47 0-70.2l42.6-24.6c4.9-2.8 7.1-8.6 5.5-14-11.1-35.6-30-67.8-54.7-94.6-3.8-4.1-10-5.1-14.8-2.3L380.8 110c-17.9-15.4-38.5-27.3-60.8-35.1V25.8c0-5.6-3.9-10.5-9.4-11.7-36.7-8.2-74.3-7.8-109.2 0-5.5 1.2-9.4 6.1-9.4 11.7V75c-22.2 7.9-42.8 19.8-60.8 35.1L88.7 85.5c-4.9-2.8-11-1.9-14.8 2.3-24.7 26.7-43.6 58.9-54.7 94.6-1.7 5.4.6 11.2 5.5 14L67.3 221c-4.3 23.2-4.3 47 0 70.2l-42.6 24.6c-4.9 2.8-7.1 8.6-5.5 14 11.1 35.6 30 67.8 54.7 94.6 3.8 4.1 10 5.1 14.8 2.3l42.6-24.6c17.9 15.4 38.5 27.3 60.8 35.1v49.2c0 5.6 3.9 10.5 9.4 11.7 36.7 8.2 74.3 7.8 109.2 0 5.5-1.2 9.4-6.1 9.4-11.7v-49.2c22.2-7.9 42.8-19.8 60.8-35.1l42.6 24.6c4.9 2.8 11 1.9 14.8-2.3 24.7-26.7 43.6-58.9 54.7-94.6 1.5-5.5-.7-11.3-5.6-14.1zM256 336c-44.1 0-80-35.9-80-80s35.9-80 80-80 80 35.9 80 80-35.9 80-80 80z"
+                  fill="currentColor"
+                />
+              </svg>
+            </fa-icon>
+            Genereer mededeling
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+        <a
+          aria-disabled="false"
+          class="mat-focus-indicator mat-button mat-button-base"
+          data-navigation-id="2"
+          href="/validate"
+          mat-button=""
+          routerlinkactive="mat-raised-button"
+          tabindex="0"
+        >
+          <span
+            class="mat-button-wrapper"
+          >
+            <fa-icon
+              class="ng-fa-icon"
+            >
+              <svg
+                aria-hidden="true"
+                class="svg-inline--fa fa-shield-check fa-w-16"
+                data-icon="shield-check"
+                data-prefix="fas"
+                focusable="false"
+                role="img"
+                viewBox="0 0 512 512"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M466.5 83.7l-192-80a48.15 48.15 0 0 0-36.9 0l-192 80C27.7 91.1 16 108.6 16 128c0 198.5 114.5 335.7 221.5 380.3 11.8 4.9 25.1 4.9 36.9 0C360.1 472.6 496 349.3 496 128c0-19.4-11.7-36.9-29.5-44.3zm-47.2 114.2l-184 184c-6.2 6.2-16.4 6.2-22.6 0l-104-104c-6.2-6.2-6.2-16.4 0-22.6l22.6-22.6c6.2-6.2 16.4-6.2 22.6 0l70.1 70.1 150.1-150.1c6.2-6.2 16.4-6.2 22.6 0l22.6 22.6c6.3 6.3 6.3 16.4 0 22.6z"
+                  fill="currentColor"
+                />
+              </svg>
+            </fa-icon>
+            Controleer mededeling
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple"
+            matripple=""
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
+        </a>
+        
+      </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ogm-navigation>
+`;

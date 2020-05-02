@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OgmInputComponent rendering component should match snapshot with no @Input properties defined 1`] = `
+<ogm-input
+  destroy$={[Function Subject]}
+  ogm$={[Function AnonymousSubject]}
+  ogmInput={[Function FormControl]}
+  ogmInputChange={[Function EventEmitter]}
+  ogmService={[Function OgmService]}
+>
+  <div
+    class="ogm-form"
+  >
+    <input
+      class="ng-untouched ng-pristine ng-valid"
+      maxlength="10"
+      type="text"
+    />
+  </div>
+</ogm-input>
+`;
+
+exports[`OgmInputComponent rendering component should match snapshot with validate set to false 1`] = `
+<ogm-input
+  destroy$={[Function Subject]}
+  ogm$={[Function AnonymousSubject]}
+  ogmInput={[Function FormControl]}
+  ogmInputChange={[Function EventEmitter]}
+  ogmService={[Function OgmService]}
+  placeholderMessage={[Function String]}
+  validate="false"
+>
+  <div
+    class="ogm-form"
+  >
+    <input
+      class="ng-untouched ng-pristine ng-valid"
+      maxlength="10"
+      placeholder="Placeholder message"
+      type="text"
+    />
+  </div>
+</ogm-input>
+`;
+
+exports[`OgmInputComponent rendering component should match snapshot with validate set to true 1`] = `
+<ogm-input
+  destroy$={[Function Subject]}
+  ogm$={[Function AnonymousSubject]}
+  ogmInput={[Function FormControl]}
+  ogmInputChange={[Function EventEmitter]}
+  ogmService={[Function OgmService]}
+  placeholderMessage={[Function String]}
+  validate={[Function Boolean]}
+>
+  <div
+    class="ogm-form"
+  >
+    <input
+      class="ng-untouched ng-pristine ng-valid"
+      maxlength="12"
+      placeholder="Placeholder message"
+      type="text"
+    />
+  </div>
+</ogm-input>
+`;
