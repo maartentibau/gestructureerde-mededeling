@@ -48,6 +48,7 @@
     "@fortawesome/pro-duotone-svg-icons": "^5.13.0",
     "@fortawesome/pro-solid-svg-icons": "^5.13.0",
     "@nrwl/angular": "^9.2.3",
+    "@nrwl/nx-cloud": "^9.0.7",
     "@types/clipboard": "^2.0.1",
     "clipboard": "^2.0.6",
     "core-js": "^2.5.4",
