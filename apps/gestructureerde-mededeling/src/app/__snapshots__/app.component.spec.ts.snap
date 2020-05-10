@@ -72,7 +72,13 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
             />
           </svg>
         </fa-icon>
-         by Maarten Tibau 
+         by 
+        <a
+          href="https://twitter.com/maartentibau"
+          target="_blank"
+        >
+          Maarten Tibau
+        </a>
         <span>
           •
         </span>

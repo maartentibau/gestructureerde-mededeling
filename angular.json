@@ -75,6 +75,13 @@
             }
           }
         },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/apps/gestructureerde-mededeling",
+            "siteId": "1ad9abf9-f9b0-4a9d-9570-50e7a3f7d045"
+          }
+        },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
