@@ -15,7 +15,7 @@
       type="button"
       title="Kopieer nummer"
       data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm.number"
+      [attr.data-clipboard-text]="ogm?.number"
       (click)="copyToClipboard('Nummer gekopieerd naar klembord')"
     >
       <fa-icon [icon]="['fad', 'comment-dots']"></fa-icon>
@@ -28,7 +28,7 @@
       type="button"
       title="Kopieer mededeling"
       data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm.numberFormat"
+      [attr.data-clipboard-text]="ogm?.numberFormat"
       (click)="copyToClipboard('Mededeling gekopieerd naar klembord')"
     >
       <fa-icon [icon]="['fad', 'comment-lines']"></fa-icon>
@@ -48,7 +48,7 @@
       disableRipple
       color="primary"
       data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm.number"
+      [attr.data-clipboard-text]="ogm?.number"
       (click)="copyToClipboard('Nummer gekopieerd naar klembord')"
     >
       <fa-icon [icon]="['fad', 'comment-dots']"></fa-icon>Kopieer nummer
@@ -60,7 +60,7 @@
       disableRipple
       color="primary"
       data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm.numberFormat"
+      [attr.data-clipboard-text]="ogm?.numberFormat"
       (click)="copyToClipboard('Mededeling gekopieerd naar klembord')"
     >
       <fa-icon [icon]="['fad', 'comment-lines']"></fa-icon>Kopieer mededeling

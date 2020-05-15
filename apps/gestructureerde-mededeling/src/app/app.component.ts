@@ -8,7 +8,6 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
   selector: 'ogm-app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   constructor(private screenService: ScreenService, private faConfig: FaConfig, private faIconLibrary: FaIconLibrary) {

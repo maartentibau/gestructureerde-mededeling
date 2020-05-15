@@ -55,7 +55,7 @@ export class OgmInputComponent implements OnInit, OnDestroy {
     this.ogm$
       .pipe(
         tap((ogm: string) => {
-          let isValid = undefined;
+          let isValid;
 
           if (this.validate) {
             const ogmNumber = this.ogmService.clean(ogm);

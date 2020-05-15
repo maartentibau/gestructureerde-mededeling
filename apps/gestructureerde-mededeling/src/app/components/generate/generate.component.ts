@@ -8,11 +8,7 @@ import { ScreenService } from '../../core/services/screen.service';
 import { OgmService } from '../../core/services/ogm.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faSyncAlt, faCommentDots, faCommentLines } from '@fortawesome/pro-duotone-svg-icons';
-
-interface OgmData {
-  number: string;
-  numberFormat: string;
-}
+import { OgmData } from '../../core/ogm.model';
 
 @Component({
   selector: 'ogm-generate',

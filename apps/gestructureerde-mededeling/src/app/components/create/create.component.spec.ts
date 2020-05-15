@@ -4,6 +4,11 @@ import { CreateComponent } from './create.component';
 import { OgmService } from '../../core/services/ogm.service';
 import { Component, Input } from '@angular/core';
 import { OgmInputChange } from '../../core/components/ogm-input/ogm-input.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MaterialModule } from '../../core/material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { GenerateComponent } from '../generate/generate.component';
+import { ScreenService } from '../../core/services/screen.service';
 
 @Component({
   selector: 'ogm-number',
@@ -32,17 +37,23 @@ class MockInputComponent {
 describe('CreateComponent', () => {
   let component: CreateComponent;
   let fixture: ComponentFixture<CreateComponent>;
+  let snackBar: MatSnackBar;
+  let ogmService: OgmService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MaterialModule, FontAwesomeModule],
       declarations: [CreateComponent, MockNumberComponent, MockInputComponent],
-      providers: [OgmService],
+      providers: [OgmService, ScreenService, MatSnackBar],
     }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(CreateComponent);
     component = fixture.componentInstance;
+
+    snackBar = TestBed.inject(MatSnackBar);
+    ogmService = TestBed.inject(OgmService);
   });
 
   it('should create', () => {
