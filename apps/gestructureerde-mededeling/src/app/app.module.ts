@@ -11,6 +11,7 @@ import { NumberComponent } from './core/components/number/number.component';
 import { StringToArrayPipe } from './core/string-to-array.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OgmInputComponent } from './core/components/ogm-input/ogm-input.component';
+import { ControlsComponent } from './core/components/controls/controls.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { OgmInputComponent } from './core/components/ogm-input/ogm-input.compone
     NumberComponent,
     StringToArrayPipe,
     OgmInputComponent,
+    ControlsComponent,
   ],
   imports: [BrowserModule, CoreModule, FontAwesomeModule],
   providers: [],

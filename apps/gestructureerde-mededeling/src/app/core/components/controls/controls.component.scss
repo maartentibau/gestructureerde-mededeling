@@ -1,0 +1,61 @@
+@import '../../../../assets/styles/screen-media-queries';
+
+.controls {
+  margin: 2rem 0.5rem;
+  display: flex;
+  justify-content: space-around;
+
+  button {
+    font-size: 1.5rem;
+    background-color: #18b351;
+
+    &:active {
+      background-color: #fff;
+      color: #18b351;
+      cursor: pointer;
+    }
+  }
+
+  &.large {
+    button {
+      height: 60px;
+      flex: 1 1 0;
+      line-height: 60px;
+      max-width: 450px;
+      margin: 0 16px;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      fa-icon {
+        line-height: 1.5rem;
+        padding-right: 12px;
+      }
+
+      font-size: 1.5rem;
+
+      @media #{$mat-md} {
+        max-width: 250px;
+        height: 50px;
+        font-size: 18px;
+        line-height: 50px;
+
+        mat-icon {
+          padding-right: 0.5rem;
+        }
+      }
+
+      @media #{$mat-lt-md} {
+        margin: 0 0.5rem;
+        height: 40px;
+        font-size: 1rem;
+        line-height: 40px;
+
+        mat-icon {
+          padding-right: 6px;
+        }
+      }
+    }
+  }
+}

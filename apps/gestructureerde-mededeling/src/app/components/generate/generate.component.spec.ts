@@ -7,6 +7,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ScreenService } from '../../core/services/screen.service';
 import { Component, Input } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OgmData } from '../../core/ogm.model';
 
 @Component({
   selector: 'ogm-number',
@@ -32,6 +33,22 @@ class MockInputComponent {
   @Input() placeholderMessage: string;
 }
 
+@Component({
+  selector: 'ogm-controls',
+  template: `
+    <div>{{ refresh | json }}</div>
+    <div>{{ copyNumber | json }}</div>
+    <div>{{ copyOgm | json }}</div>
+    <div>{{ ogm | json }}</div>
+  `,
+})
+class MockControlsComponent {
+  @Input() refresh: boolean;
+  @Input() copyNumber: boolean;
+  @Input() copyOgm: boolean;
+  @Input() ogm: OgmData;
+}
+
 describe('GenerateComponent', () => {
   let component: GenerateComponent;
   let fixture: ComponentFixture<GenerateComponent>;
@@ -43,9 +60,9 @@ describe('GenerateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule, FontAwesomeModule],
-      declarations: [GenerateComponent, MockNumberComponent, MockInputComponent],
-      providers: [OgmService, ScreenService, MatSnackBar],
+      imports: [MaterialModule],
+      declarations: [GenerateComponent, MockNumberComponent, MockInputComponent, MockControlsComponent],
+      providers: [OgmService, MatSnackBar],
     }).compileComponents();
   }));
 
@@ -58,6 +75,7 @@ describe('GenerateComponent', () => {
 
     jest.spyOn(ogmService, 'generate').mockReturnValueOnce(number);
     jest.spyOn(ogmService, 'format').mockReturnValueOnce(numberFormat);
+    jest.spyOn(snackBar, 'open');
   });
 
   afterEach(() => {
@@ -82,64 +100,63 @@ describe('GenerateComponent', () => {
   describe('ngOnInit', () => {
     it('should call refresh method', () => {
       // prepare
-      jest.spyOn(component, 'refresh');
+      jest.spyOn(component, 'refreshClickHandler');
 
       // act
       component.ngOnInit();
 
       // check
-      expect(component.refresh).toHaveBeenCalled();
+      expect(component.refreshClickHandler).toHaveBeenCalled();
     });
   });
 
-  describe('ngOnDestroy', () => {
-    it('should call destroy method', () => {
+  describe('refreshClickHandler', () => {
+    it('should refresh the current OGM number', () => {
       // prepare
-      jest.spyOn(component.clipboard, 'destroy');
-
-      // act
-      component.ngOnDestroy();
-
-      // check
-      expect(component.clipboard.destroy).toHaveBeenCalled();
-    });
-  });
-
-  describe('refresh', () => {
-    beforeEach(() => {
-      jest.spyOn(component, 'showSnackbarMessage');
-    });
-
-    it('should refresh the current OGM number and call showSnackbarMessage', () => {
-      // prepare
-      const message: string = 'Refresh!';
       const expectedResult = {
         number,
         numberFormat,
       };
 
       // act
-      component.refresh(message);
+      component.refreshClickHandler();
 
       // check
-      expect(component.showSnackbarMessage).toHaveBeenCalledWith(message);
       expect(ogmService.generate).toHaveBeenCalled();
       expect(ogmService.format).toHaveBeenCalled();
       expect(component.ogm).toStrictEqual(expectedResult);
     });
   });
 
-  describe('copyToClipboard', () => {
-    it('should call showSnackbarMessage method', () => {
-      // prepare
+  describe('Copy number or OGM', () => {
+    beforeEach(() => {
       jest.spyOn(component, 'showSnackbarMessage');
-      const message: string = 'Copy To Clipboard!';
+    });
 
-      // act
-      component.copyToClipboard(message);
+    describe('copyNumberClickHandler', () => {
+      it('should the correct copy message when called', () => {
+        // prepare
+        const message: string = 'Copy number!';
 
-      // check
-      expect(component.showSnackbarMessage).toHaveBeenCalledWith(message);
+        // act
+        component.copyNumberClickHandler(message);
+
+        // check
+        expect(component.showSnackbarMessage).toHaveBeenCalledWith(message);
+      });
+    });
+
+    describe('copyOgmClickHandler', () => {
+      it('should the correct copy message when called', () => {
+        // prepare
+        const message: string = 'Copy OGM!';
+
+        // act
+        component.copyOgmClickHandler(message);
+
+        // check
+        expect(component.showSnackbarMessage).toHaveBeenCalledWith(message);
+      });
     });
   });
 
@@ -149,10 +166,6 @@ describe('GenerateComponent', () => {
       verticalPosition: 'top',
       duration: 750,
     };
-
-    beforeEach(() => {
-      jest.spyOn(snackBar, 'open');
-    });
 
     it('should call open when a message is provided', () => {
       // prepare

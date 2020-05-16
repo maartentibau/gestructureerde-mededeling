@@ -5,64 +5,11 @@
   placeholderMessage="vul een getal in van maximaal 10 cijfers"
 ></ogm-input>
 
-<ng-container *ngIf="isSmallScreen$ | async; then smallControls; else largeControls"></ng-container>
-
-<ng-template #smallControls>
-  <div class="controls">
-    <button
-      class="ogm-copy"
-      mat-fab
-      disableRipple
-      color="primary"
-      type="button"
-      title="Kopieer nummer"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.number"
-      (click)="copyToClipboard('Nummer gekopieerd naar klembord')"
-    >
-      <fa-icon [icon]="['fad', 'comment-dots']"></fa-icon>
-    </button>
-    <button
-      class="ogm-copy"
-      mat-fab
-      disableRipple
-      color="primary"
-      type="button"
-      title="Kopieer mededeling"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.numberFormat"
-      (click)="copyToClipboard('Mededeling gekopieerd naar klembord')"
-    >
-      <fa-icon [icon]="['fad', 'comment-lines']"></fa-icon>
-    </button>
-  </div>
-</ng-template>
-
-<ng-template #largeControls>
-  <div class="controls large">
-    <button
-      class="ogm-copy"
-      mat-raised-button
-      isRoundButton
-      disableRipple
-      color="primary"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.number"
-      (click)="copyToClipboard('Nummer gekopieerd naar klembord')"
-    >
-      <fa-icon [icon]="['fad', 'comment-dots']"></fa-icon>Kopieer nummer
-    </button>
-    <button
-      class="ogm-copy"
-      mat-raised-button
-      isRoundButton
-      disableRipple
-      color="primary"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.numberFormat"
-      (click)="copyToClipboard('Mededeling gekopieerd naar klembord')"
-    >
-      <fa-icon [icon]="['fad', 'comment-lines']"></fa-icon>Kopieer mededeling
-    </button>
-  </div>
-</ng-template>
+<ogm-controls
+  *ngIf="ogm"
+  [ogm]="ogm"
+  [copyNumber]="true"
+  [copyOgm]="true"
+  (copyNumberClick)="copyNumberClickHandler($event)"
+  (copyOgmClick)="copyOgmClickHandler($event)"
+></ogm-controls>
