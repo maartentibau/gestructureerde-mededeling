@@ -4,9 +4,7 @@ import { GenerateComponent } from './generate.component';
 import { OgmService } from '../../core/services/ogm.service';
 import { MaterialModule } from '../../core/material.module';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { ScreenService } from '../../core/services/screen.service';
 import { Component, Input } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OgmData } from '../../core/ogm.model';
 
 @Component({

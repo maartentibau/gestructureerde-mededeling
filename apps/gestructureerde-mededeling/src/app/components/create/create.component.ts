@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { OgmService } from '../../core/services/ogm.service';
-import { OgmInputChange } from '../../core/components/ogm-input/ogm-input.component';
+import { OgmInputChange } from '../../core/components/input/input.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { OgmData } from '../../core/ogm.model';
 

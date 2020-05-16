@@ -10,7 +10,7 @@ import { NavigationComponent } from './core/components/navigation/navigation.com
 import { NumberComponent } from './core/components/number/number.component';
 import { StringToArrayPipe } from './core/string-to-array.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { OgmInputComponent } from './core/components/ogm-input/ogm-input.component';
+import { InputComponent } from './core/components/input/input.component';
 import { ControlsComponent } from './core/components/controls/controls.component';
 
 @NgModule({
@@ -22,7 +22,7 @@ import { ControlsComponent } from './core/components/controls/controls.component
     NavigationComponent,
     NumberComponent,
     StringToArrayPipe,
-    OgmInputComponent,
+    InputComponent,
     ControlsComponent,
   ],
   imports: [BrowserModule, CoreModule, FontAwesomeModule],

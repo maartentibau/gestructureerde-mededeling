@@ -3,8 +3,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ControlsComponent } from './controls.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ScreenService } from '../../services/screen.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { OgmService } from '../../services/ogm.service';
 
 describe('ControlsComponent', () => {
   let component: ControlsComponent;

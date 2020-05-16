@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { OgmService } from '../../core/services/ogm.service';
-import { OgmInputChange } from '../../core/components/ogm-input/ogm-input.component';
+import { OgmInputChange } from '../../core/components/input/input.component';
 
 @Component({
   selector: 'ogm-validate',

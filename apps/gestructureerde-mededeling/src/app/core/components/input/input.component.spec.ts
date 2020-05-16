@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OgmInputComponent } from './ogm-input.component';
+import { InputComponent } from './input.component';
 import { OgmService } from '../../services/ogm.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
-describe('OgmInputComponent', () => {
-  let component: OgmInputComponent;
-  let fixture: ComponentFixture<OgmInputComponent>;
+describe('InputComponent', () => {
+  let component: InputComponent;
+  let fixture: ComponentFixture<InputComponent>;
   let omgService: OgmService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
-      declarations: [OgmInputComponent],
+      declarations: [InputComponent],
       providers: [OgmService],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OgmInputComponent);
+    fixture = TestBed.createComponent(InputComponent);
     component = fixture.componentInstance;
     omgService = TestBed.inject(OgmService);
   });

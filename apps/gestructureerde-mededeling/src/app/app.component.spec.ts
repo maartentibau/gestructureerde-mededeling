@@ -5,7 +5,6 @@ import { MaterialModule } from './core/material.module';
 import { Component } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ScreenService } from './core/services/screen.service';
-import { GenerateComponent } from './components/generate/generate.component';
 
 @Component({
   selector: 'ogm-navigation',

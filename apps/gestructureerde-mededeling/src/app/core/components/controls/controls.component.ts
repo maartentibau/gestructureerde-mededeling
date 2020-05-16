@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { ScreenService } from '../../services/screen.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { map } from 'rxjs/operators';

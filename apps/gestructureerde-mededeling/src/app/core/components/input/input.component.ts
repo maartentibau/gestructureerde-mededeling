@@ -11,10 +11,10 @@ export interface OgmInputChange {
 
 @Component({
   selector: 'ogm-input',
-  templateUrl: './ogm-input.component.html',
-  styleUrls: ['./ogm-input.component.scss'],
+  templateUrl: './input.component.html',
+  styleUrls: ['./input.component.scss'],
 })
-export class OgmInputComponent implements OnInit, OnDestroy {
+export class InputComponent implements OnInit, OnDestroy {
   @Input() validate: boolean;
   @Input() placeholderMessage: string;
 

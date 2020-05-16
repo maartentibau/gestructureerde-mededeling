@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ValidateComponent } from './validate.component';
 import { OgmService } from '../../core/services/ogm.service';
 import { Component, Input } from '@angular/core';
-import { OgmInputChange } from '../../core/components/ogm-input/ogm-input.component';
+import { OgmInputChange } from '../../core/components/input/input.component';
 
 @Component({
   selector: 'ogm-number',

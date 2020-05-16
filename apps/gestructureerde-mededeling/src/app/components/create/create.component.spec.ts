@@ -3,12 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CreateComponent } from './create.component';
 import { OgmService } from '../../core/services/ogm.service';
 import { Component, Input } from '@angular/core';
-import { OgmInputChange } from '../../core/components/ogm-input/ogm-input.component';
+import { OgmInputChange } from '../../core/components/input/input.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MaterialModule } from '../../core/material.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { GenerateComponent } from '../generate/generate.component';
-import { ScreenService } from '../../core/services/screen.service';
 import { OgmData } from '../../core/ogm.model';
 
 @Component({

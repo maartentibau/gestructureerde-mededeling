@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OgmInputComponent rendering component should match snapshot with no @Input properties defined 1`] = `
+exports[`InputComponent rendering component should match snapshot with no @Input properties defined 1`] = `
 <ogm-input
   destroy$={[Function Subject]}
   ogm$={[Function AnonymousSubject]}
@@ -20,7 +20,7 @@ exports[`OgmInputComponent rendering component should match snapshot with no @In
 </ogm-input>
 `;
 
-exports[`OgmInputComponent rendering component should match snapshot with validate set to false 1`] = `
+exports[`InputComponent rendering component should match snapshot with validate set to false 1`] = `
 <ogm-input
   destroy$={[Function Subject]}
   ogm$={[Function AnonymousSubject]}
@@ -43,7 +43,7 @@ exports[`OgmInputComponent rendering component should match snapshot with valida
 </ogm-input>
 `;
 
-exports[`OgmInputComponent rendering component should match snapshot with validate set to true 1`] = `
+exports[`InputComponent rendering component should match snapshot with validate set to true 1`] = `
 <ogm-input
   destroy$={[Function Subject]}
   ogm$={[Function AnonymousSubject]}
