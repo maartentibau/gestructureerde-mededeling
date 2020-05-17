@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavigationEntity, NavigationLabel } from './navigation.model';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Breakpoints } from '@angular/cdk/layout';
 import { ScreenService } from '../../services/screen.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faCog, faShieldCheck, faStar } from '@fortawesome/pro-solid-svg-icons';
 
-const APP_NAVIGATION: NavigationEntity[] = [
+export const APP_NAVIGATION: NavigationEntity[] = [
   { path: ['/create'], label: { long: 'Zelf mededeling maken', short: 'Zelf maken' }, icon: ['fas', 'star'] },
   { path: ['/generate'], label: { long: 'Genereer mededeling', short: 'Genereren' }, icon: ['fas', 'cog'] },
   {
@@ -32,17 +32,18 @@ export class NavigationComponent {
     this.isSmallScreen$ = this.screenService
       .observerBreakpoints()
       .pipe(
-        map(
-          (breakpoints: { [key: string]: boolean }) => breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small]
+        map((breakpoints: { [key: string]: boolean }) =>
+          Boolean(breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small])
         )
       );
 
     this.navigation$ = this.screenService.observerBreakpoints().pipe(
       map((breakpoints: { [key: string]: boolean }) => {
-        const labelSize: NavigationLabel =
+        const labelSize: NavigationLabel = Boolean(
           breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.Medium]
-            ? NavigationLabel.Short
-            : NavigationLabel.Long;
+        )
+          ? NavigationLabel.Short
+          : NavigationLabel.Long;
 
         return APP_NAVIGATION.map((navigation: NavigationEntity) => ({
           ...navigation,
@@ -51,13 +52,12 @@ export class NavigationComponent {
       })
     );
 
-    this.appTitle$ = this.screenService
-      .observerBreakpoints()
-      .pipe(
-        map((breakpoints: { [key: string]: boolean }) =>
-          breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling'
-        )
-      );
+    this.appTitle$ = this.screenService.observerBreakpoints().pipe(
+      tap(console.log),
+      map((breakpoints: { [key: string]: boolean }) =>
+        breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling'
+      )
+    );
 
     this.faIconLibrary.addIcons(faShieldCheck, faCog, faStar);
   }

@@ -47,7 +47,9 @@ export class InputComponent implements OnInit, OnDestroy {
     );
 
     if (this.validate) {
-      this.ogm$ = omgInputChanges$.pipe(map((value) => this.ogmService.format(value.toString().padEnd(12, ' '))));
+      this.ogm$ = omgInputChanges$.pipe(
+        map((value) => (value ? this.ogmService.format(value.toString().padEnd(12, ' ')) : ogmInitValue))
+      );
     } else {
       this.ogm$ = omgInputChanges$.pipe(map((value) => (value ? this.ogmService.generate(value, true) : ogmInitValue)));
     }

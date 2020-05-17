@@ -14,11 +14,4 @@ export class ScreenService {
       .observe([Breakpoints.XSmall, Breakpoints.Small, Breakpoints.Medium])
       .pipe(map((result: BreakpointState) => result.breakpoints));
   }
-
-  isMobile(): Observable<boolean> {
-    return this.breakpointObserver.observe([Breakpoints.HandsetLandscape, Breakpoints.HandsetPortrait]).pipe(
-      tap(console.log),
-      map((result: BreakpointState) => result.matches)
-    );
-  }
 }

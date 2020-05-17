@@ -1,5 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/1ad9abf9-f9b0-4a9d-9570-50e7a3f7d045/deploy-status)](https://app.netlify.com/sites/ogm/deploys)
-
 # Gestructureerde Mededeling
 
 Een overschrijving met gestructureerde mededeling of OGM is een combinatie van drie groepen van drie, vier en vijf cijfers gescheiden door een schuine streep.
