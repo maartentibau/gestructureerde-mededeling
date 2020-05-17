@@ -52,12 +52,13 @@ export class NavigationComponent {
       })
     );
 
-    this.appTitle$ = this.screenService.observerBreakpoints().pipe(
-      tap(console.log),
-      map((breakpoints: { [key: string]: boolean }) =>
-        breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling'
-      )
-    );
+    this.appTitle$ = this.screenService
+      .observerBreakpoints()
+      .pipe(
+        map((breakpoints: { [key: string]: boolean }) =>
+          breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling'
+        )
+      );
 
     this.faIconLibrary.addIcons(faShieldCheck, faCog, faStar);
   }

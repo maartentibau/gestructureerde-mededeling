@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   node: circleci/node@2.1.0
+  codecov: codecov/codecov@1.0.5
 
 # Reusable Commands
 commands:
@@ -52,7 +53,7 @@ jobs:
       - setup
       - run:
           name: Build all affected projects
-          command: npx nx affected:build --base=master --head=HEAD
+          command: npm run affected:build --base=master --head=HEAD
 
   test:
     executor:
@@ -61,7 +62,9 @@ jobs:
       - setup
       - run:
           name: Run all affected tests
-          command: npx nx affected:test --base=master --head=HEAD
+          command: npm run affected:test --base=master --head=HEAD
+      - codecov/upload:
+          file: coverage/apps/gestructureerde-mededeling/*.json
 
   deploy:
     executor:

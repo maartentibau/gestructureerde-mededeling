@@ -1,5 +1,9 @@
 # Gestructureerde Mededeling
 
+![CircleCi](https://img.shields.io/circleci/build/gh/maartentibau/gestructureerde-mededeling?logo=CircleCi) ![codecov](https://img.shields.io/codecov/c/gh/maartentibau/gestructureerde-mededeling/master?logo=codecov)
+
+![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@angular/core) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@angular/material) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@nrwl/angular) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/rxjs)
+
 Een overschrijving met gestructureerde mededeling of OGM is een combinatie van drie groepen van drie, vier en vijf cijfers gescheiden door een schuine streep.
 
 Deze mededeling wordt in België vaak gebruikt om overschrijvingen automatisch te kunnen laten verwerken. Zo weet het computersysteem van de ontvanger onmiddellijk welke factuur betaald wordt. Op deze manier is er geen personeel nodig om te gaan kijken welke rekeningen vereffend werden.
