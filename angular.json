@@ -95,10 +95,7 @@
               "apps/gestructureerde-mededeling/tsconfig.app.json",
               "apps/gestructureerde-mededeling/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/gestructureerde-mededeling/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/gestructureerde-mededeling/**/*"]
           }
         },
         "test": {
@@ -133,13 +130,8 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/gestructureerde-mededeling-e2e/**"
-            ]
+            "tsConfig": ["apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/gestructureerde-mededeling-e2e/**/*"]
           }
         }
       }
