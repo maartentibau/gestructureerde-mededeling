@@ -3,11 +3,11 @@
 exports[`ControlsComponent rendering component should match snapshot 1`] = `
 <ogm-controls
   clipboard={[Function Clipboard]}
-  copyNumberClick={[Function EventEmitter]}
-  copyOgmClick={[Function EventEmitter]}
+  copyNumberClick={[Function EventEmitter_]}
+  copyOgmClick={[Function EventEmitter_]}
   faIconLibrary={[Function FaIconLibrary]}
   isSmallScreen$={[Function Observable]}
-  refreshClick={[Function EventEmitter]}
+  refreshClick={[Function EventEmitter_]}
   screenService={[Function ScreenService]}
 >
   <div

@@ -102,9 +102,7 @@
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/gestructureerde-mededeling/jest.config.js",
-            "tsConfig": "apps/gestructureerde-mededeling/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/gestructureerde-mededeling/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
