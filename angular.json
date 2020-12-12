@@ -44,7 +44,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -62,7 +61,10 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": [
+            "{options.outputPath}"
+          ]
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -95,7 +97,10 @@
               "apps/gestructureerde-mededeling/tsconfig.app.json",
               "apps/gestructureerde-mededeling/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/gestructureerde-mededeling/**/*"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/gestructureerde-mededeling/**/*"
+            ]
           }
         },
         "test": {
@@ -103,7 +108,10 @@
           "options": {
             "jestConfig": "apps/gestructureerde-mededeling/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": [
+            "coverage/apps/gestructureerde-mededeling"
+          ]
         }
       }
     },
@@ -128,8 +136,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/gestructureerde-mededeling-e2e/**/*"]
+            "tsConfig": [
+              "apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/gestructureerde-mededeling-e2e/**/*"
+            ]
           }
         }
       }
