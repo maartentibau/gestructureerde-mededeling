@@ -76,9 +76,24 @@ jobs:
           command: npx nx deploy gestructureerde-mededeling
 
 workflows:
+  build-test:
+    jobs:
+      - initialise:
+          filters:
+            branches:
+              ignore: master
+      - build:
+          requires:
+            - initialise
+      - test:
+          requires:
+            - build
   build-test-deploy:
     jobs:
-      - initialise
+      - initialise:
+          filters:
+            branches:
+              only: master
       - build:
           requires:
             - initialise
