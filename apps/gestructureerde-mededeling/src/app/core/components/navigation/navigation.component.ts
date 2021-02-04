@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints } from '@angular/cdk/layout';
 import { ScreenService } from '../../services/screen.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faCog, faShieldCheck, faStar } from '@fortawesome/pro-solid-svg-icons';
+import { faCog, faCheckCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 export const APP_NAVIGATION: NavigationEntity[] = [
   { path: ['/create'], label: { long: 'Zelf mededeling maken', short: 'Zelf maken' }, icon: ['fas', 'star'] },
@@ -13,7 +13,7 @@ export const APP_NAVIGATION: NavigationEntity[] = [
   {
     path: ['/validate'],
     label: { long: 'Controleer mededeling', short: 'Controleren' },
-    icon: ['fas', 'shield-check'],
+    icon: ['fas', 'check-circle'],
   },
 ];
 
@@ -59,6 +59,6 @@ export class NavigationComponent {
         )
       );
 
-    this.faIconLibrary.addIcons(faShieldCheck, faCog, faStar);
+    this.faIconLibrary.addIcons(faCheckCircle, faCog, faStar);
   }
 }

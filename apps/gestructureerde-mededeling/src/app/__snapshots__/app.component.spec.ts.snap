@@ -74,6 +74,7 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
          by 
         <a
           href="https://twitter.com/maartentibau"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Maarten Tibau
@@ -83,6 +84,7 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
         </span>
         <a
           href="https://www.buymeacoffee.com/maartentibau"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <img
@@ -97,6 +99,7 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
          Source code on 
         <a
           href="https://github.com/maartentibau/gestructureerde-mededeling"
+          rel="noopener noreferrer"
           target="_blank"
         >
           <fa-icon
