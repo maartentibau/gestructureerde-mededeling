@@ -11,7 +11,7 @@ import { OgmInputChange } from '../../core/components/input/input.component';
 })
 export class ValidateComponent {
   readonly ogm$: BehaviorSubject<string>;
-  readonly isValid$: Subject<boolean> = new Subject<boolean>();
+  readonly isValid$: Subject<boolean>;
 
   constructor(private ogmService: OgmService) {
     this.ogm$ = new BehaviorSubject<string>(this.ogmService.init());

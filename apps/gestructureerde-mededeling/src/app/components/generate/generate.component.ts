@@ -10,7 +10,7 @@ import { OgmData } from '../../core/ogm.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GenerateComponent implements OnInit {
-  ogm: OgmData;
+  ogm: OgmData | null | undefined;
 
   constructor(private ogmService: OgmService, private snackBar: MatSnackBar) {}
 

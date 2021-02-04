@@ -10,3 +10,15 @@ export interface NavigationEntity {
   label: { [NavigationLabel.Long]: string; [NavigationLabel.Short]: string };
   icon: IconProp;
 }
+
+export interface NavigationEntity {
+  path: string[];
+  label: { [NavigationLabel.Long]: string; [NavigationLabel.Short]: string };
+  icon: IconProp;
+}
+
+export type MainNavigation = {
+  path: string[];
+  label: string;
+  icon: IconProp;
+}[];

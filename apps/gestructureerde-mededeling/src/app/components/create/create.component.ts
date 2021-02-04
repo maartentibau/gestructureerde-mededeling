@@ -14,7 +14,7 @@ import { OgmData } from '../../core/ogm.model';
 export class CreateComponent {
   readonly ogm$: BehaviorSubject<string>;
 
-  ogm: OgmData;
+  ogm: OgmData | undefined;
 
   constructor(private ogmService: OgmService, private snackBar: MatSnackBar) {
     this.ogm$ = new BehaviorSubject<string>(this.ogmService.init());
@@ -24,7 +24,7 @@ export class CreateComponent {
     const cleanOgm = this.ogmService.clean(ogm);
 
     this.ogm = cleanOgm === '' ? undefined : { number: cleanOgm, numberFormat: ogm };
-    this.ogm$.next(ogm);
+    this.ogm$?.next(ogm);
   }
 
   copyNumberClickHandler(message: string) {

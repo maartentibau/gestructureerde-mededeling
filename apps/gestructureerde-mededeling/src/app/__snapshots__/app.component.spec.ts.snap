@@ -4,7 +4,6 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
 <ogm-app-root
   faConfig={[Function FaConfig]}
   faIconLibrary={[Function FaIconLibrary]}
-  screenService={[Function ScreenService]}
 >
   <ogm-navigation /><div
     class="main"
@@ -78,6 +77,19 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
           target="_blank"
         >
           Maarten Tibau
+        </a>
+        <span>
+          •
+        </span>
+        <a
+          href="https://www.buymeacoffee.com/maartentibau"
+          target="_blank"
+        >
+          <img
+            height="13"
+            src="assets/images/buy-me-a-coffee.svg"
+          />
+           Buy me a coffee
         </a>
         <span>
           •

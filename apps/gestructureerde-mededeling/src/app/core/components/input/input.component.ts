@@ -6,7 +6,7 @@ import { OgmService } from '../../services/ogm.service';
 
 export interface OgmInputChange {
   ogm: string;
-  isValid: boolean;
+  isValid: boolean | undefined;
 }
 
 @Component({
@@ -15,17 +15,19 @@ export interface OgmInputChange {
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit, OnDestroy {
-  @Input() validate: boolean;
-  @Input() placeholderMessage: string;
+  @Input() validate!: boolean;
+  @Input() placeholderMessage!: string;
 
-  @Output() ogmInputChange: EventEmitter<OgmInputChange> = new EventEmitter<undefined>();
+  @Output() ogmInputChange: EventEmitter<OgmInputChange>;
 
   readonly ogmInput: FormControl;
   readonly destroy$: Subject<void>;
 
-  ogm$: Observable<string>;
+  ogm$!: Observable<string>;
 
   constructor(private ogmService: OgmService) {
+    this.ogmInputChange = new EventEmitter<OgmInputChange>();
+
     this.ogmInput = new FormControl(null);
     this.destroy$ = new Subject<void>();
   }

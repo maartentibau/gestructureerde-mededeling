@@ -6,7 +6,7 @@ import { Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { faCommentDots, faCommentLines, faSyncAlt } from '@fortawesome/pro-duotone-svg-icons';
 import { OgmData } from '../../ogm.model';
-import * as ClipboardJS from 'clipboard';
+import ClipboardJS from 'clipboard';
 
 @Component({
   selector: 'ogm-controls',
@@ -15,10 +15,10 @@ import * as ClipboardJS from 'clipboard';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ControlsComponent implements OnDestroy {
-  @Input() refresh: boolean;
-  @Input() copyNumber: boolean;
-  @Input() copyOgm: boolean;
-  @Input() ogm: OgmData;
+  @Input() refresh: boolean | undefined;
+  @Input() copyNumber: boolean | undefined;
+  @Input() copyOgm: boolean | undefined;
+  @Input() ogm: OgmData | null | undefined;
 
   @Output() refreshClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() copyNumberClick: EventEmitter<string> = new EventEmitter<string>();

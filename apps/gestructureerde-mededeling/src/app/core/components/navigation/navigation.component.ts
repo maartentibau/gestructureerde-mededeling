@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { NavigationEntity, NavigationLabel } from './navigation.model';
+import { MainNavigation, NavigationEntity, NavigationLabel } from './navigation.model';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Breakpoints } from '@angular/cdk/layout';
 import { ScreenService } from '../../services/screen.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -24,7 +24,7 @@ export const APP_NAVIGATION: NavigationEntity[] = [
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
-  readonly navigation$: Observable<Omit<NavigationEntity, 'label'>[]>;
+  readonly navigation$: Observable<MainNavigation>;
   readonly isSmallScreen$: Observable<boolean>;
   readonly appTitle$: Observable<string>;
 
@@ -39,11 +39,10 @@ export class NavigationComponent {
 
     this.navigation$ = this.screenService.observerBreakpoints().pipe(
       map((breakpoints: { [key: string]: boolean }) => {
-        const labelSize: NavigationLabel = Boolean(
+        const labelSize: NavigationLabel =
           breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small] || breakpoints[Breakpoints.Medium]
-        )
-          ? NavigationLabel.Short
-          : NavigationLabel.Long;
+            ? NavigationLabel.Short
+            : NavigationLabel.Long;
 
         return APP_NAVIGATION.map((navigation: NavigationEntity) => ({
           ...navigation,

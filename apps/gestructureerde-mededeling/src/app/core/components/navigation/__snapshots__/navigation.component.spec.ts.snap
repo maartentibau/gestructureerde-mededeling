@@ -28,11 +28,11 @@ exports[`NavigationComponent should create 1`] = `
           >
             Gestructureerde Mededeling
           </span>
-          <div
+          <span
             class="mat-button-ripple mat-ripple"
             matripple=""
           />
-          <div
+          <span
             class="mat-button-focus-overlay"
           />
         </a>
@@ -76,11 +76,11 @@ exports[`NavigationComponent should create 1`] = `
             </fa-icon>
             Zelf mededeling maken
           </span>
-          <div
+          <span
             class="mat-button-ripple mat-ripple"
             matripple=""
           />
-          <div
+          <span
             class="mat-button-focus-overlay"
           />
         </a>
@@ -117,11 +117,11 @@ exports[`NavigationComponent should create 1`] = `
             </fa-icon>
             Genereer mededeling
           </span>
-          <div
+          <span
             class="mat-button-ripple mat-ripple"
             matripple=""
           />
-          <div
+          <span
             class="mat-button-focus-overlay"
           />
         </a>
@@ -158,11 +158,11 @@ exports[`NavigationComponent should create 1`] = `
             </fa-icon>
             Controleer mededeling
           </span>
-          <div
+          <span
             class="mat-button-ripple mat-ripple"
             matripple=""
           />
-          <div
+          <span
             class="mat-button-focus-overlay"
           />
         </a>
