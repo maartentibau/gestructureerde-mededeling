@@ -46,8 +46,6 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
-    "@fortawesome/pro-duotone-svg-icons": "^5.15.1",
-    "@fortawesome/pro-solid-svg-icons": "^5.15.1",
     "@nrwl/angular": "11.2.6",
     "@types/clipboard": "2.0.1",
     "clipboard": "2.0.6",

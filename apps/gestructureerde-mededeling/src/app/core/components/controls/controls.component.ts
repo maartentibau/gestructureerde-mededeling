@@ -4,7 +4,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { map } from 'rxjs/operators';
 import { Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
-import { faCommentDots, faCommentLines, faSyncAlt } from '@fortawesome/pro-duotone-svg-icons';
+import { faCommentDots, faMoneyCheck, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 import { OgmData } from '../../ogm.model';
 import ClipboardJS from 'clipboard';
 
@@ -34,7 +34,7 @@ export class ControlsComponent implements OnDestroy {
 
     this.clipboard = new ClipboardJS('.ogm-copy');
 
-    this.faIconLibrary.addIcons(faSyncAlt, faCommentDots, faCommentLines);
+    this.faIconLibrary.addIcons(faSyncAlt, faCommentDots, faMoneyCheck);
   }
 
   ngOnDestroy() {

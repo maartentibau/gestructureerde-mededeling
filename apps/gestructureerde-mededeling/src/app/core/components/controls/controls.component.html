@@ -11,7 +11,7 @@
       title="Verniewen"
       (click)="refreshClickHandler()"
     >
-      <fa-icon [icon]="['fad', 'sync-alt']"></fa-icon>
+      <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>
     </button>
     <button
       *ngIf="copyNumber"
@@ -25,7 +25,7 @@
       [attr.data-clipboard-text]="ogm?.number"
       (click)="copyNumberClickHandler()"
     >
-      <fa-icon [icon]="['fad', 'comment-dots']"></fa-icon>
+      <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon>
     </button>
     <button
       *ngIf="copyOgm"
@@ -39,7 +39,7 @@
       [attr.data-clipboard-text]="ogm?.numberFormat"
       (click)="copyOgmClickHandler()"
     >
-      <fa-icon [icon]="['fad', 'comment-lines']"></fa-icon>
+      <fa-icon [icon]="['fas', 'money-check']"></fa-icon>
     </button>
   </div>
 </ng-template>
@@ -54,7 +54,7 @@
       color="primary"
       (click)="refreshClickHandler()"
     >
-      <fa-icon [icon]="['fad', 'sync-alt']"></fa-icon>Vernieuwen
+      <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>Vernieuwen
     </button>
     <button
       *ngIf="copyNumber"
@@ -67,7 +67,7 @@
       [attr.data-clipboard-text]="ogm?.number"
       (click)="copyNumberClickHandler()"
     >
-      <fa-icon [icon]="['fad', 'comment-dots']"></fa-icon>Kopieer nummer
+      <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon>Kopieer nummer
     </button>
     <button
       *ngIf="copyOgm"
@@ -80,7 +80,7 @@
       [attr.data-clipboard-text]="ogm?.numberFormat"
       (click)="copyOgmClickHandler()"
     >
-      <fa-icon [icon]="['fad', 'comment-lines']"></fa-icon>Kopieer mededeling
+      <fa-icon [icon]="['fas', 'money-check']"></fa-icon>Kopieer mededeling
     </button>
   </div>
 </ng-template>
