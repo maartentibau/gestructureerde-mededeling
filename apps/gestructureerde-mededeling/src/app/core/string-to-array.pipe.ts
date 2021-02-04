@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'stringToArray',
 })
 export class StringToArrayPipe implements PipeTransform {
-  transform(value: string): string[] {
+  transform(value: string | null | undefined): string[] {
     if ((value && typeof value === 'string') || typeof value === 'number') {
       return Array.from(String(value));
     }

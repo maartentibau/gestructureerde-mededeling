@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'ogm-number',
@@ -6,11 +6,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
   styleUrls: ['./number.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NumberComponent implements OnInit {
-  @Input() ogm: string;
-  @Input() isValid: boolean;
-
-  constructor() {}
-
-  ngOnInit() {}
+export class NumberComponent {
+  @Input() ogm: string | null | undefined;
+  @Input() isValid: boolean | null | undefined;
 }
