@@ -1,0 +1,59 @@
+<ng-container *ngIf="isSmallScreen$ | async; then smallControls; else largeControls"></ng-container>
+
+<ng-template #smallControls>
+  <div class="shortcuts">
+    <a mat-fab disableRipple color="primary" [routerLink]="['/create']" title="Maak uw eigen gestructureerde mededeling"
+      ><fa-icon [icon]="['fas', 'star']"></fa-icon
+    ></a>
+
+    <a
+      mat-fab
+      disableRipple
+      color="primary"
+      [routerLink]="['/generate']"
+      title="Genereer een willekeurige gestructureerde mededeling"
+      ><fa-icon [icon]="['fas', 'cog']"></fa-icon
+    ></a>
+
+    <a
+      mat-fab
+      disableRipple
+      color="primary"
+      [routerLink]="['/validate']"
+      title="Controleer een gestructureerde mededeling"
+      ><fa-icon [icon]="['fas', 'check-circle']"></fa-icon
+    ></a>
+  </div>
+</ng-template>
+
+<ng-template #largeControls>
+  <div class="shortcuts large">
+    <a
+      mat-raised-button
+      isRoundButton
+      disableRipple
+      color="primary"
+      [routerLink]="['/create']"
+      title="Maak uw eigen gestructureerde mededeling"
+      ><fa-icon [icon]="['fas', 'star']"></fa-icon>Zelf Mededeling Maken</a
+    >
+
+    <a
+      mat-raised-button
+      isRoundButton
+      disableRipple
+      [routerLink]="['/generate']"
+      title="Genereer een willekeurige gestructureerde mededeling"
+      ><fa-icon [icon]="['fas', 'cog']"></fa-icon>Genereer Mededeling</a
+    >
+
+    <a
+      mat-raised-button
+      isRoundButton
+      disableRipple
+      [routerLink]="['/validate']"
+      title="Controleer een gestructureerde mededeling"
+      ><fa-icon [icon]="['fas', 'check-circle']"></fa-icon>Controleer Mededeling</a
+    >
+  </div>
+</ng-template>

@@ -5,6 +5,7 @@ exports[`ValidateComponent rendering component should match snapshot 1`] = `
   isValid$={[Function Subject]}
   ogm$={[Function BehaviorSubject]}
   ogmService={[Function OgmService]}
+  title={[Function Title]}
 >
   <ogm-number>
     <div>

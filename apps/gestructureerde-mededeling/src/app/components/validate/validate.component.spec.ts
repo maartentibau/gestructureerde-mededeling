@@ -1,4 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
+import { DEFAULT_TITLE } from '../../core/core.constants';
+import { CreateComponent } from '../create/create.component';
 
 import { ValidateComponent } from './validate.component';
 import { OgmService } from '../../core/services/ogm.service';
@@ -32,6 +35,7 @@ class MockInputComponent {
 describe('ValidateComponent', () => {
   let component: ValidateComponent;
   let fixture: ComponentFixture<ValidateComponent>;
+  let titleService: Title;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -43,10 +47,26 @@ describe('ValidateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ValidateComponent);
     component = fixture.componentInstance;
+
+    titleService = TestBed.inject(Title);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('constructor', () => {
+    it('set the correct HTML title', () => {
+      // prepare
+      const title: string = `${DEFAULT_TITLE} - Controleer een gestructureerde mededeling`;
+      jest.spyOn(titleService, 'setTitle');
+
+      // act
+      TestBed.createComponent(ValidateComponent);
+
+      // check
+      expect(titleService.setTitle).toHaveBeenCalledWith(title);
+    });
   });
 
   describe('rendering component', () => {

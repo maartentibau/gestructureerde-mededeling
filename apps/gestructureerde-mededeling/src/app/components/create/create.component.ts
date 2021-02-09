@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { BehaviorSubject } from 'rxjs';
+import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmService } from '../../core/services/ogm.service';
 import { OgmInputChange } from '../../core/components/input/input.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,7 +18,9 @@ export class CreateComponent {
 
   ogm: OgmData | undefined;
 
-  constructor(private ogmService: OgmService, private snackBar: MatSnackBar) {
+  constructor(private ogmService: OgmService, private snackBar: MatSnackBar, private title: Title) {
+    this.title.setTitle(`${DEFAULT_TITLE} - Zelf een gestructureerde mededeling maken`);
+
     this.ogm$ = new BehaviorSubject<string>(this.ogmService.init());
   }
 
