@@ -5,6 +5,7 @@ exports[`CreateComponent rendering component should match snapshot 1`] = `
   ogm$={[Function BehaviorSubject]}
   ogmService={[Function OgmService]}
   snackBar={[Function MatSnackBar]}
+  title={[Function Title]}
 >
   <ogm-number>
     <div>

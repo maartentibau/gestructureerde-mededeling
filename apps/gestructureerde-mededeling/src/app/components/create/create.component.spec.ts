@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
+import { DEFAULT_TITLE } from '../../core/core.constants';
 
 import { CreateComponent } from './create.component';
 import { OgmService } from '../../core/services/ogm.service';
@@ -53,6 +55,7 @@ describe('CreateComponent', () => {
   let fixture: ComponentFixture<CreateComponent>;
   let snackBar: MatSnackBar;
   let ogmService: OgmService;
+  let titleService: Title;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -68,6 +71,7 @@ describe('CreateComponent', () => {
 
     snackBar = TestBed.inject(MatSnackBar);
     ogmService = TestBed.inject(OgmService);
+    titleService = TestBed.inject(Title);
   });
 
   it('should create', () => {
@@ -81,6 +85,20 @@ describe('CreateComponent', () => {
 
       // check
       expect(fixture).toMatchSnapshot();
+    });
+  });
+
+  describe('constructor', () => {
+    it('set the correct HTML title', () => {
+      // prepare
+      const title: string = `${DEFAULT_TITLE} - Zelf een gestructureerde mededeling maken`;
+      jest.spyOn(titleService, 'setTitle');
+
+      // act
+      TestBed.createComponent(CreateComponent);
+
+      // check
+      expect(titleService.setTitle).toHaveBeenCalledWith(title);
     });
   });
 

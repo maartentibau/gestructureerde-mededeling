@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
+import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmService } from '../../core/services/ogm.service';
 import { OgmData } from '../../core/ogm.model';
 
@@ -12,7 +14,9 @@ import { OgmData } from '../../core/ogm.model';
 export class GenerateComponent implements OnInit {
   ogm: OgmData | null | undefined;
 
-  constructor(private ogmService: OgmService, private snackBar: MatSnackBar) {}
+  constructor(private ogmService: OgmService, private snackBar: MatSnackBar, private title: Title) {
+    this.title.setTitle(`${DEFAULT_TITLE} - Genereer een willekeurig gestructureerde mededeling`);
+  }
 
   ngOnInit() {
     this.refreshClickHandler();

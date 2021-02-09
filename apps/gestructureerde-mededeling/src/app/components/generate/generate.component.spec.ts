@@ -1,11 +1,14 @@
+import { Component, Input } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { Title } from '@angular/platform-browser';
+import { DEFAULT_TITLE } from '../../core/core.constants';
+import { MaterialModule } from '../../core/material.module';
+import { OgmData } from '../../core/ogm.model';
+import { OgmService } from '../../core/services/ogm.service';
+import { ValidateComponent } from '../validate/validate.component';
 
 import { GenerateComponent } from './generate.component';
-import { OgmService } from '../../core/services/ogm.service';
-import { MaterialModule } from '../../core/material.module';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { Component, Input } from '@angular/core';
-import { OgmData } from '../../core/ogm.model';
 
 @Component({
   selector: 'ogm-number',
@@ -52,6 +55,7 @@ describe('GenerateComponent', () => {
   let fixture: ComponentFixture<GenerateComponent>;
   let snackBar: MatSnackBar;
   let ogmService: OgmService;
+  let titleService: Title;
 
   const number: string = '123456789012';
   const numberFormat: string = '+++123/4567/89012+++';
@@ -70,6 +74,7 @@ describe('GenerateComponent', () => {
 
     snackBar = TestBed.inject(MatSnackBar);
     ogmService = TestBed.inject(OgmService);
+    titleService = TestBed.inject(Title);
 
     jest.spyOn(ogmService, 'generate').mockReturnValueOnce(number);
     jest.spyOn(ogmService, 'format').mockReturnValueOnce(numberFormat);
@@ -92,6 +97,20 @@ describe('GenerateComponent', () => {
 
       // check
       expect(fixture).toMatchSnapshot();
+    });
+  });
+
+  describe('constructor', () => {
+    it('set the correct HTML title', () => {
+      // prepare
+      const title: string = `${DEFAULT_TITLE} - Genereer een willekeurig gestructureerde mededeling`;
+      jest.spyOn(titleService, 'setTitle');
+
+      // act
+      TestBed.createComponent(GenerateComponent);
+
+      // check
+      expect(titleService.setTitle).toHaveBeenCalledWith(title);
     });
   });
 
