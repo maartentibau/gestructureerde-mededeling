@@ -2,6 +2,7 @@
 
 exports[`NavigationComponent should create 1`] = `
 <ogm-navigation
+  __ngContext__={[Function LRootView]}
   appTitle$={[Function Observable]}
   faIconLibrary={[Function FaIconLibrary]}
   isSmallScreen$={[Function Observable]}
@@ -29,7 +30,7 @@ exports[`NavigationComponent should create 1`] = `
             Gestructureerde Mededeling
           </span>
           <span
-            class="mat-button-ripple mat-ripple"
+            class="mat-ripple mat-button-ripple"
             matripple=""
           />
           <span
@@ -41,8 +42,6 @@ exports[`NavigationComponent should create 1`] = `
         class="flex-spacer"
       />
       <nav>
-        
-        
         <a
           aria-disabled="false"
           class="mat-focus-indicator mat-button mat-button-base"
@@ -77,7 +76,7 @@ exports[`NavigationComponent should create 1`] = `
             Zelf mededeling maken
           </span>
           <span
-            class="mat-button-ripple mat-ripple"
+            class="mat-ripple mat-button-ripple"
             matripple=""
           />
           <span
@@ -118,7 +117,7 @@ exports[`NavigationComponent should create 1`] = `
             Genereer mededeling
           </span>
           <span
-            class="mat-button-ripple mat-ripple"
+            class="mat-ripple mat-button-ripple"
             matripple=""
           />
           <span
@@ -159,13 +158,14 @@ exports[`NavigationComponent should create 1`] = `
             Controleer mededeling
           </span>
           <span
-            class="mat-button-ripple mat-ripple"
+            class="mat-ripple mat-button-ripple"
             matripple=""
           />
           <span
             class="mat-button-focus-overlay"
           />
         </a>
+        
         
       </nav>
     </mat-toolbar-row>

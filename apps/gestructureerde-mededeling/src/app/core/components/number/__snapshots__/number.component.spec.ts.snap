@@ -2,13 +2,13 @@
 
 exports[`NumberComponent rendering component should match snapshot with isValid set to false 1`] = `
 <ogm-number
+  __ngContext__={[Function LRootView]}
   isValid="false"
   ogm={[Function String]}
 >
   <div
     class="ogm invalid"
   >
-    
     <span>
       +
     </span>
@@ -69,19 +69,20 @@ exports[`NumberComponent rendering component should match snapshot with isValid 
     <span>
       +
     </span>
+    
   </div>
 </ogm-number>
 `;
 
 exports[`NumberComponent rendering component should match snapshot with isValid set to true 1`] = `
 <ogm-number
+  __ngContext__={[Function LRootView]}
   isValid={[Function Boolean]}
   ogm={[Function String]}
 >
   <div
     class="ogm valid"
   >
-    
     <span>
       +
     </span>
@@ -142,12 +143,15 @@ exports[`NumberComponent rendering component should match snapshot with isValid 
     <span>
       +
     </span>
+    
   </div>
 </ogm-number>
 `;
 
 exports[`NumberComponent rendering component should match snapshot with no @Input properties defined 1`] = `
-<ogm-number>
+<ogm-number
+  __ngContext__={[Function LRootView]}
+>
   <div
     class="ogm"
   >
