@@ -2,6 +2,7 @@
 
 exports[`AppComponent rendering component should match snapshot 1`] = `
 <ogm-app-root
+  __ngContext__={[Function LRootView]}
   faConfig={[Function FaConfig]}
   faIconLibrary={[Function FaIconLibrary]}
 >
@@ -12,8 +13,9 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
       class="content"
     >
       <router-outlet />
+      
       <mat-card
-        class="wiki mat-card mat-focus-indicator"
+        class="mat-card mat-focus-indicator wiki"
       >
         <mat-card-content
           class="mat-card-content"
