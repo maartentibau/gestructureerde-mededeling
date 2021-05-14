@@ -2,6 +2,7 @@
 
 exports[`CreateComponent rendering component should match snapshot 1`] = `
 <ogm-create
+  __ngContext__={[Function LRootView]}
   ogm$={[Function BehaviorSubject]}
   ogmService={[Function OgmService]}
   snackBar={[Function MatSnackBar]}

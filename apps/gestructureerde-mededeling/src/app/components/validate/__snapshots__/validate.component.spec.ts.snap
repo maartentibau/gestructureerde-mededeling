@@ -2,6 +2,7 @@
 
 exports[`ValidateComponent rendering component should match snapshot 1`] = `
 <ogm-validate
+  __ngContext__={[Function LRootView]}
   isValid$={[Function Subject]}
   ogm$={[Function BehaviorSubject]}
   ogmService={[Function OgmService]}

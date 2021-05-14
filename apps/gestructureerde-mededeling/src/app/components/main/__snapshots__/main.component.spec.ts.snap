@@ -2,6 +2,7 @@
 
 exports[`MainComponent create & render should render 1`] = `
 <ogm-main
+  __ngContext__={[Function LRootView]}
   faIconLibrary={[Function FaIconLibrary]}
   isSmallScreen$={[Function Observable]}
   screenService={[Function ScreenService]}
@@ -46,7 +47,7 @@ exports[`MainComponent create & render should render 1`] = `
         Zelf Mededeling Maken
       </span>
       <span
-        class="mat-button-ripple mat-ripple"
+        class="mat-ripple mat-button-ripple"
         matripple=""
       />
       <span
@@ -88,7 +89,7 @@ exports[`MainComponent create & render should render 1`] = `
         Genereer Mededeling
       </span>
       <span
-        class="mat-button-ripple mat-ripple"
+        class="mat-ripple mat-button-ripple"
         matripple=""
       />
       <span
@@ -130,7 +131,7 @@ exports[`MainComponent create & render should render 1`] = `
         Controleer Mededeling
       </span>
       <span
-        class="mat-button-ripple mat-ripple"
+        class="mat-ripple mat-button-ripple"
         matripple=""
       />
       <span

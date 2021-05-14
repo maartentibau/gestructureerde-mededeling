@@ -2,6 +2,7 @@
 
 exports[`ControlsComponent rendering component should match snapshot 1`] = `
 <ogm-controls
+  __ngContext__={[Function LRootView]}
   clipboard={[Function Clipboard]}
   copyNumberClick={[Function EventEmitter_]}
   copyOgmClick={[Function EventEmitter_]}
