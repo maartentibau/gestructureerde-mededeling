@@ -13,7 +13,6 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
       class="content"
     >
       <router-outlet />
-      
       <mat-card
         class="mat-card mat-focus-indicator wiki"
       >

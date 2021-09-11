@@ -13,13 +13,11 @@ exports[`CreateComponent rendering component should match snapshot 1`] = `
       "+++   /    /     +++"
     </div>
     <div>
-      
     </div>
   </ogm-number><ogm-input
     placeholdermessage="vul een getal in van maximaal 10 cijfers"
   >
     <div>
-      
     </div>
     <div>
       "vul een getal in van maximaal 10 cijfers"

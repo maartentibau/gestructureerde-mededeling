@@ -126,7 +126,8 @@
               "apps/gestructureerde-mededeling/src/**/*.ts",
               "apps/gestructureerde-mededeling/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -158,10 +159,9 @@
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps\\gestructureerde-mededeling-e2e/**/*.{js,ts}"
-            ]
-          }
+            "lintFilePatterns": ["apps\\gestructureerde-mededeling-e2e/**/*.{js,ts}"]
+          },
+          "outputs": ["{options.outputFile}"]
         }
       }
     }

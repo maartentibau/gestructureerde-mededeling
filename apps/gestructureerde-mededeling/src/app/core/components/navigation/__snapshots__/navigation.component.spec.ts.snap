@@ -165,8 +165,6 @@ exports[`NavigationComponent should create 1`] = `
             class="mat-button-focus-overlay"
           />
         </a>
-        
-        
       </nav>
     </mat-toolbar-row>
   </mat-toolbar>

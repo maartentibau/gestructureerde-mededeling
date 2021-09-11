@@ -13,7 +13,6 @@ exports[`GenerateComponent rendering component should match snapshot 1`] = `
       "+++123/4567/89012+++"
     </div>
     <div>
-      
     </div>
   </ogm-number><ogm-controls>
     <div>
