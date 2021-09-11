@@ -33,7 +33,7 @@
   "private": false,
   "dependencies": {
     "@angular/animations": "12.2.0",
-    "@angular/cdk": "12.0.0",
+    "@angular/cdk": "12.2.0",
     "@angular/common": "12.2.0",
     "@angular/compiler": "12.2.0",
     "@angular/core": "12.2.0",
@@ -82,7 +82,6 @@
     "eslint-plugin-cypress": "^2.10.3",
     "jest": "27.0.3",
     "jest-preset-angular": "9.0.7",
-    "ngx-wallaby-jest": "0.0.2",
     "normalize.css": "8.0.1",
     "prettier": "2.3.1",
     "ts-jest": "27.0.3",
