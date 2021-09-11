@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@3.0.1
-  codecov: codecov/codecov@1.0.5
+  node: circleci/node@4.7.0
+  codecov: codecov/codecov@3.0.0
 
 # Reusable Commands
 commands:
@@ -36,6 +36,7 @@ jobs:
   initialise:
     executor:
       name: node/default
+      tag: '14.17.6'
     steps:
       - checkout
       - restore_npm_cache
@@ -49,6 +50,7 @@ jobs:
   build:
     executor:
       name: node/default
+      tag: '14.17.6'
     steps:
       - setup
       - run:
@@ -58,6 +60,7 @@ jobs:
   test:
     executor:
       name: node/default
+      tag: '14.17.6'
     steps:
       - setup
       - run:
@@ -69,6 +72,7 @@ jobs:
   deploy:
     executor:
       name: node/default
+      tag: '14.17.6'
     steps:
       - setup
       - run:

@@ -14,9 +14,6 @@ exports[`ControlsComponent rendering component should match snapshot 1`] = `
   <div
     class="controls large"
   >
-    
-    
-    
   </div>
 </ogm-controls>
 `;

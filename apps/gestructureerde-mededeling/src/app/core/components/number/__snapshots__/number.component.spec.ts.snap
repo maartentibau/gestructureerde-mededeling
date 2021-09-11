@@ -69,7 +69,6 @@ exports[`NumberComponent rendering component should match snapshot with isValid 
     <span>
       +
     </span>
-    
   </div>
 </ogm-number>
 `;
@@ -143,7 +142,6 @@ exports[`NumberComponent rendering component should match snapshot with isValid 
     <span>
       +
     </span>
-    
   </div>
 </ogm-number>
 `;
@@ -155,7 +153,6 @@ exports[`NumberComponent rendering component should match snapshot with no @Inpu
   <div
     class="ogm"
   >
-    
   </div>
 </ogm-number>
 `;

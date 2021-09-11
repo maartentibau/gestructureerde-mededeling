@@ -33,5 +33,13 @@
       "tags": [],
       "implicitDependencies": ["gestructureerde-mededeling"]
     }
+  },
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }
