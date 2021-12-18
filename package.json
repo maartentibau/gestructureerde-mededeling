@@ -62,7 +62,7 @@
     "@angular/cli": "13.0.4",
     "@angular/compiler-cli": "13.0.0",
     "@angular/language-service": "13.0.0",
-    "@netlify-builder/deploy": "3.2.0",
+    "@netlify-builder/deploy": "4.1.2",
     "@nrwl/cli": "13.3.9",
     "@nrwl/cypress": "13.3.9",
     "@nrwl/eslint-plugin-nx": "13.3.9",
