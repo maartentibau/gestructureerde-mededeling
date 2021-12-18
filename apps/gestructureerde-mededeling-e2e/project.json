@@ -1,0 +1,27 @@
+{
+  "root": "apps\\gestructureerde-mededeling-e2e",
+  "sourceRoot": "apps/gestructureerde-mededeling-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/gestructureerde-mededeling-e2e/cypress.json",
+        "tsConfig": "apps/gestructureerde-mededeling-e2e/tsconfig.e2e.json",
+        "devServerTarget": "gestructureerde-mededeling:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "gestructureerde-mededeling:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["apps\\gestructureerde-mededeling-e2e/**/*.{js,ts}"]
+      },
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

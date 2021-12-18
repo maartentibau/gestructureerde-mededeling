@@ -1,0 +1,105 @@
+{
+  "projectType": "application",
+  "root": "apps/gestructureerde-mededeling",
+  "sourceRoot": "apps/gestructureerde-mededeling/src",
+  "prefix": "gestructureerde-mededeling-app",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "options": {
+        "outputPath": "dist/apps/gestructureerde-mededeling",
+        "index": "apps/gestructureerde-mededeling/src/index.html",
+        "main": "apps/gestructureerde-mededeling/src/main.ts",
+        "polyfills": "apps/gestructureerde-mededeling/src/polyfills.ts",
+        "tsConfig": "apps/gestructureerde-mededeling/tsconfig.app.json",
+        "assets": [
+          "apps/gestructureerde-mededeling/src/favicon.ico",
+          "apps/gestructureerde-mededeling/src/assets",
+          "apps/gestructureerde-mededeling/src/_redirects"
+        ],
+        "styles": [
+          "./node_modules/normalize.css/normalize.css",
+          "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/gestructureerde-mededeling/src/styles.scss"
+        ],
+        "scripts": [],
+        "vendorChunk": true,
+        "extractLicenses": false,
+        "buildOptimizer": false,
+        "sourceMap": true,
+        "optimization": false,
+        "namedChunks": true
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/gestructureerde-mededeling/src/environments/environment.ts",
+              "with": "apps/gestructureerde-mededeling/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false,
+          "buildOptimizer": true,
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "5mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb",
+              "maximumError": "10kb"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+        "browserTarget": "gestructureerde-mededeling:build"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "gestructureerde-mededeling:build:production"
+        }
+      }
+    },
+    "deploy": {
+      "executor": "@netlify-builder/deploy:deploy",
+      "options": {
+        "outputPath": "dist/apps/gestructureerde-mededeling",
+        "siteId": "1ad9abf9-f9b0-4a9d-9570-50e7a3f7d045"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "gestructureerde-mededeling:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/gestructureerde-mededeling/src/**/*.ts",
+          "apps/gestructureerde-mededeling/src/**/*.html"
+        ]
+      },
+      "outputs": ["{options.outputFile}"]
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/gestructureerde-mededeling/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  }
+}
