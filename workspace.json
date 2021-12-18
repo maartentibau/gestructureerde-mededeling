@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "gestructureerde-mededeling": "apps/gestructureerde-mededeling",
+    "gestructureerde-mededeling-e2e": "apps/gestructureerde-mededeling-e2e"
+  }
+}
