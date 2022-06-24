@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
 import { OgmService } from '../../services/ogm.service';
@@ -20,7 +20,7 @@ export class InputComponent implements OnInit, OnDestroy {
 
   @Output() ogmInputChange: EventEmitter<OgmInputChange>;
 
-  readonly ogmInput: FormControl;
+  readonly ogmInput: UntypedFormControl;
   readonly destroy$: Subject<void>;
 
   ogm$!: Observable<string>;
@@ -28,7 +28,7 @@ export class InputComponent implements OnInit, OnDestroy {
   constructor(private ogmService: OgmService) {
     this.ogmInputChange = new EventEmitter<OgmInputChange>();
 
-    this.ogmInput = new FormControl(null);
+    this.ogmInput = new UntypedFormControl(null);
     this.destroy$ = new Subject<void>();
   }
 

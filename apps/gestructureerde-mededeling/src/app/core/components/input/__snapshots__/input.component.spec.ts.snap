@@ -2,10 +2,10 @@
 
 exports[`InputComponent rendering component should match snapshot with no @Input properties defined 1`] = `
 <ogm-input
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
   destroy$={[Function Subject]}
   ogm$={[Function AnonymousSubject]}
-  ogmInput={[Function FormControl]}
+  ogmInput={[Function FormControl2]}
   ogmInputChange={[Function EventEmitter_]}
   ogmService={[Function OgmService]}
 >
@@ -23,10 +23,10 @@ exports[`InputComponent rendering component should match snapshot with no @Input
 
 exports[`InputComponent rendering component should match snapshot with validate set to false 1`] = `
 <ogm-input
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
   destroy$={[Function Subject]}
   ogm$={[Function AnonymousSubject]}
-  ogmInput={[Function FormControl]}
+  ogmInput={[Function FormControl2]}
   ogmInputChange={[Function EventEmitter_]}
   ogmService={[Function OgmService]}
   placeholderMessage={[Function String]}
@@ -47,10 +47,10 @@ exports[`InputComponent rendering component should match snapshot with validate 
 
 exports[`InputComponent rendering component should match snapshot with validate set to true 1`] = `
 <ogm-input
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
   destroy$={[Function Subject]}
   ogm$={[Function AnonymousSubject]}
-  ogmInput={[Function FormControl]}
+  ogmInput={[Function FormControl2]}
   ogmInputChange={[Function EventEmitter_]}
   ogmService={[Function OgmService]}
   placeholderMessage={[Function String]}

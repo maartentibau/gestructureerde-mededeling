@@ -19,28 +19,14 @@
       "runner": "@nrwl/nx-cloud",
       "options": {
         "accessToken": "M2NjODY2MjgtZjllOC00NTg5LThkZjQtMzgzNDJhY2M0NGMxfHJlYWQtd3JpdGU=",
-        "cacheableOperations": [
-          "build",
-          "test",
-          "lint",
-          "e2e"
-        ],
+        "cacheableOperations": ["build", "test", "lint", "e2e"],
         "canTrackAnalytics": false,
         "showUsageWarnings": true,
         "parallel": 1
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
   "cli": {
-    "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
   "generators": {
@@ -62,7 +48,6 @@
       "e2eTestRunner": "cypress"
     },
     "@nrwl/angular:library": {
-      "style": "scss",
       "linter": "eslint",
       "unitTestRunner": "jest"
     },
@@ -70,5 +55,11 @@
       "style": "scss"
     }
   },
-  "defaultProject": "gestructureerde-mededeling"
+  "defaultProject": "gestructureerde-mededeling",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
+    }
+  }
 }
