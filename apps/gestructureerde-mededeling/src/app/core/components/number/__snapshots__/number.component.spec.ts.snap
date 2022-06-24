@@ -2,7 +2,7 @@
 
 exports[`NumberComponent rendering component should match snapshot with isValid set to false 1`] = `
 <ogm-number
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
   isValid="false"
   ogm={[Function String]}
 >
@@ -75,7 +75,7 @@ exports[`NumberComponent rendering component should match snapshot with isValid 
 
 exports[`NumberComponent rendering component should match snapshot with isValid set to true 1`] = `
 <ogm-number
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
   isValid={[Function Boolean]}
   ogm={[Function String]}
 >
@@ -148,7 +148,7 @@ exports[`NumberComponent rendering component should match snapshot with isValid 
 
 exports[`NumberComponent rendering component should match snapshot with no @Input properties defined 1`] = `
 <ogm-number
-  __ngContext__={[Function LRootView]}
+  __ngContext__={[Function Number]}
 >
   <div
     class="ogm"
