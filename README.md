@@ -1,6 +1,6 @@
 # Gestructureerde Mededeling
 
-![CircleCi](https://img.shields.io/circleci/build/gh/maartentibau/gestructureerde-mededeling?logo=CircleCi) ![codecov](https://img.shields.io/codecov/c/gh/maartentibau/gestructureerde-mededeling/master?logo=codecov)
+![Github Actions](https://github.com/maartentibau/gestructureerde-mededeling/actions/workflows/build-test-deploy.yml/badge.svg) ![codecov](https://img.shields.io/codecov/c/gh/maartentibau/gestructureerde-mededeling/master?logo=codecov)
 
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@angular/core) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@angular/material) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@nrwl/angular) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/rxjs)
 
