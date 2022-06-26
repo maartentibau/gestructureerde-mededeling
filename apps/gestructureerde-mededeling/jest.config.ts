@@ -10,7 +10,8 @@ export default {
       tsconfig: '<rootDir>/tsconfig.spec.json',
     },
   },
-  coverageDirectory: '../../coverage/apps/gestructureerde-mededeling',
+  coverageDirectory: '../../coverage/',
+  coverageReporters: ['lcov'],
   snapshotSerializers: [
     'jest-preset-angular/build/serializers/no-ng-attributes',
     'jest-preset-angular/build/serializers/ng-snapshot',
