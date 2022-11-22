@@ -46,7 +46,7 @@
     "@fortawesome/fontawesome-svg-core": "6.1.1",
     "@fortawesome/free-brands-svg-icons": "6.1.1",
     "@fortawesome/free-solid-svg-icons": "6.1.1",
-    "@nrwl/angular": "14.3.6",
+    "@nrwl/angular": "14.8.6",
     "@types/clipboard": "2.0.1",
     "clipboard": "2.0.6",
     "postcss": "8.2.15",
@@ -55,7 +55,7 @@
     "zone.js": "0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "14.0.3",
+    "@angular-devkit/build-angular": "14.2.10",
     "@angular-eslint/eslint-plugin": "13.2.1",
     "@angular-eslint/eslint-plugin-template": "13.2.1",
     "@angular-eslint/template-parser": "13.2.1",
