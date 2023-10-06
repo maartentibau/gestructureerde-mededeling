@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NumberComponent rendering component should match snapshot with isValid set to false 1`] = `
+<ogm-number
+  isValid="false"
+  ogm={[Function String]}
+>
+  <div
+    class="ogm invalid"
+  >
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+    <span>
+      3
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      4
+    </span>
+    <span>
+      5
+    </span>
+    <span>
+      6
+    </span>
+    <span>
+      7
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      8
+    </span>
+    <span>
+      9
+    </span>
+    <span>
+      0
+    </span>
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+  </div>
+</ogm-number>
+`;
+
+exports[`NumberComponent rendering component should match snapshot with isValid set to true 1`] = `
+<ogm-number
+  isValid={[Function Boolean]}
+  ogm={[Function String]}
+>
+  <div
+    class="ogm valid"
+  >
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+    <span>
+      3
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      4
+    </span>
+    <span>
+      5
+    </span>
+    <span>
+      6
+    </span>
+    <span>
+      7
+    </span>
+    <span>
+      /
+    </span>
+    <span>
+      8
+    </span>
+    <span>
+      9
+    </span>
+    <span>
+      0
+    </span>
+    <span>
+      1
+    </span>
+    <span>
+      2
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+    <span>
+      +
+    </span>
+  </div>
+</ogm-number>
+`;
+
+exports[`NumberComponent rendering component should match snapshot with no @Input properties defined 1`] = `
+<ogm-number>
+  <div
+    class="ogm"
+  >
+  </div>
+</ogm-number>
+`;
