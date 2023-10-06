@@ -1,6 +1,6 @@
 # Gestructureerde Mededeling
 
-![Github Actions](https://github.com/maartentibau/gestructureerde-mededeling/actions/workflows/build-test-deploy.yml/badge.svg) [![codecov](https://codecov.io/github/maartentibau/gestructureerde-mededeling/branch/master/graph/badge.svg?token=USZZPF9F5F)](https://codecov.io/github/maartentibau/gestructureerde-mededeling)
+![Github Actions](https://github.com/maartentibau/gestructureerde-mededeling/actions/workflows/build-test-deploy.yml/badge.svg) [![codecov](https://codecov.io/github/maartentibau/gestructureerde-mededeling/branch/main/graph/badge.svg?token=USZZPF9F5F)](https://codecov.io/github/maartentibau/gestructureerde-mededeling)
 
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@angular/core) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@angular/material) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/@nrwl/angular) ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/maartentibau/gestructureerde-mededeling/rxjs)
 

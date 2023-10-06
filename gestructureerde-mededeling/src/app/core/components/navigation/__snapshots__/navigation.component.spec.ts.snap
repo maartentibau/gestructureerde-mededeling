@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationComponent should create 1`] = `
+<ogm-navigation
+  appTitle$="undefined"
+  faIconLibrary={[Function Object]}
+  isSmallScreen$="undefined"
+  navigation$="undefined"
+  screenService={[Function Object]}
+>
+  <mat-toolbar
+    class="mat-toolbar mat-toolbar-multiple-rows"
+  >
+    <mat-toolbar-row
+      class="mat-toolbar-row"
+    >
+      <h1>
+        <a
+          aria-disabled="false"
+          class="mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base"
+          href="/"
+          mat-button=""
+          mat-ripple-loader-class-name="mat-mdc-button-ripple"
+          mat-ripple-loader-uninitialized=""
+          routerlink="/"
+        >
+          <span
+            class="mat-mdc-button-persistent-ripple mdc-button__ripple"
+          />
+          <span
+            class="mdc-button__label"
+          >
+          </span>
+          <span
+            class="mat-mdc-focus-indicator"
+          />
+          <span
+            class="mat-mdc-button-touch-target"
+          />
+        </a>
+      </h1>
+      <span
+        class="flex-spacer"
+      />
+      <nav>
+      </nav>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</ogm-navigation>
+`;

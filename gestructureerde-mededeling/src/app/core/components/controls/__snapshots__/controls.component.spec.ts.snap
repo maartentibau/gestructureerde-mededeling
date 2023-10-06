@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ControlsComponent rendering component should match snapshot 1`] = `
+<ogm-controls
+  clipboard={[Function Clipboard]}
+  copyNumberClick={[Function EventEmitter_]}
+  copyOgmClick={[Function EventEmitter_]}
+  isSmallScreen$="undefined"
+  refreshClick={[Function EventEmitter_]}
+>
+  <div
+    class="controls large"
+  >
+  </div>
+</ogm-controls>
+`;
