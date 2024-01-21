@@ -8,16 +8,12 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/gestructureerde-mededeling",
         "index": "gestructureerde-mededeling/src/index.html",
         "main": "gestructureerde-mededeling/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "gestructureerde-mededeling/tsconfig.app.json",
         "assets": [
           "gestructureerde-mededeling/src/favicon.ico",
@@ -62,10 +58,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "gestructureerde-mededeling:build:production"
+          "buildTarget": "gestructureerde-mededeling:build:production"
         },
         "development": {
-          "browserTarget": "gestructureerde-mededeling:build:development"
+          "buildTarget": "gestructureerde-mededeling:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -80,35 +76,18 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "gestructureerde-mededeling:build"
+        "buildTarget": "gestructureerde-mededeling:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "outputs": [
-        "{options.outputFile}"
-      ],
-      "options": {
-        "lintFilePatterns": [
-          "gestructureerde-mededeling/**/*.ts",
-          "gestructureerde-mededeling/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": [
-        "{workspaceRoot}/coverage/{projectRoot}"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "gestructureerde-mededeling/jest.config.ts",
-        "passWithNoTests": true
-      },
-      "configurations": {
-        "ci": {
-          "ci": true,
-          "codeCoverage": true
-        }
+        "jestConfig": "gestructureerde-mededeling/jest.config.ts"
       }
     }
   }

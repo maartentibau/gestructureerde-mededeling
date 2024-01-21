@@ -18,3 +18,5 @@ tslint*
 jest.config.js
 protractor.conf.js
 cypress.json
+
+/.nx/cache
