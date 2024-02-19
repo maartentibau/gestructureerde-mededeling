@@ -45,7 +45,7 @@ jobs:
         if: success()
         uses: nwtgck/actions-netlify@v1.2
         with:
-          publish-dir: './dist/gestructureerde-mededeling'
+          publish-dir: './dist/gestructureerde-mededeling/browser'
           production-branch: main
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Deploy from GitHub Actions"
