@@ -18,7 +18,11 @@ node_modules
 *.sublime-workspace
 
 # IDE - VSCode
-.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
@@ -34,6 +38,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-.angular
-
 .nx/cache
+.angular

@@ -1,34 +1,84 @@
 {
-  "name": "ogm",
+  "name": "gestructureerde-mededeling",
   "$schema": "node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "src",
-  "projectType": "library",
+  "projectType": "application",
+  "prefix": "gestructureerde-mededeling",
+  "sourceRoot": "./src",
+  "tags": [],
   "targets": {
     "build": {
-      "executor": "@nx/js:tsc",
+      "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/ogm",
-        "main": "./src/index.ts",
-        "tsConfig": "./tsconfig.lib.json",
-        "assets": ["*.md"]
+        "outputPath": "dist/gestructureerde-mededeling",
+        "index": "./src/index.html",
+        "browser": "./src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "./tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": ["./src/favicon.ico", "./src/assets", "./src/_redirects"],
+        "styles": [
+          "normalize.css/normalize.css",
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "./src/styles.scss"
+        ],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "1mb",
+              "maximumError": "2mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "gestructureerde-mededeling:build:production"
+        },
+        "development": {
+          "buildTarget": "gestructureerde-mededeling:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "deploy": {
+      "executor": "@netlify-builder/deploy:deploy",
+      "options": {
+        "outputPath": "dist/apps/gestructureerde-mededeling",
+        "siteId": "1ad9abf9-f9b0-4a9d-9570-50e7a3f7d045"
       }
     },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "lintFilePatterns": ["src", "./**/*.ts", "./package.json"]
+        "buildTarget": "ogm:build"
       }
     },
     "test": {
-      "executor": "@nx/vite:test",
-      "outputs": ["{options.reportsDirectory}"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{projectRoot}/coverage"],
       "options": {
-        "passWithNoTests": true,
-        "reportsDirectory": "coverage/ogm"
+        "jestConfig": "./jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

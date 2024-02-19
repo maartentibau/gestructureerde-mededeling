@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnDest
 import { MatButtonModule } from '@angular/material/button';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCommentDots, faMoneyCheck, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import * as ClipboardJS from 'clipboard';
+import ClipboardJS from 'clipboard';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { OgmData } from '../../ogm.model';
