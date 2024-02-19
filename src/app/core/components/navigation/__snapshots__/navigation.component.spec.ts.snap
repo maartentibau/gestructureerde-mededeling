@@ -16,7 +16,6 @@ exports[`NavigationComponent should create 1`] = `
     >
       <h1>
         <a
-          aria-disabled="false"
           class="mdc-button mat-mdc-button mat-unthemed mat-mdc-button-base"
           href="/"
           mat-button=""
