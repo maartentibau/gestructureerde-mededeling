@@ -22,7 +22,7 @@ export class InputComponent implements OnInit, OnDestroy {
   @Input() validate!: boolean;
   @Input() placeholderMessage!: string;
 
-  @Output() ogmInputChange: EventEmitter<OgmInputChange>;
+  @Output() readonly ogmInputChange: EventEmitter<OgmInputChange>;
 
   readonly ogmInput: UntypedFormControl;
   readonly destroy$: Subject<void>;

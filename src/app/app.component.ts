@@ -3,14 +3,14 @@ import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterModule } from '@angular/router';
 import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons/faGithub';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
 
 @Component({
   standalone: true,
   imports: [NavigationComponent, RouterModule, MatCardModule, FontAwesomeModule, NgStyle],
-  selector: 'ogm-app-root',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
