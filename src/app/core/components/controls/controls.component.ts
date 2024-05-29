@@ -27,9 +27,9 @@ export class ControlsComponent implements OnDestroy {
   @Input() copyOgm: boolean | undefined;
   @Input() ogm: OgmData | null | undefined;
 
-  @Output() refreshClick: EventEmitter<void> = new EventEmitter<void>();
-  @Output() copyNumberClick: EventEmitter<string> = new EventEmitter<string>();
-  @Output() copyOgmClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() readonly refreshClick: EventEmitter<void> = new EventEmitter<void>();
+  @Output() readonly copyNumberClick: EventEmitter<string> = new EventEmitter<string>();
+  @Output() readonly copyOgmClick: EventEmitter<string> = new EventEmitter<string>();
 
   readonly isSmallScreen$: Observable<boolean>;
   readonly clipboard: ClipboardJS;
