@@ -49,16 +49,16 @@ export class InputComponent implements OnInit, OnDestroy {
         }
 
         return true;
-      })
+      }),
     );
 
     if (this.validate) {
       this.ogm$ = omgInputChanges$.pipe(
-        map((value) => (value ? this.#ogmService.format(value.toString().padEnd(12, ' ')) : ogmInitValue))
+        map((value) => (value ? this.#ogmService.format(value.toString().padEnd(12, ' ')) : ogmInitValue)),
       );
     } else {
       this.ogm$ = omgInputChanges$.pipe(
-        map((value) => (value ? this.#ogmService.generate(value, true) : ogmInitValue))
+        map((value) => (value ? this.#ogmService.generate(value, true) : ogmInitValue)),
       );
     }
 
@@ -74,7 +74,7 @@ export class InputComponent implements OnInit, OnDestroy {
 
           this.ogmInputChange.emit({ ogm, isValid });
         }),
-        takeUntil(this.destroy$)
+        takeUntil(this.destroy$),
       )
       .subscribe();
   }

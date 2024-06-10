@@ -32,8 +32,8 @@ export class MainComponent {
       .observerBreakpoints()
       .pipe(
         map((breakpoints: { [key: string]: boolean }) =>
-          Boolean(breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small])
-        )
+          Boolean(breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small]),
+        ),
       );
 
     this.#faIconLibrary.addIcons(faCheckCircle, faCog, faStar);

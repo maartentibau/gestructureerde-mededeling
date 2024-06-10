@@ -43,13 +43,16 @@ export class NavigationComponent {
   readonly isSmallScreen$: Observable<boolean>;
   readonly appTitle$: Observable<string>;
 
-  constructor(private screenService: ScreenService, private faIconLibrary: FaIconLibrary) {
+  constructor(
+    private screenService: ScreenService,
+    private faIconLibrary: FaIconLibrary,
+  ) {
     this.isSmallScreen$ = this.screenService
       .observerBreakpoints()
       .pipe(
         map((breakpoints: { [key: string]: boolean }) =>
-          Boolean(breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small])
-        )
+          Boolean(breakpoints[Breakpoints.XSmall] || breakpoints[Breakpoints.Small]),
+        ),
       );
 
     this.navigation$ = this.screenService.observerBreakpoints().pipe(
@@ -63,15 +66,15 @@ export class NavigationComponent {
           ...navigation,
           label: navigation.label[labelSize],
         }));
-      })
+      }),
     );
 
     this.appTitle$ = this.screenService
       .observerBreakpoints()
       .pipe(
         map((breakpoints: { [key: string]: boolean }) =>
-          breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling'
-        )
+          breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling',
+        ),
       );
 
     this.faIconLibrary.addIcons(faCheckCircle, faCog, faStar);
