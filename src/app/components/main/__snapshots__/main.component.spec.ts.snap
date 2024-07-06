@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainComponent create & render should render 1`] = `
+<ogm-main
+  isSmallScreen$="undefined"
+>
+  <div
+    class="shortcuts large"
+  >
+    <a
+      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base"
+      color="primary"
+      disableripple=""
+      href="/create"
+      mat-raised-button=""
+      mat-ripple-loader-class-name="mat-mdc-button-ripple"
+      mat-ripple-loader-disabled=""
+      mat-ripple-loader-uninitialized=""
+      title="Maak uw eigen gestructureerde mededeling"
+    >
+      <span
+        class="mat-mdc-button-persistent-ripple mdc-button__ripple"
+      />
+      <span
+        class="mdc-button__label"
+      >
+        <fa-icon>
+          <div>
+          </div>
+        </fa-icon>
+        Zelf Mededeling Maken
+      </span>
+      <span
+        class="mat-mdc-focus-indicator"
+      />
+      <span
+        class="mat-mdc-button-touch-target"
+      />
+    </a>
+    <a
+      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-unthemed mat-mdc-button-base"
+      disableripple=""
+      href="/generate"
+      mat-raised-button=""
+      mat-ripple-loader-class-name="mat-mdc-button-ripple"
+      mat-ripple-loader-disabled=""
+      mat-ripple-loader-uninitialized=""
+      title="Genereer een willekeurige gestructureerde mededeling"
+    >
+      <span
+        class="mat-mdc-button-persistent-ripple mdc-button__ripple"
+      />
+      <span
+        class="mdc-button__label"
+      >
+        <fa-icon>
+          <div>
+          </div>
+        </fa-icon>
+        Genereer Mededeling
+      </span>
+      <span
+        class="mat-mdc-focus-indicator"
+      />
+      <span
+        class="mat-mdc-button-touch-target"
+      />
+    </a>
+    <a
+      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-unthemed mat-mdc-button-base"
+      disableripple=""
+      href="/validate"
+      mat-raised-button=""
+      mat-ripple-loader-class-name="mat-mdc-button-ripple"
+      mat-ripple-loader-disabled=""
+      mat-ripple-loader-uninitialized=""
+      title="Controleer een gestructureerde mededeling"
+    >
+      <span
+        class="mat-mdc-button-persistent-ripple mdc-button__ripple"
+      />
+      <span
+        class="mdc-button__label"
+      >
+        <fa-icon>
+          <div>
+          </div>
+        </fa-icon>
+        Controleer Mededeling
+      </span>
+      <span
+        class="mat-mdc-focus-indicator"
+      />
+      <span
+        class="mat-mdc-button-touch-target"
+      />
+    </a>
+  </div>
+</ogm-main>
+`;

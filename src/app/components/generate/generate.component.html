@@ -1,7 +1,7 @@
-<ogm-number [ogm]="ogm?.numberFormat"></ogm-number>
+<ogm-number [ogm]="ogm()?.numberFormat ?? null"></ogm-number>
 
 <ogm-controls
-  [ogm]="ogm"
+  [ogm]="ogm()"
   [refresh]="true"
   [copyNumber]="true"
   [copyOgm]="true"

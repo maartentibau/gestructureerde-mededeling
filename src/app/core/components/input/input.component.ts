@@ -1,11 +1,11 @@
-import { Component, EventEmitter, inject, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, input, OnDestroy, OnInit, output } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { filter, map, takeUntil, tap } from 'rxjs/operators';
 import { OgmService } from '../../services/ogm.service';
 
 export interface OgmInputChange {
-  ogm: string;
+  ogm: string | null;
   isValid: boolean | null;
 }
 
@@ -17,33 +17,31 @@ export interface OgmInputChange {
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent implements OnInit, OnDestroy {
-  #ogmService: OgmService = inject(OgmService);
+  // #ogmService: OgmService = inject(OgmService);
 
-  @Input() validate!: boolean;
-  @Input() placeholderMessage!: string;
+  readonly validate = input<boolean>(false);
+  readonly placeholderMessage = input<string>('');
 
-  @Output() readonly ogmInputChange: EventEmitter<OgmInputChange>;
+  readonly ogmInputChange = output<OgmInputChange>();
 
   readonly ogmInput: UntypedFormControl;
   readonly destroy$: Subject<void>;
 
   ogm$!: Observable<string>;
 
-  constructor() {
-    this.ogmInputChange = new EventEmitter<OgmInputChange>();
-
+  constructor(private readonly ogmService: OgmService) {
     this.ogmInput = new UntypedFormControl(null);
     this.destroy$ = new Subject<void>();
   }
 
   ngOnInit() {
-    const ogmInitValue: string = this.#ogmService.init();
+    const ogmInitValue: string = this.ogmService.init();
     const hasSpaces: RegExp = new RegExp('[\\s]');
 
     const omgInputChanges$ = this.ogmInput.valueChanges.pipe(
       filter((value) => {
         if (isNaN(Number(value)) || hasSpaces.test(value)) {
-          const cleanValue = this.#ogmService.clean(value);
+          const cleanValue = this.ogmService.clean(value);
           this.ogmInput.setValue(cleanValue, { emitEvent: false });
           return false;
         }
@@ -52,14 +50,12 @@ export class InputComponent implements OnInit, OnDestroy {
       }),
     );
 
-    if (this.validate) {
+    if (this.validate()) {
       this.ogm$ = omgInputChanges$.pipe(
-        map((value) => (value ? this.#ogmService.format(value.toString().padEnd(12, ' ')) : ogmInitValue)),
+        map((value) => (value ? this.ogmService.format(value.toString().padEnd(12, ' ')) : ogmInitValue)),
       );
     } else {
-      this.ogm$ = omgInputChanges$.pipe(
-        map((value) => (value ? this.#ogmService.generate(value, true) : ogmInitValue)),
-      );
+      this.ogm$ = omgInputChanges$.pipe(map((value) => (value ? this.ogmService.generate(value, true) : ogmInitValue)));
     }
 
     this.ogm$
@@ -67,9 +63,9 @@ export class InputComponent implements OnInit, OnDestroy {
         tap((ogm: string) => {
           let isValid = null;
 
-          if (this.validate) {
-            const ogmNumber = this.#ogmService.clean(ogm);
-            isValid = ogmNumber.length === 12 ? this.#ogmService.validate(ogm) : null;
+          if (this.validate()) {
+            const ogmNumber = this.ogmService.clean(ogm);
+            isValid = ogmNumber.length === 12 ? this.ogmService.validate(ogm) : null;
           }
 
           this.ogmInputChange.emit({ ogm, isValid });

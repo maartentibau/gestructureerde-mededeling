@@ -1,8 +1,7 @@
-import { AsyncPipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
-import { BehaviorSubject } from 'rxjs';
 import { ControlsComponent } from '../../core/components/controls/controls.component';
 import { InputComponent, OgmInputChange } from '../../core/components/input/input.component';
 import { NumberComponent } from '../../core/components/number/number.component';
@@ -12,7 +11,7 @@ import { OgmService } from '../../core/services/ogm.service';
 
 @Component({
   standalone: true,
-  imports: [NumberComponent, InputComponent, ControlsComponent, NgIf, AsyncPipe, MatSnackBarModule],
+  imports: [NumberComponent, InputComponent, ControlsComponent, AsyncPipe, MatSnackBarModule],
   selector: 'ogm-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
@@ -23,21 +22,20 @@ export class CreateComponent {
   #snackBar: MatSnackBar = inject(MatSnackBar);
   #title: Title = inject(Title);
 
-  readonly ogm$: BehaviorSubject<string>;
-
-  ogm: OgmData | undefined;
+  readonly ogm = signal<OgmData | null>({ number: null, numberFormat: this.#ogmService.init() });
 
   constructor() {
     this.#title.setTitle(`${DEFAULT_TITLE} - Zelf een gestructureerde mededeling maken`);
-
-    this.ogm$ = new BehaviorSubject<string>(this.#ogmService.init());
   }
 
   ogmInputChangeHandler({ ogm }: OgmInputChange) {
-    const cleanOgm = this.#ogmService.clean(ogm);
+    const cleanOgm = this.#ogmService.clean(ogm ?? '');
 
-    this.ogm = cleanOgm === '' ? undefined : { number: cleanOgm, numberFormat: ogm };
-    this.ogm$?.next(ogm);
+    this.ogm.set(
+      cleanOgm === ''
+        ? { number: null, numberFormat: this.#ogmService.init() }
+        : { number: cleanOgm, numberFormat: ogm },
+    );
   }
 
   copyNumberClickHandler(message: string) {

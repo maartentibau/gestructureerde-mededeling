@@ -1,4 +1,4 @@
 export interface OgmData {
-  number: string;
-  numberFormat: string;
+  number: string | null;
+  numberFormat: string | null;
 }

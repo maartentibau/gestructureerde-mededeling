@@ -1,5 +1,5 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 import { OgmInputChange } from '../../core/components/input/input.component';
@@ -17,8 +17,8 @@ import { ValidateComponent } from './validate.component';
   `,
 })
 class MockNumberComponent {
-  @Input() ogm: string | undefined;
-  @Input() isValid: boolean | undefined;
+  ogm = input<string | null>(null);
+  isValid = input<boolean | null>(null);
 }
 
 @Component({
@@ -31,8 +31,8 @@ class MockNumberComponent {
   `,
 })
 class MockInputComponent {
-  @Input() validate: boolean | undefined;
-  @Input() placeholderMessage: string | undefined;
+  validate = input<boolean>(false);
+  placeholderMessage = input<string>('');
 }
 
 describe('ValidateComponent', () => {
@@ -79,15 +79,15 @@ describe('ValidateComponent', () => {
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 
   describe('ogmInputChangeHandler', () => {
     it('should call next on ogm$ and isValid$ stream', () => {
       // prepare
-      jest.spyOn(component.ogm$, 'next');
-      jest.spyOn(component.isValid$, 'next');
+      jest.spyOn(component.ogm, 'set');
+      jest.spyOn(component.isValid, 'set');
 
       const ogmInputChange: OgmInputChange = { ogm: '12345', isValid: false };
 
@@ -95,8 +95,8 @@ describe('ValidateComponent', () => {
       component.ogmInputChangeHandler(ogmInputChange);
 
       // check
-      expect(component.ogm$.next).toHaveBeenCalledWith('12345');
-      expect(component.isValid$.next).toHaveBeenCalledWith(false);
+      expect(component.ogm.set).toHaveBeenCalledWith('12345');
+      expect(component.isValid.set).toHaveBeenCalledWith(false);
     });
   });
 });

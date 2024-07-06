@@ -1,4 +1,4 @@
-<ogm-number [ogm]="ogm$ | async" [isValid]="isValid$ | async"></ogm-number>
+<ogm-number [ogm]="ogm()" [isValid]="isValid()"></ogm-number>
 
 <ogm-input
   (ogmInputChange)="ogmInputChangeHandler($event)"

@@ -5,29 +5,23 @@
     </h1>
     <span class="flex-spacer"></span>
     <nav>
-      <ng-container *ngIf="isSmallScreen$ | async; then smallNavigation; else largeNavigation"></ng-container>
+      @if (isSmallScreen$ | async) {
+        @for (item of navigation$ | async; track item; let i = $index) {
+          <a
+            [attr.data-navigation-id]="i"
+            mat-icon-button
+            routerLinkActive="mat-mdc-raised-button"
+            [routerLink]="item.path"
+            ><fa-icon [icon]="item.icon"></fa-icon
+          ></a>
+        }
+      } @else {
+        @for (item of navigation$ | async; track item; let i = $index) {
+          <a [attr.data-navigation-id]="i" mat-button routerLinkActive="mat-mdc-raised-button" [routerLink]="item.path"
+            ><fa-icon [icon]="item.icon"></fa-icon>{{ item.label }}</a
+          >
+        }
+      }
     </nav>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<ng-template #smallNavigation>
-  <a
-    *ngFor="let item of navigation$ | async; index as i"
-    [attr.data-navigation-id]="i"
-    mat-icon-button
-    routerLinkActive="mat-mdc-raised-button"
-    [routerLink]="item.path"
-    ><fa-icon [icon]="item.icon"></fa-icon
-  ></a>
-</ng-template>
-
-<ng-template #largeNavigation>
-  <a
-    *ngFor="let item of navigation$ | async; index as i"
-    [attr.data-navigation-id]="i"
-    mat-button
-    routerLinkActive="mat-mdc-raised-button"
-    [routerLink]="item.path"
-    ><fa-icon [icon]="item.icon"></fa-icon>{{ item.label }}</a
-  >
-</ng-template>

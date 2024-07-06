@@ -1,10 +1,10 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe, JsonPipe, NgFor, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, RouterLink, RouterLinkActive } from '@angular/router';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { TestScheduler } from 'rxjs/testing';
 import { ScreenService } from '../../services/screen.service';
@@ -18,7 +18,7 @@ import { NavigationEntity, NavigationLabel } from './navigation.model';
   template: ` <div>{{ icon | json }}</div> `,
 })
 class MockFaIconComponent {
-  @Input() icon: string | string[] | undefined;
+  icon = input<string | string[] | undefined>();
 }
 
 describe('NavigationComponent', () => {
@@ -37,19 +37,12 @@ describe('NavigationComponent', () => {
           useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) },
         },
         { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+        provideRouter([]),
       ],
     })
       .overrideComponent(NavigationComponent, {
         set: {
-          imports: [
-            MatToolbarModule,
-            RouterTestingModule,
-            AsyncPipe,
-            NgIf,
-            NgFor,
-            MatButtonModule,
-            MockFaIconComponent,
-          ],
+          imports: [MatToolbarModule, AsyncPipe, MatButtonModule, MockFaIconComponent, RouterLink, RouterLinkActive],
         },
       })
       .compileComponents();
@@ -72,7 +65,7 @@ describe('NavigationComponent', () => {
 
     // assert
     expect(component).toBeTruthy();
-    // expect(fixture).toMatchSnapshot();
+    expect(fixture).toMatchSnapshot();
   });
 
   describe('isSmallScreen$', () => {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { ControlsComponent } from '../../core/components/controls/controls.component';
@@ -20,7 +20,7 @@ export class GenerateComponent implements OnInit {
   #snackBar: MatSnackBar = inject(MatSnackBar);
   #title: Title = inject(Title);
 
-  ogm: OgmData | null | undefined;
+  readonly ogm = signal<OgmData | null>(null);
 
   constructor() {
     this.#title.setTitle(`${DEFAULT_TITLE} - Genereer een willekeurig gestructureerde mededeling`);
@@ -34,7 +34,7 @@ export class GenerateComponent implements OnInit {
     const ogmNumber = this.#ogmService.generate();
     const ogmNumberFormat = this.#ogmService.format(ogmNumber);
 
-    this.ogm = { number: ogmNumber, numberFormat: ogmNumberFormat };
+    this.ogm.set({ number: ogmNumber, numberFormat: ogmNumberFormat });
   }
 
   copyNumberClickHandler(message: string) {

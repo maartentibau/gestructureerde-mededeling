@@ -1,9 +1,9 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCheckCircle, faCog, faStar } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
@@ -25,13 +25,12 @@ export const APP_NAVIGATION: NavigationEntity[] = [
   standalone: true,
   imports: [
     MatToolbarModule,
-    RouterModule,
     MatButtonModule,
     AsyncPipe,
     FontAwesomeModule,
-    NgFor,
-    NgIf,
     MatButtonModule,
+    RouterLink,
+    RouterLinkActive,
   ],
   selector: 'ogm-navigation',
   templateUrl: './navigation.component.html',

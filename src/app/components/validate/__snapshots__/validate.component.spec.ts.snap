@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ValidateComponent rendering component should match snapshot 1`] = `
+<ogm-validate
+  isValid={[Function Function]}
+  ogm={[Function Function]}
+>
+  <ogm-number>
+    <div>
+    </div>
+    <div>
+    </div>
+  </ogm-number><ogm-input
+    placeholdermessage="vul de 12 cijfers in van uw gestructureerde mededeling"
+  >
+    <div>
+    </div>
+    <div>
+    </div>
+  </ogm-input>
+</ogm-validate>
+`;

@@ -1,5 +1,5 @@
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -14,7 +14,7 @@ import { ControlsComponent } from './controls.component';
   template: ` <div>{{ icon | json }}</div> `,
 })
 class MockFaIconComponent {
-  @Input() icon: string | string[] | undefined;
+  icon = input<string | string[] | undefined>();
 }
 
 describe('ControlsComponent', () => {
@@ -33,7 +33,7 @@ describe('ControlsComponent', () => {
       ],
     })
       .overrideComponent(ControlsComponent, {
-        set: { imports: [NgIf, AsyncPipe, MatButtonModule, MockFaIconComponent] },
+        set: { imports: [AsyncPipe, MatButtonModule, MockFaIconComponent] },
       })
       .compileComponents();
   });
@@ -53,7 +53,7 @@ describe('ControlsComponent', () => {
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 

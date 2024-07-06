@@ -1,7 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { InputComponent, OgmInputChange } from '../../core/components/input/input.component';
 import { NumberComponent } from '../../core/components/number/number.component';
 import { DEFAULT_TITLE } from '../../core/core.constants';
@@ -19,18 +18,15 @@ export class ValidateComponent {
   #ogmService: OgmService = inject(OgmService);
   #title: Title = inject(Title);
 
-  readonly ogm$: BehaviorSubject<string>;
-  readonly isValid$: Subject<boolean | null>;
+  readonly ogm = signal<string | null>(this.#ogmService.init());
+  readonly isValid = signal<boolean | null>(null);
 
   constructor() {
     this.#title.setTitle(`${DEFAULT_TITLE} - Controleer een gestructureerde mededeling`);
-
-    this.ogm$ = new BehaviorSubject<string>(this.#ogmService.init());
-    this.isValid$ = new Subject<boolean | null>();
   }
 
   ogmInputChangeHandler({ ogm, isValid }: OgmInputChange) {
-    this.ogm$.next(ogm);
-    this.isValid$.next(isValid);
+    this.ogm.set(ogm);
+    this.isValid.set(isValid);
   }
 }

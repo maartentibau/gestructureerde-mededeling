@@ -1,7 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { RouterModule } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { NavigationComponent } from './core/components/navigation/navigation.com
 
 @Component({
   standalone: true,
-  imports: [NavigationComponent, RouterModule, MatCardModule, FontAwesomeModule, NgStyle],
+  imports: [NavigationComponent, MatCardModule, FontAwesomeModule, NgStyle, RouterOutlet],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

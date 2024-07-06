@@ -1,15 +1,16 @@
-<ogm-number [ogm]="ogm$ | async"></ogm-number>
+<ogm-number [ogm]="ogm()?.numberFormat ?? null"></ogm-number>
 
 <ogm-input
   (ogmInputChange)="ogmInputChangeHandler($event)"
   placeholderMessage="vul een getal in van maximaal 10 cijfers"
 ></ogm-input>
 
-<ogm-controls
-  *ngIf="ogm"
-  [ogm]="ogm"
-  [copyNumber]="true"
-  [copyOgm]="true"
-  (copyNumberClick)="copyNumberClickHandler($event)"
-  (copyOgmClick)="copyOgmClickHandler($event)"
-></ogm-controls>
+@if (ogm()) {
+  <ogm-controls
+    [ogm]="ogm()"
+    [copyNumber]="true"
+    [copyOgm]="true"
+    (copyNumberClick)="copyNumberClickHandler($event)"
+    (copyOgmClick)="copyOgmClickHandler($event)"
+  ></ogm-controls>
+}
