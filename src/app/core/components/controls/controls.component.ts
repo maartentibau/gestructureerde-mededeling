@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnDestroy, Output } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, input, OnDestroy, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCommentDots, faMoneyCheck, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ import { ScreenService } from '../../services/screen.service';
 
 @Component({
   standalone: true,
-  imports: [NgIf, AsyncPipe, MatButtonModule, FontAwesomeModule],
+  imports: [AsyncPipe, MatButtonModule, FontAwesomeModule],
   selector: 'ogm-controls',
   templateUrl: './controls.component.html',
   styleUrls: ['./controls.component.scss'],
@@ -22,14 +22,14 @@ export class ControlsComponent implements OnDestroy {
   #screenService: ScreenService = inject(ScreenService);
   #faIconLibrary: FaIconLibrary = inject(FaIconLibrary);
 
-  @Input() refresh: boolean | undefined;
-  @Input() copyNumber: boolean | undefined;
-  @Input() copyOgm: boolean | undefined;
-  @Input() ogm: OgmData | null | undefined;
+  readonly refresh = input<boolean>(false);
+  readonly copyNumber = input<boolean>(false);
+  readonly copyOgm = input<boolean>(false);
+  readonly ogm = input<OgmData | null>(null);
 
-  @Output() readonly refreshClick: EventEmitter<void> = new EventEmitter<void>();
-  @Output() readonly copyNumberClick: EventEmitter<string> = new EventEmitter<string>();
-  @Output() readonly copyOgmClick: EventEmitter<string> = new EventEmitter<string>();
+  readonly refreshClick = output<void>();
+  readonly copyNumberClick = output<string>();
+  readonly copyOgmClick = output<string>();
 
   readonly isSmallScreen$: Observable<boolean>;
   readonly clipboard: ClipboardJS;

@@ -1,9 +1,9 @@
 import { Breakpoints } from '@angular/cdk/layout';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Title } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCheckCircle, faCog, faStar } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
@@ -13,7 +13,7 @@ import { ScreenService } from '../../core/services/screen.service';
 
 @Component({
   standalone: true,
-  imports: [NgIf, AsyncPipe, RouterModule, MatButtonModule, FontAwesomeModule],
+  imports: [AsyncPipe, MatButtonModule, FontAwesomeModule, RouterLink],
   selector: 'ogm-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],

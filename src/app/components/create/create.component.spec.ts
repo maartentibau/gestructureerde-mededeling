@@ -1,11 +1,12 @@
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { OgmInputChange } from '../../core/components/input/input.component';
 import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmData } from '../../core/ogm.model';
+import { OGM_EMPTY } from '../../core/services/ogm.service';
 
 import { CreateComponent } from './create.component';
 
@@ -19,8 +20,8 @@ import { CreateComponent } from './create.component';
   `,
 })
 class MockNumberComponent {
-  @Input() ogm: string | undefined;
-  @Input() isValid: boolean | undefined;
+  ogm = input<string | null>(null);
+  isValid = input<boolean | null>(null);
 }
 
 @Component({
@@ -33,8 +34,8 @@ class MockNumberComponent {
   `,
 })
 class MockInputComponent {
-  @Input() validate: boolean | undefined;
-  @Input() placeholderMessage: string | undefined;
+  validate = input<boolean>(false);
+  placeholderMessage = input<string>('');
 }
 
 @Component({
@@ -49,10 +50,10 @@ class MockInputComponent {
   `,
 })
 class MockControlsComponent {
-  @Input() refresh: boolean | undefined;
-  @Input() copyNumber: boolean | undefined;
-  @Input() copyOgm: boolean | undefined;
-  @Input() ogm: OgmData | undefined;
+  refresh = input<boolean>(false);
+  copyNumber = input<boolean>(false);
+  copyOgm = input<boolean>(false);
+  ogm = input<OgmData | null>(null);
 }
 
 describe('CreateComponent', () => {
@@ -67,7 +68,7 @@ describe('CreateComponent', () => {
     })
       .overrideComponent(CreateComponent, {
         set: {
-          imports: [MockNumberComponent, MockInputComponent, MockControlsComponent, AsyncPipe, NgIf],
+          imports: [MockNumberComponent, MockInputComponent, MockControlsComponent, AsyncPipe],
         },
       })
       .compileComponents();
@@ -90,7 +91,7 @@ describe('CreateComponent', () => {
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 
@@ -111,22 +112,21 @@ describe('CreateComponent', () => {
   describe('ogmInputChangeHandler', () => {
     it('should set ogm value to undefined and call next on ogm$ stream with init numberFormat', () => {
       // prepare
-      jest.spyOn(component.ogm$, 'next');
+      jest.spyOn(component.ogm, 'set');
 
-      const ogmInputChange: OgmInputChange = { ogm: '+++   /    /     +++', isValid: null };
+      const ogmInputChange: OgmInputChange = { ogm: OGM_EMPTY, isValid: null };
 
       // act
       component.ogmInputChangeHandler(ogmInputChange);
 
       // check
-      expect(component.ogm).toBeUndefined();
-      expect(component.ogm$.next).toHaveBeenCalledWith(ogmInputChange.ogm);
+      expect(component.ogm.set).toHaveBeenCalledWith({ number: null, numberFormat: OGM_EMPTY });
     });
 
     it('should set ogm with the correct data and call next on ogm$ stream with the numberFormat', () => {
       // prepare
       const ogm: OgmData = { number: '120000000002', numberFormat: '+++120/0000/00002+++' };
-      jest.spyOn(component.ogm$, 'next');
+      jest.spyOn(component.ogm, 'set');
 
       const ogmInputChange: OgmInputChange = { ogm: ogm.numberFormat, isValid: true };
 
@@ -134,8 +134,7 @@ describe('CreateComponent', () => {
       component.ogmInputChangeHandler(ogmInputChange);
 
       // check
-      expect(component.ogm).toStrictEqual(ogm);
-      expect(component.ogm$.next).toHaveBeenCalledWith(ogmInputChange.ogm);
+      expect(component.ogm.set).toHaveBeenCalledWith({ number: '120000000002', numberFormat: '+++120/0000/00002+++' });
     });
   });
 

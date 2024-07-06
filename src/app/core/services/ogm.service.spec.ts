@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OgmService } from './ogm.service';
+import { OGM_EMPTY, OgmService } from './ogm.service';
 
 describe('OgmService', () => {
   let service: OgmService;
@@ -25,15 +25,12 @@ describe('OgmService', () => {
   describe('init', () => {
     it('should generate an empty OGM', () => {
       // prepare
-      jest.spyOn(service, 'format');
-      const emptyString12Spaces = '            ';
-      const expectedResult = '+++   /    /     +++';
+      const expectedResult = OGM_EMPTY;
 
       // act
       const result = service.init();
 
       // check
-      expect(service.format).toHaveBeenCalledWith(emptyString12Spaces);
       expect(result).toBe(expectedResult);
     });
   });

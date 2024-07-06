@@ -1,6 +1,4 @@
-<ng-container *ngIf="isSmallScreen$ | async; then smallControls; else largeControls"></ng-container>
-
-<ng-template #smallControls>
+@if (isSmallScreen$ | async) {
   <div class="shortcuts">
     <a mat-fab disableRipple color="primary" [routerLink]="['/create']" title="Maak uw eigen gestructureerde mededeling"
       ><fa-icon [icon]="['fas', 'star']"></fa-icon
@@ -24,9 +22,7 @@
       ><fa-icon [icon]="['fas', 'check-circle']"></fa-icon
     ></a>
   </div>
-</ng-template>
-
-<ng-template #largeControls>
+} @else {
   <div class="shortcuts large">
     <a
       mat-raised-button
@@ -49,4 +45,4 @@
       ><fa-icon [icon]="['fas', 'check-circle']"></fa-icon>Controleer Mededeling</a
     >
   </div>
-</ng-template>
+}

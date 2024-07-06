@@ -1,8 +1,8 @@
 <div class="ogm-form">
   <input
     type="text"
-    [attr.maxlength]="validate ? 12 : 10"
+    [attr.maxlength]="validate() ? 12 : 10"
     [formControl]="ogmInput"
-    [attr.placeholder]="placeholderMessage"
+    [attr.placeholder]="placeholderMessage()"
   />
 </div>

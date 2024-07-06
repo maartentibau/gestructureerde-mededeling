@@ -1,5 +1,5 @@
 import { JsonPipe } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
@@ -19,8 +19,8 @@ import { GenerateComponent } from './generate.component';
   `,
 })
 class MockNumberComponent {
-  @Input() ogm: string | undefined;
-  @Input() isValid: boolean | undefined;
+  ogm = input<string | null>(null);
+  isValid = input<boolean | null>(null);
 }
 
 @Component({
@@ -35,10 +35,10 @@ class MockNumberComponent {
   `,
 })
 class MockControlsComponent {
-  @Input() refresh: boolean | undefined;
-  @Input() copyNumber: boolean | undefined;
-  @Input() copyOgm: boolean | undefined;
-  @Input() ogm: OgmData | undefined;
+  refresh = input<boolean>(false);
+  copyNumber = input<boolean>(false);
+  copyOgm = input<boolean>(false);
+  ogm = input<OgmData | null>(null);
 }
 
 describe('GenerateComponent', () => {
@@ -88,7 +88,7 @@ describe('GenerateComponent', () => {
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 
@@ -133,7 +133,7 @@ describe('GenerateComponent', () => {
       // check
       expect(ogmService.generate).toHaveBeenCalled();
       expect(ogmService.format).toHaveBeenCalled();
-      expect(component.ogm).toStrictEqual(expectedResult);
+      expect(component.ogm()).toStrictEqual(expectedResult);
     });
   });
 

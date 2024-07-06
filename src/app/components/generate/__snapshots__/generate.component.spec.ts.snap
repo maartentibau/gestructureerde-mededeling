@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GenerateComponent rendering component should match snapshot 1`] = `
+<ogm-generate
+  ogm={[Function Function]}
+>
+  <ogm-number>
+    <div>
+    </div>
+    <div>
+    </div>
+  </ogm-number><ogm-controls>
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+    <div>
+    </div>
+  </ogm-controls>
+</ogm-generate>
+`;

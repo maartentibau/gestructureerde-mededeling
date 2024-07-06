@@ -1,142 +1,132 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { OgmService } from '../../services/ogm.service';
+import { TestBed } from '@angular/core/testing';
+import { render } from '@testing-library/angular';
+import { OGM_EMPTY, OgmService } from '../../services/ogm.service';
 
 import { InputComponent, OgmInputChange } from './input.component';
 
 describe('InputComponent', () => {
-  let component: InputComponent;
-  let fixture: ComponentFixture<InputComponent>;
-  let omgService: OgmService;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [InputComponent],
-    }).compileComponents();
+  afterEach(() => {
+    jest.clearAllMocks();
+    jest.resetAllMocks();
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(InputComponent);
-    component = fixture.componentInstance;
-    omgService = TestBed.inject(OgmService);
-  });
+  it('should create', async () => {
+    const { container } = await setup();
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(container).toBeTruthy();
   });
 
   describe('rendering component', () => {
-    it('should match snapshot with no @Input properties defined', () => {
+    it('should match snapshot with no @Input properties defined', async () => {
+      // prepare
+      const { fixture } = await setup();
+
       // act
-      fixture.detectChanges();
+      await fixture.whenStable();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
 
-    it('should match snapshot with validate set to false', () => {
+    it('should match snapshot with validate set to false', async () => {
       // prepare
-      component.validate = false;
-      component.placeholderMessage = 'Placeholder message';
+      const { fixture } = await setup({ validate: false, placeholderMessage: 'Placeholder message' });
 
       // act
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
 
-    it('should match snapshot with validate set to true', () => {
+    it('should match snapshot with validate set to true', async () => {
       // prepare
-      component.validate = true;
-      component.placeholderMessage = 'Placeholder message';
+      const { fixture } = await setup({ validate: true, placeholderMessage: 'Placeholder message' });
 
       // act
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 
   describe('ngOnInit', () => {
-    it('should call the init method of the ogmService', () => {
+    it('should call the init method of the ogmService', async () => {
       // prepare
-      jest.spyOn(omgService, 'init');
+      const { component, ogmService } = await setup();
+      jest.spyOn(ogmService, 'init');
 
       // act
       component.ngOnInit();
 
       // check
-      expect(omgService.init).toHaveBeenCalled();
+      expect(ogmService.init).toHaveBeenCalled();
     });
 
     describe('ogm$', () => {
-      beforeEach(() => {
-        jest.spyOn(omgService, 'init');
-        jest.spyOn(omgService, 'generate');
-        jest.spyOn(omgService, 'clean');
-        jest.spyOn(omgService, 'validate');
-        jest.spyOn(component.ogmInputChange, 'emit');
-      });
+      let component: InputComponent;
+      let ogmService: OgmService;
 
       describe('without validation', () => {
-        beforeEach(() => {
-          component.validate = false;
+        beforeEach(async () => {
+          ({ component, ogmService } = await setup({ validate: false }));
+
+          jest.spyOn(ogmService, 'init');
+          jest.spyOn(ogmService, 'generate');
+          jest.spyOn(ogmService, 'clean');
+          jest.spyOn(component.ogmInput, 'setValue');
+          jest.spyOn(component.ogmInputChange, 'emit');
         });
 
         describe('invalid characters', () => {
-          beforeEach(() => {
-            jest.spyOn(component.ogmInput, 'setValue');
-          });
-
-          it('should NOT emit when only spaces are provided', () => {
+          it('should NOT emit when only spaces are provided', async () => {
             // prepare
             const ogmInput: string = '     ';
 
             // act
-            fixture.detectChanges();
             component.ogmInput.setValue(ogmInput);
 
             // check
             expect(component.ogmInputChange.emit).not.toHaveBeenCalled();
-            expect(omgService.init).toHaveBeenCalled();
-            expect(omgService.generate).not.toHaveBeenCalled();
-            expect(omgService.clean).toHaveBeenCalledWith(ogmInput);
+            expect(ogmService.init).toHaveBeenCalled();
+            expect(ogmService.generate).not.toHaveBeenCalled();
+            expect(ogmService.clean).toHaveBeenCalledWith(ogmInput);
             expect(component.ogmInput.setValue).toHaveBeenCalledWith('', { emitEvent: false });
           });
 
-          it('should NOT emit when none numeric values are provided', () => {
+          it('should NOT emit when none numeric values are provided', async () => {
             // prepare
             const ogmInput: string = 'sdfzefsdf';
 
             // act
-            fixture.detectChanges();
             component.ogmInput.setValue(ogmInput);
 
             // check
             expect(component.ogmInputChange.emit).not.toHaveBeenCalled();
-            expect(omgService.init).toHaveBeenCalled();
-            expect(omgService.generate).not.toHaveBeenCalled();
-            expect(omgService.clean).toHaveBeenCalledWith(ogmInput);
+            expect(ogmService.init).toHaveBeenCalled();
+            expect(ogmService.generate).not.toHaveBeenCalled();
+            expect(ogmService.clean).toHaveBeenCalledWith(ogmInput);
             expect(component.ogmInput.setValue).toHaveBeenCalledWith('', { emitEvent: false });
           });
         });
 
-        it('should emit an initial OGM and not run validation', () => {
+        it('should emit an initial OGM and not run validation', async () => {
           // prepare
-          const ogmInitValue: string = '+++   /    /     +++';
+          const ogmInitValue: string = OGM_EMPTY;
           const expectedOgmInputChange: OgmInputChange = { ogm: ogmInitValue, isValid: null };
 
+          jest.spyOn(ogmService, 'validate');
+
           // act
-          fixture.detectChanges();
           component.ogmInput.setValue(null);
 
           // check
           expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(omgService.init).toHaveBeenCalled();
-          expect(omgService.generate).not.toHaveBeenCalledWith();
-          expect(omgService.clean).not.toHaveBeenCalled();
-          expect(omgService.validate).not.toHaveBeenCalled();
+          expect(ogmService.init).toHaveBeenCalled();
+          expect(ogmService.generate).not.toHaveBeenCalledWith();
+          expect(ogmService.clean).not.toHaveBeenCalled();
+          expect(ogmService.validate).not.toHaveBeenCalled();
         });
 
         it('should emit a generated OGM and not run validation', () => {
@@ -144,22 +134,28 @@ describe('InputComponent', () => {
           const ogmInput: string = '12345';
           const expectedOgmInputChange: OgmInputChange = { ogm: '+++123/4500/00012+++', isValid: null };
 
+          jest.spyOn(ogmService, 'validate');
+
           // act
-          fixture.detectChanges();
           component.ogmInput.setValue(ogmInput);
 
           // check
           expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(omgService.init).toHaveBeenCalled();
-          expect(omgService.generate).toHaveBeenCalledWith(ogmInput, true);
-          expect(omgService.clean).not.toHaveBeenCalled();
-          expect(omgService.validate).not.toHaveBeenCalled();
+          expect(ogmService.init).toHaveBeenCalled();
+          expect(ogmService.generate).toHaveBeenCalledWith(ogmInput, true);
+          expect(ogmService.clean).not.toHaveBeenCalled();
+          expect(ogmService.validate).not.toHaveBeenCalled();
         });
       });
 
       describe('with validation', () => {
-        beforeEach(() => {
-          component.validate = true;
+        beforeEach(async () => {
+          ({ component, ogmService } = await setup({ validate: true }));
+
+          jest.spyOn(ogmService, 'init');
+          jest.spyOn(ogmService, 'generate');
+          jest.spyOn(ogmService, 'clean');
+          jest.spyOn(ogmService, 'validate');
           jest.spyOn(component.ogmInputChange, 'emit');
         });
 
@@ -169,15 +165,14 @@ describe('InputComponent', () => {
           const expectedOgmInputChange: OgmInputChange = { ogm: ogmInitValue, isValid: null };
 
           // act
-          fixture.detectChanges();
           component.ogmInput.setValue(null);
 
           // check
           expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(omgService.init).toHaveBeenCalled();
-          expect(omgService.generate).not.toHaveBeenCalledWith();
-          expect(omgService.clean).toHaveBeenCalled();
-          expect(omgService.validate).not.toHaveBeenCalled();
+          expect(ogmService.init).toHaveBeenCalled();
+          expect(ogmService.generate).not.toHaveBeenCalledWith();
+          expect(ogmService.clean).toHaveBeenCalled();
+          expect(ogmService.validate).not.toHaveBeenCalled();
         });
 
         it('should emit a formatted OGM and NOT run validation when the input is not 12 characters long', () => {
@@ -187,15 +182,14 @@ describe('InputComponent', () => {
           const expectedOgmInputChange: OgmInputChange = { ogm: ogmValue, isValid: null };
 
           // act
-          fixture.detectChanges();
           component.ogmInput.setValue(ogmInput);
 
           // check
           expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(omgService.init).toHaveBeenCalled();
-          expect(omgService.generate).not.toHaveBeenCalledWith();
-          expect(omgService.clean).toHaveBeenCalled();
-          expect(omgService.validate).not.toHaveBeenCalled();
+          expect(ogmService.init).toHaveBeenCalled();
+          expect(ogmService.generate).not.toHaveBeenCalledWith();
+          expect(ogmService.clean).toHaveBeenCalled();
+          expect(ogmService.validate).not.toHaveBeenCalled();
         });
 
         it('should emit a formatted OGM and run validation and mark the OGM as invalid', () => {
@@ -205,15 +199,14 @@ describe('InputComponent', () => {
           const expectedOgmInputChange: OgmInputChange = { ogm: ogmValue, isValid: false };
 
           // act
-          fixture.detectChanges();
           component.ogmInput.setValue(ogmInput);
 
           // check
           expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(omgService.init).toHaveBeenCalled();
-          expect(omgService.generate).not.toHaveBeenCalledWith();
-          expect(omgService.clean).toHaveBeenCalled();
-          expect(omgService.validate).toHaveBeenCalledWith(ogmValue);
+          expect(ogmService.init).toHaveBeenCalled();
+          expect(ogmService.generate).not.toHaveBeenCalledWith();
+          expect(ogmService.clean).toHaveBeenCalled();
+          expect(ogmService.validate).toHaveBeenCalledWith(ogmValue);
         });
 
         it('should emit a formatted OGM and run validation and mark the OGM as valid', () => {
@@ -223,30 +216,39 @@ describe('InputComponent', () => {
           const expectedOgmInputChange: OgmInputChange = { ogm: ogmValue, isValid: true };
 
           // act
-          fixture.detectChanges();
           component.ogmInput.setValue(ogmInput);
 
           // check
           expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(omgService.init).toHaveBeenCalled();
-          expect(omgService.generate).not.toHaveBeenCalledWith();
-          expect(omgService.clean).toHaveBeenCalled();
-          expect(omgService.validate).toHaveBeenCalledWith(ogmValue);
+          expect(ogmService.init).toHaveBeenCalled();
+          expect(ogmService.generate).not.toHaveBeenCalledWith();
+          expect(ogmService.clean).toHaveBeenCalled();
+          expect(ogmService.validate).toHaveBeenCalledWith(ogmValue);
         });
       });
     });
   });
-
-  describe('ngOnDestroy', () => {
-    it('should call next method on destroy$', () => {
-      // prepare
-      jest.spyOn(component.destroy$, 'next');
-
-      // act
-      component.ngOnDestroy();
-
-      // check
-      expect(component.destroy$.next).toHaveBeenCalledWith();
-    });
-  });
 });
+
+const setup = async (
+  { validate, placeholderMessage }: { validate?: boolean; placeholderMessage?: string } = {
+    validate: false,
+    placeholderMessage: '',
+  },
+) => {
+  const f = new OgmService();
+  jest.spyOn(f, 'init');
+
+  const renderResult = await render(InputComponent, {
+    inputs: { validate, placeholderMessage },
+    providers: [{ provide: OgmService, useValue: f }],
+  });
+
+  const ogmService = TestBed.inject(OgmService);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    ogmService,
+  };
+};

@@ -1,8 +1,8 @@
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { AsyncPipe, JsonPipe } from '@angular/common';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, RouterLink } from '@angular/router';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { ScreenService } from '../../core/services/screen.service';
 
@@ -15,7 +15,7 @@ import { MainComponent } from './main.component';
   template: ` <div>{{ icon | json }}</div> `,
 })
 class MockFaIconComponent {
-  @Input() icon: string | string[] | undefined;
+  icon = input<string | string[] | undefined>();
 }
 
 describe('MainComponent', () => {
@@ -31,11 +31,12 @@ describe('MainComponent', () => {
           useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) },
         },
         { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+        provideRouter([]),
       ],
     })
       .overrideComponent(MainComponent, {
         set: {
-          imports: [NgIf, AsyncPipe, RouterTestingModule, MockFaIconComponent, MatButtonModule],
+          imports: [AsyncPipe, RouterLink, MockFaIconComponent, MatButtonModule],
         },
       })
       .compileComponents();
@@ -56,7 +57,7 @@ describe('MainComponent', () => {
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 });

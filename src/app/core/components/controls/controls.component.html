@@ -1,77 +1,73 @@
-<ng-container *ngIf="isSmallScreen$ | async; then smallControls; else largeControls"></ng-container>
-
-<ng-template #smallControls>
+@if (isSmallScreen$ | async) {
   <div class="controls">
-    <button
-      *ngIf="refresh"
-      mat-fab
-      disableRipple
-      color="primary"
-      type="button"
-      title="Verniewen"
-      (click)="refreshClickHandler()"
-    >
-      <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>
-    </button>
-    <button
-      *ngIf="copyNumber"
-      class="ogm-copy"
-      mat-fab
-      disableRipple
-      color="primary"
-      type="button"
-      title="Kopieer nummer"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.number"
-      (click)="copyNumberClickHandler()"
-    >
-      <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon>
-    </button>
-    <button
-      *ngIf="copyOgm"
-      class="ogm-copy"
-      mat-fab
-      disableRipple
-      color="primary"
-      type="button"
-      title="Kopieer mededeling"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.numberFormat"
-      (click)="copyOgmClickHandler()"
-    >
-      <fa-icon [icon]="['fas', 'money-check']"></fa-icon>
-    </button>
+    @if (refresh()) {
+      <button mat-fab disableRipple color="primary" type="button" title="Verniewen" (click)="refreshClickHandler()">
+        <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>
+      </button>
+    }
+    @if (copyNumber()) {
+      <button
+        class="ogm-copy"
+        mat-fab
+        disableRipple
+        color="primary"
+        type="button"
+        title="Kopieer nummer"
+        data-clipboard-action="copy"
+        [attr.data-clipboard-text]="ogm()?.number"
+        (click)="copyNumberClickHandler()"
+      >
+        <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon>
+      </button>
+    }
+    @if (copyOgm()) {
+      <button
+        class="ogm-copy"
+        mat-fab
+        disableRipple
+        color="primary"
+        type="button"
+        title="Kopieer mededeling"
+        data-clipboard-action="copy"
+        [attr.data-clipboard-text]="ogm()?.numberFormat"
+        (click)="copyOgmClickHandler()"
+      >
+        <fa-icon [icon]="['fas', 'money-check']"></fa-icon>
+      </button>
+    }
   </div>
-</ng-template>
-
-<ng-template #largeControls>
+} @else {
   <div class="controls large">
-    <button *ngIf="refresh" mat-raised-button disableRipple color="primary" (click)="refreshClickHandler()">
-      <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>Vernieuwen
-    </button>
-    <button
-      *ngIf="copyNumber"
-      class="ogm-copy"
-      mat-raised-button
-      disableRipple
-      color="primary"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.number"
-      (click)="copyNumberClickHandler()"
-    >
-      <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon>Kopieer nummer
-    </button>
-    <button
-      *ngIf="copyOgm"
-      class="ogm-copy"
-      mat-raised-button
-      disableRipple
-      color="primary"
-      data-clipboard-action="copy"
-      [attr.data-clipboard-text]="ogm?.numberFormat"
-      (click)="copyOgmClickHandler()"
-    >
-      <fa-icon [icon]="['fas', 'money-check']"></fa-icon>Kopieer mededeling
-    </button>
+    @if (refresh()) {
+      <button mat-raised-button disableRipple color="primary" (click)="refreshClickHandler()">
+        <fa-icon [icon]="['fas', 'sync-alt']"></fa-icon>Vernieuwen
+      </button>
+    }
+    @if (copyNumber()) {
+      <button
+        class="ogm-copy"
+        mat-raised-button
+        disableRipple
+        color="primary"
+        data-clipboard-action="copy"
+        [attr.data-clipboard-text]="ogm()?.number"
+        (click)="copyNumberClickHandler()"
+      >
+        <fa-icon [icon]="['fas', 'comment-dots']"></fa-icon>Kopieer nummer
+      </button>
+    }
+    @if (copyOgm()) {
+      <button
+        class="ogm-copy"
+        mat-raised-button
+        disableRipple
+        color="primary"
+        data-clipboard-action="copy"
+        [attr.data-clipboard-text]="ogm()?.numberFormat"
+        (click)="copyOgmClickHandler()"
+      >
+        <fa-icon [icon]="['fas', 'money-check']"></fa-icon>Kopieer mededeling
+      </button>
+    }
   </div>
-</ng-template>
+}

@@ -1,57 +1,61 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { render } from '@testing-library/angular';
 
 import { NumberComponent } from './number.component';
 
 describe('NumberComponent', () => {
-  let component: NumberComponent;
-  let fixture: ComponentFixture<NumberComponent>;
+  it('should create', async () => {
+    const { component } = await setup();
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [NumberComponent],
-    }).compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NumberComponent);
-    component = fixture.componentInstance;
-  });
-
-  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
   describe('rendering component', () => {
-    it('should match snapshot with no @Input properties defined', () => {
+    it('should match snapshot with no @Input properties defined', async () => {
+      const { fixture } = await setup();
+
       // act
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
 
-    it('should match snapshot with isValid set to false', () => {
+    it('should match snapshot with isValid set to false', async () => {
       // prepare
-      component.isValid = false;
-      component.ogm = '+++123/4567/89012+++';
+      const { fixture } = await setup({ ogm: '+++123/4567/89012+++', isValid: false });
 
       // act
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
 
-    it('should match snapshot with isValid set to true', () => {
+    it('should match snapshot with isValid set to true', async () => {
       // prepare
-      component.isValid = true;
-      component.ogm = '+++123/4567/89012+++';
+      const { fixture } = await setup({ ogm: '+++123/4567/89012+++', isValid: true });
 
       // act
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 });
+
+const setup = async (
+  { ogm, isValid }: { ogm?: string | null; isValid?: boolean | null } = {
+    ogm: null,
+    isValid: null,
+  },
+) => {
+  const renderResult = await render(NumberComponent, {
+    inputs: { ogm, isValid },
+  });
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+  };
+};

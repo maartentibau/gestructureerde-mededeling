@@ -1,8 +1,8 @@
 import { JsonPipe, NgStyle } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
-import { RouterTestingModule } from '@angular/router/testing';
+import { provideRouter, RouterLink, RouterOutlet } from '@angular/router';
 import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 
@@ -20,7 +20,7 @@ class MockNavigationComponent {}
   template: ` <div>{{ icon | json }}</div> `,
 })
 class MockFaIconComponent {
-  @Input() icon: string | string[] | undefined;
+  icon = input<string | string[] | undefined>();
 }
 
 describe('AppComponent', () => {
@@ -33,10 +33,13 @@ describe('AppComponent', () => {
       providers: [
         { provide: FaConfig, useValue: { fixedWidth: null } },
         { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+        provideRouter([]),
       ],
     })
       .overrideComponent(AppComponent, {
-        set: { imports: [MockNavigationComponent, RouterTestingModule, MatCardModule, MockFaIconComponent, NgStyle] },
+        set: {
+          imports: [MockNavigationComponent, RouterLink, MatCardModule, MockFaIconComponent, NgStyle, RouterOutlet],
+        },
       })
       .compileComponents();
   });
@@ -56,7 +59,7 @@ describe('AppComponent', () => {
       fixture.detectChanges();
 
       // check
-      // expect(fixture).toMatchSnapshot();
+      expect(fixture).toMatchSnapshot();
     });
   });
 });
