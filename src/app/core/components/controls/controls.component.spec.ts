@@ -2,7 +2,9 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
+import { Title } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { render } from '@testing-library/angular';
 import { ScreenService } from '../../services/screen.service';
 
 import { ControlsComponent } from './controls.component';
@@ -22,25 +24,7 @@ describe('ControlsComponent', () => {
   let fixture: ComponentFixture<ControlsComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ControlsComponent],
-      providers: [
-        {
-          provide: ScreenService,
-          useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) },
-        },
-        { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
-      ],
-    })
-      .overrideComponent(ControlsComponent, {
-        set: { imports: [AsyncPipe, MatButtonModule, MockFaIconComponent] },
-      })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ControlsComponent);
-    component = fixture.componentInstance;
+    ({ component, fixture } = await setup());
   });
 
   it('should create', () => {
@@ -111,3 +95,21 @@ describe('ControlsComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(ControlsComponent, {
+    componentImports: [AsyncPipe, MatButtonModule, MockFaIconComponent],
+    providers: [
+      { provide: ScreenService, useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) } },
+      { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+    ],
+  });
+
+  const titleService = TestBed.inject(Title);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    titleService,
+  };
+};

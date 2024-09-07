@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { provideRouter, RouterLink, RouterLinkActive } from '@angular/router';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { render } from '@testing-library/angular';
 import { TestScheduler } from 'rxjs/testing';
 import { ScreenService } from '../../services/screen.service';
 import { APP_NAVIGATION, NavigationComponent } from './navigation.component';
@@ -29,30 +30,7 @@ describe('NavigationComponent', () => {
   let testScheduler: TestScheduler;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [NavigationComponent],
-      providers: [
-        {
-          provide: ScreenService,
-          useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) },
-        },
-        { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
-        provideRouter([]),
-      ],
-    })
-      .overrideComponent(NavigationComponent, {
-        set: {
-          imports: [MatToolbarModule, AsyncPipe, MatButtonModule, MockFaIconComponent, RouterLink, RouterLinkActive],
-        },
-      })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    screenService = TestBed.inject(ScreenService);
-
-    fixture = TestBed.createComponent(NavigationComponent);
-    component = fixture.componentInstance;
+    ({ component, fixture, screenService } = await setup());
 
     testScheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
@@ -154,3 +132,22 @@ describe('NavigationComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(NavigationComponent, {
+    componentImports: [MatToolbarModule, AsyncPipe, MatButtonModule, MockFaIconComponent, RouterLink, RouterLinkActive],
+    providers: [
+      { provide: ScreenService, useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) } },
+      { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+      provideRouter([]),
+    ],
+  });
+
+  const screenService = TestBed.inject(ScreenService);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    screenService,
+  };
+};
