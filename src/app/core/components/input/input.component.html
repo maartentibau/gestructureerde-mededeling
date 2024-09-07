@@ -1,8 +1,11 @@
 <div class="ogm-form">
   <input
+    data-tes
+    autocomplete="off"
     type="text"
+    data-testid="ogm-input"
     [attr.maxlength]="validate() ? 12 : 10"
-    [formControl]="ogmInput"
     [attr.placeholder]="placeholderMessage()"
+    (input)="handleInput($event)"
   />
 </div>

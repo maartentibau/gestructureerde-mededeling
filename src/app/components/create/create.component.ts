@@ -1,9 +1,10 @@
 import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { ControlsComponent } from '../../core/components/controls/controls.component';
-import { InputComponent, OgmInputChange } from '../../core/components/input/input.component';
+import { InputComponent, Ogm } from '../../core/components/input/input.component';
 import { NumberComponent } from '../../core/components/number/number.component';
 import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmData } from '../../core/ogm.model';
@@ -11,7 +12,7 @@ import { OgmService } from '../../core/services/ogm.service';
 
 @Component({
   standalone: true,
-  imports: [NumberComponent, InputComponent, ControlsComponent, AsyncPipe, MatSnackBarModule],
+  imports: [NumberComponent, InputComponent, ControlsComponent, AsyncPipe, MatSnackBarModule, FormsModule],
   selector: 'ogm-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
@@ -28,7 +29,7 @@ export class CreateComponent {
     this.#title.setTitle(`${DEFAULT_TITLE} - Zelf een gestructureerde mededeling maken`);
   }
 
-  ogmInputChangeHandler({ ogm }: OgmInputChange) {
+  handleOgmChange({ ogm }: Ogm) {
     const cleanOgm = this.#ogmService.clean(ogm ?? '');
 
     this.ogm.set(

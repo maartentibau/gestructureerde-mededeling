@@ -2,11 +2,7 @@
 
 exports[`InputComponent rendering component should match snapshot with no @Input properties defined 1`] = `
 <ogm-input
-  destroy$={[Function Subject]}
-  ogm$={[Function AnonymousSubject]}
-  ogmInput={[Function FormControl2]}
-  ogmInputChange={[Function OutputEmitterRef]}
-  ogmService={[Function OgmService]}
+  ogm={[Function Function]}
   placeholderMessage={[Function Function]}
   validate={[Function Function]}
 >
@@ -14,7 +10,9 @@ exports[`InputComponent rendering component should match snapshot with no @Input
     class="ogm-form"
   >
     <input
-      class="ng-untouched ng-pristine ng-valid"
+      autocomplete="off"
+      data-tes=""
+      data-testid="ogm-input"
       maxlength="10"
       placeholder=""
       type="text"
@@ -25,11 +23,7 @@ exports[`InputComponent rendering component should match snapshot with no @Input
 
 exports[`InputComponent rendering component should match snapshot with validate set to false 1`] = `
 <ogm-input
-  destroy$={[Function Subject]}
-  ogm$={[Function AnonymousSubject]}
-  ogmInput={[Function FormControl2]}
-  ogmInputChange={[Function OutputEmitterRef]}
-  ogmService={[Function OgmService]}
+  ogm={[Function Function]}
   placeholderMessage={[Function Function]}
   validate={[Function Function]}
 >
@@ -37,7 +31,9 @@ exports[`InputComponent rendering component should match snapshot with validate 
     class="ogm-form"
   >
     <input
-      class="ng-untouched ng-pristine ng-valid"
+      autocomplete="off"
+      data-tes=""
+      data-testid="ogm-input"
       maxlength="10"
       placeholder="Placeholder message"
       type="text"
@@ -48,11 +44,7 @@ exports[`InputComponent rendering component should match snapshot with validate 
 
 exports[`InputComponent rendering component should match snapshot with validate set to true 1`] = `
 <ogm-input
-  destroy$={[Function Subject]}
-  ogm$={[Function AnonymousSubject]}
-  ogmInput={[Function FormControl2]}
-  ogmInputChange={[Function OutputEmitterRef]}
-  ogmService={[Function OgmService]}
+  ogm={[Function Function]}
   placeholderMessage={[Function Function]}
   validate={[Function Function]}
 >
@@ -60,7 +52,9 @@ exports[`InputComponent rendering component should match snapshot with validate 
     class="ogm-form"
   >
     <input
-      class="ng-untouched ng-pristine ng-valid"
+      autocomplete="off"
+      data-tes=""
+      data-testid="ogm-input"
       maxlength="12"
       placeholder="Placeholder message"
       type="text"

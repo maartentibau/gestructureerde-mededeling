@@ -1,8 +1,10 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
-import { OgmInputChange } from '../../core/components/input/input.component';
+import { render } from '@testing-library/angular';
+import { Ogm } from '../../core/components/input/input.component';
 import { DEFAULT_TITLE } from '../../core/core.constants';
 
 import { ValidateComponent } from './validate.component';
@@ -41,18 +43,7 @@ describe('ValidateComponent', () => {
   let titleService: Title;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [ValidateComponent],
-    })
-      .overrideComponent(ValidateComponent, { set: { imports: [MockNumberComponent, MockInputComponent, AsyncPipe] } })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(ValidateComponent);
-    component = fixture.componentInstance;
-
-    titleService = TestBed.inject(Title);
+    ({ component, fixture, titleService } = await setup());
   });
 
   it('should create', () => {
@@ -89,10 +80,10 @@ describe('ValidateComponent', () => {
       jest.spyOn(component.ogm, 'set');
       jest.spyOn(component.isValid, 'set');
 
-      const ogmInputChange: OgmInputChange = { ogm: '12345', isValid: false };
+      const ogmInputChange: Ogm = { ogm: '12345', isValid: false };
 
       // act
-      component.ogmInputChangeHandler(ogmInputChange);
+      component.handleOgmChange(ogmInputChange);
 
       // check
       expect(component.ogm.set).toHaveBeenCalledWith('12345');
@@ -100,3 +91,18 @@ describe('ValidateComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(ValidateComponent, {
+    componentImports: [MockNumberComponent, MockInputComponent, AsyncPipe],
+    providers: [{ provide: MatSnackBar, useValue: { open: jest.fn() } }],
+  });
+
+  const titleService = TestBed.inject(Title);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    titleService,
+  };
+};

@@ -5,17 +5,11 @@ export enum NavigationLabel {
   Short = 'short',
 }
 
-export interface NavigationEntity {
+export type NavigationEntity = {
   path: string[];
   label: { [NavigationLabel.Long]: string; [NavigationLabel.Short]: string };
   icon: IconProp;
-}
-
-export interface NavigationEntity {
-  path: string[];
-  label: { [NavigationLabel.Long]: string; [NavigationLabel.Short]: string };
-  icon: IconProp;
-}
+};
 
 export type MainNavigation = {
   path: string[];
