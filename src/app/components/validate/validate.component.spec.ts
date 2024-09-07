@@ -4,7 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { render } from '@testing-library/angular';
-import { OgmInputChange } from '../../core/components/input/input.component';
+import { Ogm } from '../../core/components/input/input.component';
 import { DEFAULT_TITLE } from '../../core/core.constants';
 
 import { ValidateComponent } from './validate.component';
@@ -80,10 +80,10 @@ describe('ValidateComponent', () => {
       jest.spyOn(component.ogm, 'set');
       jest.spyOn(component.isValid, 'set');
 
-      const ogmInputChange: OgmInputChange = { ogm: '12345', isValid: false };
+      const ogmInputChange: Ogm = { ogm: '12345', isValid: false };
 
       // act
-      component.ogmInputChangeHandler(ogmInputChange);
+      component.handleOgmChange(ogmInputChange);
 
       // check
       expect(component.ogm.set).toHaveBeenCalledWith('12345');

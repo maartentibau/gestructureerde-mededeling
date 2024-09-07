@@ -1,8 +1,9 @@
 import { TestBed } from '@angular/core/testing';
-import { render } from '@testing-library/angular';
-import { OGM_EMPTY, OgmService } from '../../services/ogm.service';
+import { render, screen } from '@testing-library/angular';
+import userEvent from '@testing-library/user-event';
+import { OgmService } from '../../services/ogm.service';
 
-import { InputComponent, OgmInputChange } from './input.component';
+import { InputComponent, Ogm } from './input.component';
 
 describe('InputComponent', () => {
   afterEach(() => {
@@ -51,180 +52,113 @@ describe('InputComponent', () => {
     });
   });
 
-  describe('ngOnInit', () => {
-    it('should call the init method of the ogmService', async () => {
-      // prepare
-      const { component, ogmService } = await setup();
-      jest.spyOn(ogmService, 'init');
+  describe('handleInput', () => {
+    let component: InputComponent;
+    let ogmService: OgmService;
+    let inputElement: HTMLElement;
 
-      // act
-      component.ngOnInit();
+    describe('without validation', () => {
+      beforeEach(async () => {
+        ({ component, ogmService } = await setup({ validate: false }));
 
-      // check
-      expect(ogmService.init).toHaveBeenCalled();
-    });
+        jest.spyOn(ogmService, 'generate');
+        jest.spyOn(ogmService, 'clean');
+        jest.spyOn(component.ogm, 'set');
 
-    describe('ogm$', () => {
-      let component: InputComponent;
-      let ogmService: OgmService;
+        inputElement = screen.getByTestId('ogm-input');
+      });
 
-      describe('without validation', () => {
-        beforeEach(async () => {
-          ({ component, ogmService } = await setup({ validate: false }));
-
-          jest.spyOn(ogmService, 'init');
-          jest.spyOn(ogmService, 'generate');
-          jest.spyOn(ogmService, 'clean');
-          jest.spyOn(component.ogmInput, 'setValue');
-          jest.spyOn(component.ogmInputChange, 'emit');
-        });
-
-        describe('invalid characters', () => {
-          it('should NOT emit when only spaces are provided', async () => {
-            // prepare
-            const ogmInput: string = '     ';
-
-            // act
-            component.ogmInput.setValue(ogmInput);
-
-            // check
-            expect(component.ogmInputChange.emit).not.toHaveBeenCalled();
-            expect(ogmService.init).toHaveBeenCalled();
-            expect(ogmService.generate).not.toHaveBeenCalled();
-            expect(ogmService.clean).toHaveBeenCalledWith(ogmInput);
-            expect(component.ogmInput.setValue).toHaveBeenCalledWith('', { emitEvent: false });
-          });
-
-          it('should NOT emit when none numeric values are provided', async () => {
-            // prepare
-            const ogmInput: string = 'sdfzefsdf';
-
-            // act
-            component.ogmInput.setValue(ogmInput);
-
-            // check
-            expect(component.ogmInputChange.emit).not.toHaveBeenCalled();
-            expect(ogmService.init).toHaveBeenCalled();
-            expect(ogmService.generate).not.toHaveBeenCalled();
-            expect(ogmService.clean).toHaveBeenCalledWith(ogmInput);
-            expect(component.ogmInput.setValue).toHaveBeenCalledWith('', { emitEvent: false });
-          });
-        });
-
-        it('should emit an initial OGM and not run validation', async () => {
+      describe('invalid characters', () => {
+        it('should NOT set an ogm given invalid characters are used', async () => {
           // prepare
-          const ogmInitValue: string = OGM_EMPTY;
-          const expectedOgmInputChange: OgmInputChange = { ogm: ogmInitValue, isValid: null };
-
-          jest.spyOn(ogmService, 'validate');
+          const ogmInput: string = ' a b c,./;%$';
 
           // act
-          component.ogmInput.setValue(null);
+          await userEvent.type(inputElement, ogmInput);
 
           // check
-          expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(ogmService.init).toHaveBeenCalled();
-          expect(ogmService.generate).not.toHaveBeenCalledWith();
-          expect(ogmService.clean).not.toHaveBeenCalled();
-          expect(ogmService.validate).not.toHaveBeenCalled();
-        });
-
-        it('should emit a generated OGM and not run validation', () => {
-          // prepare
-          const ogmInput: string = '12345';
-          const expectedOgmInputChange: OgmInputChange = { ogm: '+++123/4500/00012+++', isValid: null };
-
-          jest.spyOn(ogmService, 'validate');
-
-          // act
-          component.ogmInput.setValue(ogmInput);
-
-          // check
-          expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(ogmService.init).toHaveBeenCalled();
-          expect(ogmService.generate).toHaveBeenCalledWith(ogmInput, true);
-          expect(ogmService.clean).not.toHaveBeenCalled();
-          expect(ogmService.validate).not.toHaveBeenCalled();
+          expect(ogmService.generate).not.toHaveBeenCalled();
+          expect(ogmService.clean).toHaveBeenLastCalledWith('$');
+          expect(component.ogm.set).not.toHaveBeenCalled();
         });
       });
 
-      describe('with validation', () => {
-        beforeEach(async () => {
-          ({ component, ogmService } = await setup({ validate: true }));
+      it('should emit a generated OGM and not run validation', async () => {
+        // prepare
+        const ogmInput: string = '12345';
+        const expectedOgmInputChange: Ogm = { ogm: '+++123/4500/00012+++', isValid: null };
 
-          jest.spyOn(ogmService, 'init');
-          jest.spyOn(ogmService, 'generate');
-          jest.spyOn(ogmService, 'clean');
-          jest.spyOn(ogmService, 'validate');
-          jest.spyOn(component.ogmInputChange, 'emit');
-        });
+        jest.spyOn(ogmService, 'validate');
 
-        it('should emit an initial OGM and NOT run validation when the input value is empty', () => {
-          // prepare
-          const ogmInitValue: string = '+++   /    /     +++';
-          const expectedOgmInputChange: OgmInputChange = { ogm: ogmInitValue, isValid: null };
+        // act
+        await userEvent.type(inputElement, ogmInput);
 
-          // act
-          component.ogmInput.setValue(null);
+        // check
+        expect(ogmService.generate).toHaveBeenCalledWith(ogmInput, true);
+        expect(ogmService.clean).not.toHaveBeenCalled();
+        expect(ogmService.validate).not.toHaveBeenCalled();
+        expect(component.ogm.set).toHaveBeenLastCalledWith(expectedOgmInputChange);
+      });
+    });
 
-          // check
-          expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(ogmService.init).toHaveBeenCalled();
-          expect(ogmService.generate).not.toHaveBeenCalledWith();
-          expect(ogmService.clean).toHaveBeenCalled();
-          expect(ogmService.validate).not.toHaveBeenCalled();
-        });
+    describe('with validation', () => {
+      beforeEach(async () => {
+        ({ component, ogmService } = await setup({ validate: true }));
 
-        it('should emit a formatted OGM and NOT run validation when the input is not 12 characters long', () => {
-          // prepare
-          const ogmInput: string = '12345';
-          const ogmValue: string = '+++123/45  /     +++';
-          const expectedOgmInputChange: OgmInputChange = { ogm: ogmValue, isValid: null };
+        jest.spyOn(ogmService, 'generate');
+        jest.spyOn(ogmService, 'clean');
+        jest.spyOn(ogmService, 'validate');
+        jest.spyOn(component.ogm, 'set');
 
-          // act
-          component.ogmInput.setValue(ogmInput);
+        inputElement = screen.getByTestId('ogm-input');
+      });
 
-          // check
-          expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(ogmService.init).toHaveBeenCalled();
-          expect(ogmService.generate).not.toHaveBeenCalledWith();
-          expect(ogmService.clean).toHaveBeenCalled();
-          expect(ogmService.validate).not.toHaveBeenCalled();
-        });
+      it('should emit a formatted OGM and NOT run validation when the input is not 12 characters long', async () => {
+        // prepare
+        const ogmInput: string = '12345';
+        const ogmValue: string = '+++123/45  /     +++';
+        const expectedOgmInputChange: Ogm = { ogm: ogmValue, isValid: null };
 
-        it('should emit a formatted OGM and run validation and mark the OGM as invalid', () => {
-          // prepare
-          const ogmInput: string = '123456789012';
-          const ogmValue: string = '+++123/4567/89012+++';
-          const expectedOgmInputChange: OgmInputChange = { ogm: ogmValue, isValid: false };
+        // act
+        await userEvent.type(inputElement, ogmInput);
 
-          // act
-          component.ogmInput.setValue(ogmInput);
+        // check
+        expect(ogmService.generate).not.toHaveBeenCalledWith();
+        expect(ogmService.clean).toHaveBeenCalled();
+        expect(ogmService.validate).not.toHaveBeenCalled();
+        expect(component.ogm.set).toHaveBeenLastCalledWith(expectedOgmInputChange);
+      });
 
-          // check
-          expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(ogmService.init).toHaveBeenCalled();
-          expect(ogmService.generate).not.toHaveBeenCalledWith();
-          expect(ogmService.clean).toHaveBeenCalled();
-          expect(ogmService.validate).toHaveBeenCalledWith(ogmValue);
-        });
+      it('should emit a formatted OGM and run validation and mark the OGM as invalid', async () => {
+        // prepare
+        const ogmInput: string = '123456789012';
+        const ogmValue: string = '+++123/4567/89012+++';
+        const expectedOgmInputChange: Ogm = { ogm: ogmValue, isValid: false };
 
-        it('should emit a formatted OGM and run validation and mark the OGM as valid', () => {
-          // prepare
-          const ogmInput: string = '165806877551';
-          const ogmValue: string = '+++165/8068/77551+++';
-          const expectedOgmInputChange: OgmInputChange = { ogm: ogmValue, isValid: true };
+        // act
+        await userEvent.type(inputElement, ogmInput);
 
-          // act
-          component.ogmInput.setValue(ogmInput);
+        // check
+        expect(ogmService.generate).not.toHaveBeenCalledWith();
+        expect(ogmService.clean).toHaveBeenCalled();
+        expect(ogmService.validate).toHaveBeenCalled();
+        expect(component.ogm.set).toHaveBeenLastCalledWith(expectedOgmInputChange);
+      });
 
-          // check
-          expect(component.ogmInputChange.emit).toHaveBeenCalledWith(expectedOgmInputChange);
-          expect(ogmService.init).toHaveBeenCalled();
-          expect(ogmService.generate).not.toHaveBeenCalledWith();
-          expect(ogmService.clean).toHaveBeenCalled();
-          expect(ogmService.validate).toHaveBeenCalledWith(ogmValue);
-        });
+      it('should emit a formatted OGM and run validation and mark the OGM as valid', async () => {
+        // prepare
+        const ogmInput: string = '165806877551';
+        const ogmValue: string = '+++165/8068/77551+++';
+        const expectedOgmInputChange: Ogm = { ogm: ogmValue, isValid: true };
+
+        // act
+        await userEvent.type(inputElement, ogmInput);
+
+        // check
+        expect(ogmService.generate).not.toHaveBeenCalledWith();
+        expect(ogmService.clean).toHaveBeenCalled();
+        expect(ogmService.validate).toHaveBeenCalledWith(ogmInput);
+        expect(component.ogm.set).toHaveBeenLastCalledWith(expectedOgmInputChange);
       });
     });
   });

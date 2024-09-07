@@ -1,81 +1,51 @@
-import { Component, input, OnDestroy, OnInit, output } from '@angular/core';
-import { ReactiveFormsModule, UntypedFormControl } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
-import { filter, map, takeUntil, tap } from 'rxjs/operators';
-import { OgmService } from '../../services/ogm.service';
+import { ChangeDetectionStrategy, Component, inject, input, model } from '@angular/core';
+import { OGM_EMPTY, OgmService } from '../../services/ogm.service';
 
-export interface OgmInputChange {
+export type Ogm = {
   ogm: string | null;
   isValid: boolean | null;
-}
+};
 
 @Component({
   standalone: true,
-  imports: [ReactiveFormsModule],
   selector: 'ogm-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputComponent implements OnInit, OnDestroy {
-  // #ogmService: OgmService = inject(OgmService);
-
+export class InputComponent {
   readonly validate = input<boolean>(false);
   readonly placeholderMessage = input<string>('');
 
-  readonly ogmInputChange = output<OgmInputChange>();
+  readonly ogm = model<Ogm>({ ogm: null, isValid: null });
 
-  readonly ogmInput: UntypedFormControl;
-  readonly destroy$: Subject<void>;
+  #ogmService = inject(OgmService);
 
-  ogm$!: Observable<string>;
-
-  constructor(private readonly ogmService: OgmService) {
-    this.ogmInput = new UntypedFormControl(null);
-    this.destroy$ = new Subject<void>();
-  }
-
-  ngOnInit() {
-    const ogmInitValue: string = this.ogmService.init();
+  handleInput(event: Event): void {
+    let inputValue = (event.target as HTMLInputElement).value;
     const hasSpaces: RegExp = new RegExp('[\\s]');
 
-    const omgInputChanges$ = this.ogmInput.valueChanges.pipe(
-      filter((value) => {
-        if (isNaN(Number(value)) || hasSpaces.test(value)) {
-          const cleanValue = this.ogmService.clean(value);
-          this.ogmInput.setValue(cleanValue, { emitEvent: false });
-          return false;
-        }
-
-        return true;
-      }),
-    );
-
-    if (this.validate()) {
-      this.ogm$ = omgInputChanges$.pipe(
-        map((value) => (value ? this.ogmService.format(value.toString().padEnd(12, ' ')) : ogmInitValue)),
-      );
-    } else {
-      this.ogm$ = omgInputChanges$.pipe(map((value) => (value ? this.ogmService.generate(value, true) : ogmInitValue)));
+    if (isNaN(Number(inputValue)) || hasSpaces.test(inputValue)) {
+      (event.target as HTMLInputElement).value = this.#ogmService.clean(inputValue);
+      return;
     }
 
-    this.ogm$
-      .pipe(
-        tap((ogm: string) => {
-          let isValid = null;
-
-          if (this.validate()) {
-            const ogmNumber = this.ogmService.clean(ogm);
-            isValid = ogmNumber.length === 12 ? this.ogmService.validate(ogm) : null;
-          }
-
-          this.ogmInputChange.emit({ ogm, isValid });
-        }),
-        takeUntil(this.destroy$),
-      )
-      .subscribe();
+    this.ogm.set(this.generateOgm(inputValue, this.validate()));
   }
 
-  ngOnDestroy() {
-    this.destroy$.next();
+  private generateOgm(value: string, validate: boolean): Ogm {
+    let ogm = '';
+    let isValid = null;
+
+    if (validate) {
+      ogm = value ? this.#ogmService.format(value.toString().padEnd(12, ' ')) : OGM_EMPTY;
+
+      const ogmNumber = this.#ogmService.clean(ogm);
+      isValid = ogmNumber.length === 12 ? this.#ogmService.validate(ogmNumber) : null;
+    } else {
+      ogm = value ? this.#ogmService.generate(value, true) : OGM_EMPTY;
+    }
+
+    return { ogm, isValid };
   }
 }

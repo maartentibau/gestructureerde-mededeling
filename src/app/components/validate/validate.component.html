@@ -1,7 +1,7 @@
 <ogm-number [ogm]="ogm()" [isValid]="isValid()"></ogm-number>
 
 <ogm-input
-  (ogmInputChange)="ogmInputChangeHandler($event)"
+  (ogmChange)="handleOgmChange($event)"
   [validate]="true"
   placeholderMessage="vul de 12 cijfers in van uw gestructureerde mededeling"
 ></ogm-input>
