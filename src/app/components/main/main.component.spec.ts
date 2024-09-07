@@ -1,9 +1,10 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { provideRouter, RouterLink } from '@angular/router';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { render } from '@testing-library/angular';
 import { ScreenService } from '../../core/services/screen.service';
 
 import { MainComponent } from './main.component';
@@ -23,28 +24,7 @@ describe('MainComponent', () => {
   let fixture: ComponentFixture<MainComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [MainComponent],
-      providers: [
-        {
-          provide: ScreenService,
-          useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) },
-        },
-        { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
-        provideRouter([]),
-      ],
-    })
-      .overrideComponent(MainComponent, {
-        set: {
-          imports: [AsyncPipe, RouterLink, MockFaIconComponent, MatButtonModule],
-        },
-      })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(MainComponent);
-    component = fixture.componentInstance;
+    ({ component, fixture } = await setup());
   });
 
   describe('create & render', () => {
@@ -61,3 +41,19 @@ describe('MainComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(MainComponent, {
+    componentImports: [AsyncPipe, RouterLink, MockFaIconComponent, MatButtonModule],
+    providers: [
+      { provide: ScreenService, useValue: { observerBreakpoints: () => ({ pipe: jest.fn() }) } },
+      { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+      provideRouter([]),
+    ],
+  });
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+  };
+};

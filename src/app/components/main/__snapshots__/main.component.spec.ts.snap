@@ -8,7 +8,7 @@ exports[`MainComponent create & render should render 1`] = `
     class="shortcuts large"
   >
     <a
-      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary mat-mdc-button-base"
+      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-primary _mat-animation-noopable mat-mdc-button-base"
       color="primary"
       disableripple=""
       href="/create"
@@ -38,7 +38,7 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
     <a
-      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-unthemed mat-mdc-button-base"
+      class="mdc-button mdc-button--raised mat-mdc-raised-button _mat-animation-noopable mat-unthemed mat-mdc-button-base"
       disableripple=""
       href="/generate"
       mat-raised-button=""
@@ -67,7 +67,7 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
     <a
-      class="mdc-button mdc-button--raised mat-mdc-raised-button mat-unthemed mat-mdc-button-base"
+      class="mdc-button mdc-button--raised mat-mdc-raised-button _mat-animation-noopable mat-unthemed mat-mdc-button-base"
       disableripple=""
       href="/validate"
       mat-raised-button=""

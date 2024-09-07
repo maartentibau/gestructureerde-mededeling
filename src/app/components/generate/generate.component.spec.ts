@@ -1,8 +1,9 @@
-import { JsonPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
+import { render } from '@testing-library/angular';
 import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmData } from '../../core/ogm.model';
 import { OgmService } from '../../core/services/ogm.service';
@@ -52,22 +53,10 @@ describe('GenerateComponent', () => {
   const numberFormat: string = '+++123/4567/89012+++';
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [GenerateComponent],
-      providers: [{ provide: MatSnackBar, useValue: { open: jest.fn() } }],
-    })
-      .overrideComponent(GenerateComponent, { set: { imports: [MockNumberComponent, MockControlsComponent] } })
-      .compileComponents();
+    ({ component, fixture, snackBar, ogmService, titleService } = await setup());
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GenerateComponent);
-    component = fixture.componentInstance;
-
-    snackBar = TestBed.inject(MatSnackBar);
-    ogmService = TestBed.inject(OgmService);
-    titleService = TestBed.inject(Title);
-
     jest.spyOn(ogmService, 'generate').mockReturnValueOnce(number);
     jest.spyOn(ogmService, 'format').mockReturnValueOnce(numberFormat);
     jest.spyOn(snackBar, 'open');
@@ -199,3 +188,22 @@ describe('GenerateComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(GenerateComponent, {
+    componentImports: [MockNumberComponent, MockControlsComponent, AsyncPipe],
+    providers: [{ provide: MatSnackBar, useValue: { open: jest.fn() } }],
+  });
+
+  const snackBar = TestBed.inject(MatSnackBar);
+  const ogmService = TestBed.inject(OgmService);
+  const titleService = TestBed.inject(Title);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    snackBar,
+    ogmService,
+    titleService,
+  };
+};

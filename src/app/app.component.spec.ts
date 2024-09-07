@@ -2,8 +2,10 @@ import { JsonPipe, NgStyle } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
+import { Title } from '@angular/platform-browser';
 import { provideRouter, RouterLink, RouterOutlet } from '@angular/router';
 import { FaConfig, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { render } from '@testing-library/angular';
 import { AppComponent } from './app.component';
 
 @Component({
@@ -28,25 +30,7 @@ describe('AppComponent', () => {
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AppComponent],
-      providers: [
-        { provide: FaConfig, useValue: { fixedWidth: null } },
-        { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
-        provideRouter([]),
-      ],
-    })
-      .overrideComponent(AppComponent, {
-        set: {
-          imports: [MockNavigationComponent, RouterLink, MatCardModule, MockFaIconComponent, NgStyle, RouterOutlet],
-        },
-      })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AppComponent);
-    component = fixture.componentInstance;
+    ({ component, fixture } = await setup());
   });
 
   it('should create the app', () => {
@@ -63,3 +47,22 @@ describe('AppComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(AppComponent, {
+    componentImports: [MockNavigationComponent, RouterLink, MatCardModule, MockFaIconComponent, NgStyle, RouterOutlet],
+    providers: [
+      { provide: FaConfig, useValue: { fixedWidth: null } },
+      { provide: FaIconLibrary, useValue: { addIcons: jest.fn() } },
+      provideRouter([]),
+    ],
+  });
+
+  const titleService = TestBed.inject(Title);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    titleService,
+  };
+};

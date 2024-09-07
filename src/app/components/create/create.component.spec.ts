@@ -3,6 +3,7 @@ import { Component, input } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
+import { render } from '@testing-library/angular';
 import { OgmInputChange } from '../../core/components/input/input.component';
 import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmData } from '../../core/ogm.model';
@@ -62,23 +63,7 @@ describe('CreateComponent', () => {
   let titleService: Title;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CreateComponent],
-      providers: [{ provide: MatSnackBar, useValue: { open: jest.fn() } }],
-    })
-      .overrideComponent(CreateComponent, {
-        set: {
-          imports: [MockNumberComponent, MockInputComponent, MockControlsComponent, AsyncPipe],
-        },
-      })
-      .compileComponents();
-  });
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(CreateComponent);
-    component = fixture.componentInstance;
-
-    titleService = TestBed.inject(Title);
+    ({ fixture, component, titleService } = await setup());
   });
 
   it('should create', () => {
@@ -170,3 +155,18 @@ describe('CreateComponent', () => {
     });
   });
 });
+
+const setup = async () => {
+  const renderResult = await render(CreateComponent, {
+    componentImports: [MockNumberComponent, MockInputComponent, MockControlsComponent, AsyncPipe],
+    providers: [{ provide: MatSnackBar, useValue: { open: jest.fn() } }],
+  });
+
+  const titleService = TestBed.inject(Title);
+
+  return {
+    ...renderResult,
+    component: renderResult.fixture.componentInstance,
+    titleService,
+  };
+};
