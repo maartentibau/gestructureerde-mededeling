@@ -57,7 +57,7 @@ exports[`AppComponent rendering component should match snapshot 1`] = `
         </fa-icon>
          by 
         <a
-          href="https://twitter.com/maartentibau"
+          href="https://x.com/maartentibau"
           rel="noopener noreferrer"
           target="_blank"
         >
