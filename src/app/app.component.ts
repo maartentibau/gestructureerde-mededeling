@@ -8,11 +8,10 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
 
 @Component({
-  standalone: true,
-  imports: [NavigationComponent, MatCardModule, FontAwesomeModule, NgStyle, RouterOutlet],
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    imports: [NavigationComponent, MatCardModule, FontAwesomeModule, NgStyle, RouterOutlet],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   #faConfig: FaConfig = inject(FaConfig);

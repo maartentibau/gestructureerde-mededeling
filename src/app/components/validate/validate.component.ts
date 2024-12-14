@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -8,8 +7,7 @@ import { DEFAULT_TITLE } from '../../core/core.constants';
 import { OgmService } from '../../core/services/ogm.service';
 
 @Component({
-  standalone: true,
-  imports: [NumberComponent, InputComponent, AsyncPipe, FormsModule],
+  imports: [NumberComponent, InputComponent, FormsModule],
   selector: 'ogm-validate',
   templateUrl: './validate.component.html',
   styleUrls: ['./validate.component.scss'],

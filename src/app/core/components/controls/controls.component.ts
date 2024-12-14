@@ -11,12 +11,11 @@ import { OgmData } from '../../ogm.model';
 import { ScreenService } from '../../services/screen.service';
 
 @Component({
-  standalone: true,
-  imports: [AsyncPipe, MatButtonModule, FontAwesomeModule],
-  selector: 'ogm-controls',
-  templateUrl: './controls.component.html',
-  styleUrls: ['./controls.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [AsyncPipe, MatButtonModule, FontAwesomeModule],
+    selector: 'ogm-controls',
+    templateUrl: './controls.component.html',
+    styleUrls: ['./controls.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControlsComponent implements OnDestroy {
   #screenService: ScreenService = inject(ScreenService);
