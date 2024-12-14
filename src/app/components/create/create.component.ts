@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -11,8 +10,7 @@ import { OgmData } from '../../core/ogm.model';
 import { OgmService } from '../../core/services/ogm.service';
 
 @Component({
-  standalone: true,
-  imports: [NumberComponent, InputComponent, ControlsComponent, AsyncPipe, MatSnackBarModule, FormsModule],
+  imports: [NumberComponent, InputComponent, ControlsComponent, MatSnackBarModule, FormsModule],
   selector: 'ogm-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],

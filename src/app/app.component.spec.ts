@@ -16,10 +16,9 @@ import { AppComponent } from './app.component';
 class MockNavigationComponent {}
 
 @Component({
-  standalone: true,
-  imports: [JsonPipe],
-  selector: 'fa-icon',
-  template: ` <div>{{ icon | json }}</div> `,
+    imports: [JsonPipe],
+    selector: 'fa-icon',
+    template: ` <div>{{ icon | json }}</div> `
 })
 class MockFaIconComponent {
   icon = input<string | string[] | undefined>();

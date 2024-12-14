@@ -8,12 +8,11 @@ import { OgmData } from '../../core/ogm.model';
 import { OgmService } from '../../core/services/ogm.service';
 
 @Component({
-  standalone: true,
-  imports: [NumberComponent, ControlsComponent, MatSnackBarModule],
-  selector: 'ogm-generate',
-  templateUrl: './generate.component.html',
-  styleUrls: ['./generate.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [NumberComponent, ControlsComponent, MatSnackBarModule],
+    selector: 'ogm-generate',
+    templateUrl: './generate.component.html',
+    styleUrls: ['./generate.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class GenerateComponent implements OnInit {
   #ogmService: OgmService = inject(OgmService);

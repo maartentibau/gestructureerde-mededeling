@@ -12,13 +12,12 @@ import { OGM_EMPTY } from '../../core/services/ogm.service';
 import { CreateComponent } from './create.component';
 
 @Component({
-  standalone: true,
-  imports: [JsonPipe],
-  selector: 'ogm-number',
-  template: `
+    imports: [JsonPipe],
+    selector: 'ogm-number',
+    template: `
     <div>{{ ogm | json }}</div>
     <div>{{ isValid | json }}</div>
-  `,
+  `
 })
 class MockNumberComponent {
   ogm = input<string | null>(null);
@@ -26,13 +25,12 @@ class MockNumberComponent {
 }
 
 @Component({
-  standalone: true,
-  imports: [JsonPipe],
-  selector: 'ogm-input',
-  template: `
+    imports: [JsonPipe],
+    selector: 'ogm-input',
+    template: `
     <div>{{ validate | json }}</div>
     <div>{{ placeholderMessage | json }}</div>
-  `,
+  `
 })
 class MockInputComponent {
   validate = input<boolean>(false);
@@ -40,15 +38,14 @@ class MockInputComponent {
 }
 
 @Component({
-  standalone: true,
-  imports: [JsonPipe],
-  selector: 'ogm-controls',
-  template: `
+    imports: [JsonPipe],
+    selector: 'ogm-controls',
+    template: `
     <div>{{ refresh | json }}</div>
     <div>{{ copyNumber | json }}</div>
     <div>{{ copyOgm | json }}</div>
     <div>{{ ogm | json }}</div>
-  `,
+  `
 })
 class MockControlsComponent {
   refresh = input<boolean>(false);

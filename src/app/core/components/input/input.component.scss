@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/screen-media-queries';
+@use '../../../../assets/styles/screen-media-queries' as v;
 
 .ogm-form {
   text-align: center;
@@ -29,19 +29,19 @@ input {
     color: #e1e1e1;
   }
 
-  @media #{$mat-lt-lg} {
+  @media #{v.$mat-lt-lg} {
     font-size: 180%;
   }
 
-  @media #{$mat-lt-md} {
+  @media #{v.$mat-lt-md} {
     font-size: 120%;
   }
 
-  @media #{$mat-lt-sm} {
+  @media #{v.$mat-lt-sm} {
     font-size: 100%;
   }
 
-  @media #{$mat-lt-xs} {
+  @media #{v.$mat-lt-xs} {
     font-size: 90%;
   }
 }

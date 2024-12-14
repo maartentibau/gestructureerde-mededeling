@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/screen-media-queries';
+@use '../../../../assets/styles/screen-media-queries' as v;
 
 .controls {
   margin: 2rem 0.5rem;
@@ -35,7 +35,7 @@
 
       font-size: 1.5rem;
 
-      @media #{$mat-md} {
+      @media #{v.$mat-md} {
         max-width: 250px;
         height: 50px;
         font-size: 18px;
@@ -46,7 +46,7 @@
         }
       }
 
-      @media #{$mat-lt-md} {
+      @media #{v.$mat-lt-md} {
         margin: 0 0.5rem;
         height: 40px;
         font-size: 1rem;

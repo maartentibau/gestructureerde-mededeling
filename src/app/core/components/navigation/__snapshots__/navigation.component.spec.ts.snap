@@ -31,7 +31,7 @@ exports[`NavigationComponent should create 1`] = `
           >
           </span>
           <span
-            class="mat-mdc-focus-indicator"
+            class="mat-focus-indicator"
           />
           <span
             class="mat-mdc-button-touch-target"

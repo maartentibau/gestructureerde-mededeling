@@ -12,11 +12,10 @@ import { DEFAULT_TITLE } from '../../core/core.constants';
 import { ScreenService } from '../../core/services/screen.service';
 
 @Component({
-  standalone: true,
-  imports: [AsyncPipe, MatButtonModule, FontAwesomeModule, RouterLink],
-  selector: 'ogm-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss'],
+    imports: [AsyncPipe, MatButtonModule, FontAwesomeModule, RouterLink],
+    selector: 'ogm-main',
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
   #screenService: ScreenService = inject(ScreenService);

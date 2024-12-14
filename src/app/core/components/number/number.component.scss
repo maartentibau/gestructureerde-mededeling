@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/screen-media-queries';
+@use '../../../../assets/styles/screen-media-queries' as v;
 
 .ogm {
   padding: 24px 24px;
@@ -11,11 +11,11 @@
   border-radius: 3px;
   justify-content: center;
 
-  @media #{$mat-lt-xl} {
+  @media #{v.$mat-lt-xl} {
     padding: 16px 24px;
   }
 
-  @media #{$mat-lt-md} {
+  @media #{v.$mat-lt-md} {
     padding: 8px 24px;
   }
 
@@ -50,7 +50,7 @@
     width: 50px;
     line-height: 50px;
 
-    @media #{$mat-lt-xl} {
+    @media #{v.$mat-lt-xl} {
       width: 30px;
       height: 30px;
       line-height: 30px;
@@ -59,14 +59,14 @@
       border-radius: 4px;
     }
 
-    @media #{$mat-lt-lg} {
+    @media #{v.$mat-lt-lg} {
       width: 25px;
       height: 25px;
       line-height: 25px;
       font-size: 1.2rem;
     }
 
-    @media #{$mat-lt-md} {
+    @media #{v.$mat-lt-md} {
       width: 20px;
       height: 20px;
       line-height: 20px;
@@ -75,7 +75,7 @@
       border-width: 1px;
     }
 
-    @media #{$mat-lt-sm} {
+    @media #{v.$mat-lt-sm} {
       width: 18px;
       height: 18px;
       line-height: 18px;
@@ -83,7 +83,7 @@
       font-size: 0.9rem;
     }
 
-    @media #{$mat-lt-xs} {
+    @media #{v.$mat-lt-xs} {
       width: 13px;
       height: 13px;
       line-height: 13px;

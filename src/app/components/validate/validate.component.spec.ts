@@ -10,13 +10,12 @@ import { DEFAULT_TITLE } from '../../core/core.constants';
 import { ValidateComponent } from './validate.component';
 
 @Component({
-  standalone: true,
-  imports: [JsonPipe],
-  selector: 'ogm-number',
-  template: `
+    imports: [JsonPipe],
+    selector: 'ogm-number',
+    template: `
     <div>{{ ogm | json }}</div>
     <div>{{ isValid | json }}</div>
-  `,
+  `
 })
 class MockNumberComponent {
   ogm = input<string | null>(null);
@@ -24,13 +23,12 @@ class MockNumberComponent {
 }
 
 @Component({
-  standalone: true,
-  imports: [JsonPipe],
-  selector: 'ogm-input',
-  template: `
+    imports: [JsonPipe],
+    selector: 'ogm-input',
+    template: `
     <div>{{ validate | json }}</div>
     <div>{{ placeholderMessage | json }}</div>
-  `,
+  `
 })
 class MockInputComponent {
   validate = input<boolean>(false);
