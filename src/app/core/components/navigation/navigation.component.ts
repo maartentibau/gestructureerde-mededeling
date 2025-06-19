@@ -22,19 +22,19 @@ export const APP_NAVIGATION: NavigationEntity[] = [
 ];
 
 @Component({
-    imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        AsyncPipe,
-        FontAwesomeModule,
-        MatButtonModule,
-        RouterLink,
-        RouterLinkActive,
-    ],
-    selector: 'ogm-navigation',
-    templateUrl: './navigation.component.html',
-    styleUrls: ['./navigation.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    AsyncPipe,
+    FontAwesomeModule,
+    MatButtonModule,
+    RouterLink,
+    RouterLinkActive,
+  ],
+  selector: 'ogm-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavigationComponent {
   readonly navigation$: Observable<MainNavigation>;
@@ -71,7 +71,7 @@ export class NavigationComponent {
       .observerBreakpoints()
       .pipe(
         map((breakpoints: { [key: string]: boolean }) =>
-          breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling',
+          breakpoints[Breakpoints.XSmall] ? 'OGM' : 'Gestructureerde Mededeling - OGM',
         ),
       );
 
