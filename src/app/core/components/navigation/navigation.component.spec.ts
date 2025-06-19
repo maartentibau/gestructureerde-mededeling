@@ -13,9 +13,9 @@ import { APP_NAVIGATION, NavigationComponent } from './navigation.component';
 import { NavigationEntity, NavigationLabel } from './navigation.model';
 
 @Component({
-    imports: [JsonPipe],
-    selector: 'fa-icon',
-    template: ` <div>{{ icon | json }}</div> `
+  imports: [JsonPipe],
+  selector: 'fa-icon',
+  template: ` <div>{{ icon | json }}</div> `,
 })
 class MockFaIconComponent {
   icon = input<string | string[] | undefined>();
@@ -105,28 +105,27 @@ describe('NavigationComponent', () => {
   });
 
   describe('appTitle$', () => {
-    [
-      { breakpoint: Breakpoints.XSmall, title: 'OGM' },
-      { breakpoint: Breakpoints.Small, title: 'Gestructureerde Mededeling' },
-      { breakpoint: Breakpoints.Medium, title: 'Gestructureerde Mededeling' },
-      { breakpoint: Breakpoints.Large, title: 'Gestructureerde Mededeling' },
-      { breakpoint: Breakpoints.XLarge, title: 'Gestructureerde Mededeling' },
-    ].forEach(({ breakpoint, title }) => {
-      it(`should be ${title} when ${breakpoint}`, () => {
-        testScheduler.run(({ cold, expectObservable }) => {
-          // prepare
-          const breakPoints$ = cold('a', { a: { [breakpoint]: true } });
-          jest.spyOn(screenService, 'observerBreakpoints').mockReturnValue(breakPoints$);
+    it.each`
+      breakpoint            | title
+      ${Breakpoints.XSmall} | ${'OGM'}
+      ${Breakpoints.Small}  | ${'Gestructureerde Mededeling - OGM'}
+      ${Breakpoints.Medium} | ${'Gestructureerde Mededeling - OGM'}
+      ${Breakpoints.Large}  | ${'Gestructureerde Mededeling - OGM'}
+      ${Breakpoints.XLarge} | ${'Gestructureerde Mededeling - OGM'}
+    `(`should have $title with given $breakpoint`, ({ breakpoint, title }) => {
+      testScheduler.run(({ cold, expectObservable }) => {
+        // prepare
+        const breakPoints$ = cold('a', { a: { [breakpoint]: true } });
+        jest.spyOn(screenService, 'observerBreakpoints').mockReturnValue(breakPoints$);
 
-          // Because the component uses the screenService.observerBreakpoints stream in it's constructor
-          // we're ensuring the mocks are set up before creating the component.
-          // act
-          fixture = TestBed.createComponent(NavigationComponent);
-          component = fixture.componentInstance;
+        // Because the component uses the screenService.observerBreakpoints stream in it's constructor
+        // we're ensuring the mocks are set up before creating the component.
+        // act
+        fixture = TestBed.createComponent(NavigationComponent);
+        component = fixture.componentInstance;
 
-          // check
-          expectObservable(component.appTitle$).toBe('a', { a: title });
-        });
+        // check
+        expectObservable(component.appTitle$).toBe('a', { a: title });
       });
     });
   });
