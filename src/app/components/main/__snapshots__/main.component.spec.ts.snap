@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`MainComponent create & render should render 1`] = `
 <ogm-main
@@ -8,7 +8,7 @@ exports[`MainComponent create & render should render 1`] = `
     class="shortcuts large"
   >
     <a
-      class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-primary _mat-animation-noopable"
+      class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-primary"
       color="primary"
       disableripple=""
       href="/create"
@@ -38,7 +38,7 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
     <a
-      class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-unthemed _mat-animation-noopable"
+      class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-unthemed"
       disableripple=""
       href="/generate"
       mat-raised-button=""
@@ -67,7 +67,7 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
     <a
-      class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-unthemed _mat-animation-noopable"
+      class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-unthemed"
       disableripple=""
       href="/validate"
       mat-raised-button=""

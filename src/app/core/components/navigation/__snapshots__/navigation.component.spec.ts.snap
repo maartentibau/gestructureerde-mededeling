@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`NavigationComponent should create 1`] = `
 <ogm-navigation
@@ -16,7 +16,7 @@ exports[`NavigationComponent should create 1`] = `
     >
       <h1>
         <a
-          class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed _mat-animation-noopable"
+          class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed"
           href="/"
           mat-button=""
           mat-ripple-loader-class-name="mat-mdc-button-ripple"
