@@ -1,7 +1,9 @@
 <mat-toolbar>
   <mat-toolbar-row>
     <h1>
-      <a mat-button routerLink="/">{{ appTitle$ | async }}</a>
+      <a mat-button routerLink="/" title="Gestructureerde Mededeling" aria-label="Ga terug naar de homepage">{{
+        appTitle$ | async
+      }}</a>
     </h1>
     <span class="flex-spacer"></span>
     <nav>
@@ -12,6 +14,7 @@
             mat-icon-button
             routerLinkActive="mat-mdc-raised-button"
             [routerLink]="item.path"
+            [title]="item.title"
             ><fa-icon [icon]="item.icon"></fa-icon
           ></a>
         }
