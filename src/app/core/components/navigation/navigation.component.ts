@@ -12,12 +12,23 @@ import { ScreenService } from '../../services/screen.service';
 import { MainNavigation, NavigationEntity, NavigationLabel } from './navigation.model';
 
 export const APP_NAVIGATION: NavigationEntity[] = [
-  { path: ['/create'], label: { long: 'Zelf mededeling maken', short: 'Zelf maken' }, icon: ['fas', 'star'] },
-  { path: ['/generate'], label: { long: 'Genereer mededeling', short: 'Genereren' }, icon: ['fas', 'cog'] },
+  {
+    path: ['/create'],
+    label: { long: 'Zelf mededeling maken', short: 'Zelf maken' },
+    icon: ['fas', 'star'],
+    title: 'Maak uw eigen gestructureerde mededeling',
+  },
+  {
+    path: ['/generate'],
+    label: { long: 'Genereer mededeling', short: 'Genereren' },
+    icon: ['fas', 'cog'],
+    title: 'Genereer een willekeurige gestructureerde mededeling',
+  },
   {
     path: ['/validate'],
     label: { long: 'Controleer mededeling', short: 'Controleren' },
     icon: ['fas', 'check-circle'],
+    title: 'Controleer een willekeurige',
   },
 ];
 
