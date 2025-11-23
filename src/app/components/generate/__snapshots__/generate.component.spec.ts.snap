@@ -1,23 +1,36 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`GenerateComponent rendering component should match snapshot 1`] = `
-<ogm-generate
-  ogm={[Function Function]}
+exports[`GenerateComponent > rendering component > should match snapshot 1`] = `
+<div
+  _nghost-a-c2473807577=""
+  id="root1"
+  ng-version="21.0.0"
 >
-  <ogm-number>
+  <ogm-number
+    _ngcontent-a-c2473807577=""
+  >
     <div>
+      
     </div>
     <div>
+      
     </div>
-  </ogm-number><ogm-controls>
+  </ogm-number>
+  <ogm-controls
+    _ngcontent-a-c2473807577=""
+  >
     <div>
+      
     </div>
     <div>
+      
     </div>
     <div>
+      
     </div>
     <div>
+      
     </div>
   </ogm-controls>
-</ogm-generate>
+</div>
 `;

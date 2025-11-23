@@ -1,15 +1,17 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`InputComponent rendering component should match snapshot with no @Input properties defined 1`] = `
-<ogm-input
-  ogm={[Function Function]}
-  placeholderMessage={[Function Function]}
-  validate={[Function Function]}
+exports[`InputComponent > rendering component > should match snapshot with no @Input properties defined 1`] = `
+<div
+  _nghost-a-c2063722020=""
+  id="root1"
+  ng-version="21.0.0"
 >
   <div
+    _ngcontent-a-c2063722020=""
     class="ogm-form"
   >
     <input
+      _ngcontent-a-c2063722020=""
       autocomplete="off"
       data-tes=""
       data-testid="ogm-input"
@@ -18,19 +20,21 @@ exports[`InputComponent rendering component should match snapshot with no @Input
       type="text"
     />
   </div>
-</ogm-input>
+</div>
 `;
 
-exports[`InputComponent rendering component should match snapshot with validate set to false 1`] = `
-<ogm-input
-  ogm={[Function Function]}
-  placeholderMessage={[Function Function]}
-  validate={[Function Function]}
+exports[`InputComponent > rendering component > should match snapshot with validate set to false 1`] = `
+<div
+  _nghost-a-c2063722020=""
+  id="root2"
+  ng-version="21.0.0"
 >
   <div
+    _ngcontent-a-c2063722020=""
     class="ogm-form"
   >
     <input
+      _ngcontent-a-c2063722020=""
       autocomplete="off"
       data-tes=""
       data-testid="ogm-input"
@@ -39,19 +43,21 @@ exports[`InputComponent rendering component should match snapshot with validate 
       type="text"
     />
   </div>
-</ogm-input>
+</div>
 `;
 
-exports[`InputComponent rendering component should match snapshot with validate set to true 1`] = `
-<ogm-input
-  ogm={[Function Function]}
-  placeholderMessage={[Function Function]}
-  validate={[Function Function]}
+exports[`InputComponent > rendering component > should match snapshot with validate set to true 1`] = `
+<div
+  _nghost-a-c2063722020=""
+  id="root3"
+  ng-version="21.0.0"
 >
   <div
+    _ngcontent-a-c2063722020=""
     class="ogm-form"
   >
     <input
+      _ngcontent-a-c2063722020=""
       autocomplete="off"
       data-tes=""
       data-testid="ogm-input"
@@ -60,5 +66,5 @@ exports[`InputComponent rendering component should match snapshot with validate 
       type="text"
     />
   </div>
-</ogm-input>
+</div>
 `;

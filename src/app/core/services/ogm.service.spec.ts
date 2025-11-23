@@ -14,8 +14,8 @@ describe('OgmService', () => {
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
-    jest.restoreAllMocks();
+    vi.resetAllMocks();
+    vi.restoreAllMocks();
   });
 
   it('should be created', () => {
@@ -38,7 +38,7 @@ describe('OgmService', () => {
   describe('generate', () => {
     describe('random OGM', () => {
       beforeEach(() => {
-        jest.spyOn(service, 'generateRandomOgm').mockReturnValueOnce('0000000097');
+        vi.spyOn(service, 'generateRandomOgm').mockReturnValueOnce('0000000097');
       });
 
       it('should generate a full formatted valid random OGM', () => {
@@ -68,7 +68,7 @@ describe('OgmService', () => {
 
     describe('OGM with a starting input', () => {
       beforeEach(() => {
-        jest.spyOn(service, 'generateRandomOgm');
+        vi.spyOn(service, 'generateRandomOgm');
       });
 
       it('should generate a full formatted valid random OGM', () => {
@@ -146,7 +146,7 @@ describe('OgmService', () => {
   describe('generateRandomOgm', () => {
     it('should generate a random OGM number', () => {
       // prepare
-      jest.spyOn(service, 'generateRandomNumber').mockReturnValue(1);
+      vi.spyOn(service, 'generateRandomNumber').mockReturnValue(1);
       const expectedResult = '1111111111';
 
       // act
@@ -160,7 +160,7 @@ describe('OgmService', () => {
   describe('generateRandomNumber', () => {
     it('should generate a random OGM number', () => {
       // prepare
-      jest.spyOn(Math, 'random').mockReturnValueOnce(1);
+      vi.spyOn(Math, 'random').mockReturnValueOnce(1);
       const expectedResult = 10;
 
       // act

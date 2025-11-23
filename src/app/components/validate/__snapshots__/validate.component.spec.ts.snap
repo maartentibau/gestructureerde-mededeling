@@ -1,22 +1,27 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ValidateComponent rendering component should match snapshot 1`] = `
-<ogm-validate
-  isValid={[Function Function]}
-  ogm={[Function Function]}
+exports[`ValidateComponent > rendering component > should match snapshot 1`] = `
+<div
+  id="root3"
+  ng-version="21.0.0"
 >
   <ogm-number>
     <div>
+      
     </div>
     <div>
+      
     </div>
-  </ogm-number><ogm-input
+  </ogm-number>
+  <ogm-input
     placeholdermessage="vul de 12 cijfers in van uw gestructureerde mededeling"
   >
     <div>
+      
     </div>
     <div>
+      
     </div>
   </ogm-input>
-</ogm-validate>
+</div>
 `;

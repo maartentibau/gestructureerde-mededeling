@@ -1,157 +1,246 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NumberComponent rendering component should match snapshot with isValid set to false 1`] = `
-<ogm-number
-  isValid={[Function Function]}
-  ogm={[Function Function]}
+exports[`NumberComponent > rendering component > should match snapshot with isValid set to false 1`] = `
+<div
+  _nghost-a-c413410852=""
+  id="root2"
+  ng-version="21.0.0"
 >
   <div
+    _ngcontent-a-c413410852=""
     class="ogm invalid"
   >
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       1
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       2
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       3
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       /
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       4
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       5
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       6
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       7
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       /
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       8
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       9
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       0
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       1
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       2
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
+    <!--container-->
   </div>
-</ogm-number>
+</div>
 `;
 
-exports[`NumberComponent rendering component should match snapshot with isValid set to true 1`] = `
-<ogm-number
-  isValid={[Function Function]}
-  ogm={[Function Function]}
+exports[`NumberComponent > rendering component > should match snapshot with isValid set to true 1`] = `
+<div
+  _nghost-a-c413410852=""
+  id="root3"
+  ng-version="21.0.0"
 >
   <div
+    _ngcontent-a-c413410852=""
     class="ogm valid"
   >
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       1
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       2
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       3
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       /
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       4
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       5
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       6
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       7
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       /
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       8
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       9
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       0
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       1
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       2
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
-    <span>
+    <span
+      _ngcontent-a-c413410852=""
+    >
       +
     </span>
+    <!--container-->
   </div>
-</ogm-number>
+</div>
 `;
 
-exports[`NumberComponent rendering component should match snapshot with no @Input properties defined 1`] = `
-<ogm-number
-  isValid={[Function Function]}
-  ogm={[Function Function]}
+exports[`NumberComponent > rendering component > should match snapshot with no @Input properties defined 1`] = `
+<div
+  _nghost-a-c413410852=""
+  id="root1"
+  ng-version="21.0.0"
 >
   <div
+    _ngcontent-a-c413410852=""
     class="ogm"
   >
+    <!--container-->
   </div>
-</ogm-number>
+</div>
 `;

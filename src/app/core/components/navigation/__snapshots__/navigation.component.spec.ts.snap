@@ -1,21 +1,24 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`NavigationComponent should create 1`] = `
-<ogm-navigation
-  appTitle$="undefined"
-  faIconLibrary={[Function Object]}
-  isSmallScreen$="undefined"
-  navigation$="undefined"
-  screenService={[Function Object]}
+exports[`NavigationComponent > should create 1`] = `
+<div
+  _nghost-a-c3567941360=""
+  id="root0"
+  ng-version="21.0.0"
 >
   <mat-toolbar
+    _ngcontent-a-c3567941360=""
     class="mat-toolbar mat-toolbar-multiple-rows"
   >
     <mat-toolbar-row
+      _ngcontent-a-c3567941360=""
       class="mat-toolbar-row"
     >
-      <h1>
+      <h1
+        _ngcontent-a-c3567941360=""
+      >
         <a
+          _ngcontent-a-c3567941360=""
           aria-label="Ga terug naar de homepage"
           class="mdc-button mat-mdc-button-base mat-mdc-button mat-unthemed"
           href="/"
@@ -31,6 +34,7 @@ exports[`NavigationComponent should create 1`] = `
           <span
             class="mdc-button__label"
           >
+            
           </span>
           <span
             class="mat-focus-indicator"
@@ -41,11 +45,17 @@ exports[`NavigationComponent should create 1`] = `
         </a>
       </h1>
       <span
+        _ngcontent-a-c3567941360=""
         class="flex-spacer"
       />
-      <nav>
+      <nav
+        _ngcontent-a-c3567941360=""
+      >
+        <!--container-->
+        <!--container-->
+        <!--container-->
       </nav>
     </mat-toolbar-row>
   </mat-toolbar>
-</ogm-navigation>
+</div>
 `;
