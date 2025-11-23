@@ -1,13 +1,18 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MainComponent create & render should render 1`] = `
-<ogm-main
-  isSmallScreen$="undefined"
+exports[`MainComponent > create & render > should render 1`] = `
+<div
+  _nghost-a-c3272310389=""
+  id="root1"
+  ng-version="21.0.0"
 >
+  <!--container-->
   <div
+    _ngcontent-a-c3272310389=""
     class="shortcuts large"
   >
     <a
+      _ngcontent-a-c3272310389=""
       class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-primary"
       color="primary"
       disableripple=""
@@ -24,8 +29,11 @@ exports[`MainComponent create & render should render 1`] = `
       <span
         class="mdc-button__label"
       >
-        <fa-icon>
+        <fa-icon
+          _ngcontent-a-c3272310389=""
+        >
           <div>
+            
           </div>
         </fa-icon>
         Zelf Mededeling Maken
@@ -38,6 +46,7 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
     <a
+      _ngcontent-a-c3272310389=""
       class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-unthemed"
       disableripple=""
       href="/generate"
@@ -53,8 +62,11 @@ exports[`MainComponent create & render should render 1`] = `
       <span
         class="mdc-button__label"
       >
-        <fa-icon>
+        <fa-icon
+          _ngcontent-a-c3272310389=""
+        >
           <div>
+            
           </div>
         </fa-icon>
         Genereer Mededeling
@@ -67,6 +79,7 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
     <a
+      _ngcontent-a-c3272310389=""
       class="mdc-button mat-mdc-button-base mdc-button--raised mat-mdc-raised-button mat-unthemed"
       disableripple=""
       href="/validate"
@@ -82,8 +95,11 @@ exports[`MainComponent create & render should render 1`] = `
       <span
         class="mdc-button__label"
       >
-        <fa-icon>
+        <fa-icon
+          _ngcontent-a-c3272310389=""
+        >
           <div>
+            
           </div>
         </fa-icon>
         Controleer Mededeling
@@ -96,5 +112,6 @@ exports[`MainComponent create & render should render 1`] = `
       />
     </a>
   </div>
-</ogm-main>
+  <!--container-->
+</div>
 `;

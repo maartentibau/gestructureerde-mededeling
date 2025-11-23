@@ -1,20 +1,20 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`ControlsComponent rendering component should match snapshot 1`] = `
-<ogm-controls
-  clipboard={[Function Clipboard]}
-  copyNumber={[Function Function]}
-  copyNumberClick={[Function OutputEmitterRef]}
-  copyOgm={[Function Function]}
-  copyOgmClick={[Function OutputEmitterRef]}
-  isSmallScreen$="undefined"
-  ogm={[Function Function]}
-  refresh={[Function Function]}
-  refreshClick={[Function OutputEmitterRef]}
+exports[`ControlsComponent > rendering component > should match snapshot 1`] = `
+<div
+  _nghost-a-c1452038620=""
+  id="root1"
+  ng-version="21.0.0"
 >
+  <!--container-->
   <div
+    _ngcontent-a-c1452038620=""
     class="controls large"
   >
+    <!--container-->
+    <!--container-->
+    <!--container-->
   </div>
-</ogm-controls>
+  <!--container-->
+</div>
 `;
