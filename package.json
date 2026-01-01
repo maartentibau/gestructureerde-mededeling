@@ -42,7 +42,7 @@
   },
   "devDependencies": {
     "@angular/build": "21.0.1",
-    "@angular/cli": "21.0.1",
+    "@angular/cli": "21.0.4",
     "@angular/compiler-cli": "21.0.2",
     "@testing-library/angular": "18.1.1",
     "@testing-library/dom": "10.4.1",
