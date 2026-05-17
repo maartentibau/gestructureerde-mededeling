@@ -13,8 +13,8 @@ import { ValidateComponent } from './validate.component';
   imports: [JsonPipe],
   selector: 'ogm-number',
   template: `
-    <div>{{ ogm | json }}</div>
-    <div>{{ isValid | json }}</div>
+    <div>{{ ogm() | json }}</div>
+    <div>{{ isValid() | json }}</div>
   `,
 })
 class MockNumberComponent {
@@ -26,8 +26,8 @@ class MockNumberComponent {
   imports: [JsonPipe],
   selector: 'ogm-input',
   template: `
-    <div>{{ validate | json }}</div>
-    <div>{{ placeholderMessage | json }}</div>
+    <div>{{ validate() | json }}</div>
+    <div>{{ placeholderMessage() | json }}</div>
   `,
 })
 class MockInputComponent {

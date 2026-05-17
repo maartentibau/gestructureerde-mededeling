@@ -15,8 +15,8 @@ import { CreateComponent } from './create.component';
   imports: [JsonPipe],
   selector: 'ogm-number',
   template: `
-    <div>{{ ogm | json }}</div>
-    <div>{{ isValid | json }}</div>
+    <div>{{ ogm() | json }}</div>
+    <div>{{ isValid() | json }}</div>
   `,
 })
 class MockNumberComponent {
@@ -28,8 +28,8 @@ class MockNumberComponent {
   imports: [JsonPipe],
   selector: 'ogm-input',
   template: `
-    <div>{{ validate | json }}</div>
-    <div>{{ placeholderMessage | json }}</div>
+    <div>{{ validate() | json }}</div>
+    <div>{{ placeholderMessage() | json }}</div>
   `,
 })
 class MockInputComponent {
@@ -41,10 +41,10 @@ class MockInputComponent {
   imports: [JsonPipe],
   selector: 'ogm-controls',
   template: `
-    <div>{{ refresh | json }}</div>
-    <div>{{ copyNumber | json }}</div>
-    <div>{{ copyOgm | json }}</div>
-    <div>{{ ogm | json }}</div>
+    <div>{{ refresh() | json }}</div>
+    <div>{{ copyNumber() | json }}</div>
+    <div>{{ copyOgm() | json }}</div>
+    <div>{{ ogm() | json }}</div>
   `,
 })
 class MockControlsComponent {

@@ -8,24 +8,25 @@ jobs:
   build-test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [ '24' ]
-
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v5
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
         env:
-          CYPRESS_INSTALL_BINARY: 0
+          PNPM_HOME: /home/runner/.local/share/pnpm
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
+          node-version-file: '.nvmrc'
+          cache: pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
+        env:
+          CYPRESS_INSTALL_BINARY: 0
 
       - name: Run tests
         run: npm run test

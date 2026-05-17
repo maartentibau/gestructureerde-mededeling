@@ -1,6 +1,7 @@
 {
   "name": "gestructureerde-mededeling",
   "version": "0.0.0",
+  "packageManager": "pnpm@11.1.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,7 +23,6 @@
     ]
   },
   "private": true,
-  "packageManager": "npm@10.9.2",
   "dependencies": {
     "@angular/cdk": "21.2.1",
     "@angular/common": "21.2.1",
