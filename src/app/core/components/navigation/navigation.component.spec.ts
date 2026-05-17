@@ -15,7 +15,7 @@ import { NavigationEntity, NavigationLabel } from './navigation.model';
 @Component({
   imports: [JsonPipe],
   selector: 'fa-icon',
-  template: ` <div>{{ icon | json }}</div> `,
+  template: ` <div>{{ icon() | json }}</div> `,
 })
 class MockFaIconComponent {
   icon = input<string | string[] | undefined>();
