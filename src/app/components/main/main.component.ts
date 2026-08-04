@@ -1,6 +1,6 @@
 import { Breakpoints } from '@angular/cdk/layout';
 import { AsyncPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { Title } from '@angular/platform-browser';
 import { RouterLink } from '@angular/router';
@@ -12,10 +12,11 @@ import { DEFAULT_TITLE } from '../../core/core.constants';
 import { ScreenService } from '../../core/services/screen.service';
 
 @Component({
-    imports: [AsyncPipe, MatButtonModule, FontAwesomeModule, RouterLink],
-    selector: 'ogm-main',
-    templateUrl: './main.component.html',
-    styleUrls: ['./main.component.scss']
+  imports: [AsyncPipe, MatButtonModule, FontAwesomeModule, RouterLink],
+  selector: 'ogm-main',
+  templateUrl: './main.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
   #screenService: ScreenService = inject(ScreenService);
