@@ -1,5 +1,5 @@
 import { NgStyle } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { RouterOutlet } from '@angular/router';
 import { FaConfig, FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -8,10 +8,11 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { NavigationComponent } from './core/components/navigation/navigation.component';
 
 @Component({
-    imports: [NavigationComponent, MatCardModule, FontAwesomeModule, NgStyle, RouterOutlet],
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss']
+  imports: [NavigationComponent, MatCardModule, FontAwesomeModule, NgStyle, RouterOutlet],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   #faConfig: FaConfig = inject(FaConfig);
